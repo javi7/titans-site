@@ -1,0 +1,28 @@
+<script src="/js/register.js"></script>
+<div class="pure-g">
+  <section class="pure-u-1 pure-u-md-1-2">
+    <a href="/auth/google">sign in with google</a>
+    <a href="/auth/facebook">sign in with facebook</a>
+    <form action="/login" method="post">
+      <input name="email" type="email" placeholder="email" />
+      <input name="password" type="password" placeholder="password" />
+      <button type="submit">login</button>
+    </form>
+    no account? register!
+    <form id="registrationForm" action="/register" method="post">
+      <input name="email" type="email" placeholder="email" />
+      <input name="password" type="password" placeholder="password" />
+      <input name="password2" type="password" placeholder="verify password" />
+      <button type="submit">register</button>
+    </form>
+  </section>
+  <section class="pure-u-1 pure-u-md-1-2">
+    {{#if user}}
+      <img src="{{user.avatarUrl}}" />
+      Welcome{{#if user.name}}, {{user.name}}{{/if}}!
+      <a href="/logout">sign out</a>
+    {{else}}
+      Sign in over there &lt;&lt;&lt;&lt;----
+    {{/if}}
+  </section>
+</div>

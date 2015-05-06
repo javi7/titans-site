@@ -1,0 +1,22 @@
+<h3>change password</h3>
+<form action="/updatePassword" method="post">
+  <input name="password" type="password" placeholder="password" />
+  <input name="password2" type="password" placeholder="verify password" />
+  <button type="submit">change password</button>
+</form>
+
+<h3>change email</h3>
+<form action="/updateEmail" method="post">
+  <input name="email" type="email" placeholder="new email" />
+  <input name="email2" type="email" placeholder="confirm new email" />
+  <button type="submit">change email</button>
+</form>
+
+<h3>update bio</h3>
+<form action="/updateBio" method="post">
+  <input name="location" value="{{user.bio.location}}" type="text" placeholder="location" />
+  <input name="dateOfBirth" value="{{user.bio.dateOfBirth}}" type="date" placeholder="birthday" />
+  <input name="phone" value="{{user.bio.phone}}" type="tel" placeholder="phone #"/>
+  <textarea name="climbingExperience" placeholder="tell us about your climbing experience">{{user.bio.climbingExperience}}</textarea>
+  <button type="submit">update bio</button>
+</form>
