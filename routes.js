@@ -1,12 +1,12 @@
-var User = require('./models/User');
-var emailSender = require('./email-sender')();
+var User = require('./models/User'),
+    emailSender = require('./email-sender')(),
+    Subscriber = require('./models/Subscriber');
 
 module.exports = {
   index: function(req, res) {
     res.render('home', {'user': req.user});
   },
   register: function(req, res) {
-    console.log(req.body);
     User.createNewUser(req.body, function(err, result) {
       if (err) {
         res.status(400).send(err);
@@ -82,6 +82,15 @@ module.exports = {
   },
   updateBio: function(req, res) {
     req.user.updateBio(req.body, handleError('/account', res));
+  },
+  subscribe: function(req, res) {
+    Subscriber.create({email: req.body.email}, function(err, subscriber) {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.send(subscriber.email + ' successfully subscribed for alerts!');
+      }
+    });
   }
 };
 

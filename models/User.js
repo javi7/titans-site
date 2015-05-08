@@ -183,5 +183,4 @@ var getExpirationDate = function(hours) {
 
 schema.plugin(findOrCreate);
 
-// Return a Tweet model based upon the defined schema
 module.exports = User = mongoose.model('User', schema);

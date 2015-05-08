@@ -15,6 +15,8 @@
     "express": "^4.12.3",
     "express-handlebars": "^2.0.1",
     "express-session": "^1.11.1",
+    "express-validator": "^2.10.0",
+    "helmet": "^0.9.0",
     "mongoose": "4.0.2",
     "mongoose-findorcreate": "^0.1.2",
     "morgan": "^1.5.2",

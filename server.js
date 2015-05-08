@@ -12,7 +12,9 @@ var passport = require('passport'),
   User = require('./models/User'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
-  fs = require('fs');
+  fs = require('fs'),
+  helmet = require('helmet'),
+  validator = require('express-validator');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -30,11 +32,19 @@ mongoose.connect('mongodb://localhost/trail-titans');
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.use(session({secret: 'javijavijavi', store: new MongoStore({ mongooseConnection: mongoose.connection }), resave: false, saveUninitialized: false}));
+app.use(session({
+  secret: 'javijavijavi', 
+  store: new MongoStore({ mongooseConnection: mongoose.connection }), 
+  resave: false, 
+  saveUninitialized: false,
+  cookie: {httpOnly: true, secure: true}
+}));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(helmet());
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(bodyParser.urlencoded({ extended: false, type: 'application/x-www-form-urlencoded' }));
+app.use(validator());
 app.use(express.static('public'));
 
 app.get('', routes.index);
@@ -63,6 +73,8 @@ app.get('/account', loggedIn, routes.accountPage);
 app.post('/updatePassword', routes.updatePassword);
 app.post('/updateEmail', routes.updateEmail);
 app.post('/updateBio', routes.updateBio);
+app.post('/subscribe', routes.subscribe);
+app.get('/testMap', function(req, res) { res.render('map') });
 
 passport.serializeUser(function(user, done) {
   done(null, user._id);

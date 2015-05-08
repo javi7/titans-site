@@ -1,0 +1,1206 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"req",
+				"required"
+			],
+			[
+				"sub",
+				"subscriberSchema"
+			],
+			[
+				"true",
+				"true"
+			],
+			[
+				"handl",
+				"handleError"
+			],
+			[
+				"succ",
+				"successTarget"
+			],
+			[
+				"change",
+				"changePassword"
+			],
+			[
+				"chan",
+				"changePassword"
+			],
+			[
+				"text",
+				"textarea	Tag"
+			],
+			[
+				"acc",
+				"accountPage"
+			],
+			[
+				"emailV",
+				"emailVerifyExpiration"
+			],
+			[
+				"emailVei",
+				"emailVerifyToken"
+			],
+			[
+				"reset",
+				"resetPasswordToken"
+			],
+			[
+				"hash",
+				"hashedPassword"
+			],
+			[
+				"resetPasswordREquest",
+				"resetPasswordRequestPost"
+			],
+			[
+				"user",
+				"userResettingPassword"
+			],
+			[
+				"resetPass",
+				"resetPasswordExpriation"
+			],
+			[
+				"resetPas",
+				"resetPassword"
+			],
+			[
+				"email",
+				"emailSender"
+			],
+			[
+				"the",
+				"thepudding"
+			],
+			[
+				"localho",
+				"localhost:3000"
+			],
+			[
+				"resetP",
+				"resetPasswordExpriation"
+			],
+			[
+				"resetPassw",
+				"resetPasswordToken"
+			],
+			[
+				"res",
+				"resetPassword"
+			],
+			[
+				"sen",
+				"sendVerificationEmail"
+			],
+			[
+				"verif",
+				"verifyToken"
+			],
+			[
+				"verify",
+				"verifyEmail"
+			],
+			[
+				"emailVer",
+				"emailVerified"
+			],
+			[
+				"emailVe",
+				"emailVerified"
+			],
+			[
+				"emailVerify",
+				"emailVerifyExpiration"
+			],
+			[
+				"emailVeri",
+				"emailVerifyToken"
+			],
+			[
+				"find",
+				"findOne"
+			],
+			[
+				"regi",
+				"registrationForm"
+			],
+			[
+				"accou",
+				"accountRoutes"
+			],
+			[
+				"climbB",
+				"climbButton"
+			],
+			[
+				"climb",
+				"climbControls"
+			],
+			[
+				"climbButt",
+				"climbButtonContainer"
+			],
+			[
+				"cli",
+				"climbButtonContainer"
+			],
+			[
+				"ono",
+				"onover"
+			],
+			[
+				"peakA",
+				"peakAtV"
+			],
+			[
+				"peak",
+				"peakAtH"
+			],
+			[
+				"pano",
+				"panoNumber"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"load",
+				"loadStaticElements"
+			],
+			[
+				"prog",
+				"progressContainer"
+			],
+			[
+				"nextP",
+				"nextPrevControls"
+			],
+			[
+				"nex",
+				"nextPrevControls"
+			],
+			[
+				"get",
+				"getTime"
+			],
+			[
+				"setTrans",
+				"setTransform"
+			],
+			[
+				"with",
+				"withTransition"
+			],
+			[
+				"set",
+				"setTransitionSpeed"
+			],
+			[
+				"trans",
+				"transitionMs"
+			],
+			[
+				"oup",
+				"outputFolder"
+			],
+			[
+				"output",
+				"outputFolder"
+			],
+			[
+				"outpu",
+				"outputFolder"
+			],
+			[
+				"krp",
+				"krpano"
+			],
+			[
+				"krpano",
+				"krpanoCommand"
+			],
+			[
+				"pres",
+				"presetsReader"
+			],
+			[
+				"ini",
+				"initalVlookat"
+			],
+			[
+				"i",
+				"initializeVars"
+			],
+			[
+				"g",
+				"generateFilename"
+			],
+			[
+				"roundStar",
+				"roundStartDate"
+			],
+			[
+				"roundS",
+				"roundStartDate"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"roundStart",
+				"roundStartDates"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 4975,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/home.handlebars",
+			"settings":
+			{
+				"buffer_size": 1302,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "routes.js",
+			"settings":
+			{
+				"buffer_size": 3158,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "models/Subscriber.js",
+			"settings":
+			{
+				"buffer_size": 218,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "models/User.js",
+			"settings":
+			{
+				"buffer_size": 5080,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ss html",
+				"Set Syntax: HTML"
+			],
+			[
+				"ssh",
+				"Set Syntax: HTML"
+			],
+			[
+				"sshtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"ssjson",
+				"Set Syntax: JSON"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"side ",
+				"View: Toggle Side Bar"
+			],
+			[
+				"ss",
+				"Set Syntax: Python"
+			],
+			[
+				"comment",
+				"Toggle Comment"
+			],
+			[
+				"sskr",
+				"Set Syntax: Krpano Markup Language"
+			],
+			[
+				"package control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"browse",
+				"Preferences: Browse Packages"
+			],
+			[
+				"sspo",
+				"Set Syntax: PowerShell"
+			],
+			[
+				"sspyt",
+				"Set Syntax: Python"
+			],
+			[
+				"sspython",
+				"Set Syntax: Python"
+			],
+			[
+				"ss power",
+				"Set Syntax: PowerShell"
+			],
+			[
+				"select",
+				"Bookmarks: Select Next"
+			],
+			[
+				"sett",
+				"Preferences: Settings - User"
+			],
+			[
+				"settings",
+				"Preferences: Settings - Default"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Javi/Dropbox/titans-site",
+		"/D/Javi/Dropbox/titans-site/public",
+		"/D/Javi/Dropbox/titans-site/public/js",
+		"/D/Javi/Dropbox/titans-site/views",
+		"/D/Javi/Dropbox/titans-site/views/layouts"
+	],
+	"file_history":
+	[
+		"/D/Javi/Dropbox/titans-site/models/User.js",
+		"/D/Javi/Dropbox/titans-site/package.json",
+		"/D/Javi/Dropbox/titans-site/config/email.js",
+		"/D/Javi/Dropbox/titans-site/email-sender.js",
+		"/D/Javi/Dropbox/titans-site/models/Subscriber.js",
+		"/D/Javi/Dropbox/titans-site/.gitignore",
+		"/D/Javi/Dropbox/titans-site/views/account.handlebars",
+		"/D/Javi/openSSL/bin/public.pem",
+		"/D/Javi/openSSL/bin/private.pem",
+		"/D/Javi/Dropbox/titans-site/views/resetPassword.handlebars",
+		"/D/Javi/Dropbox/titans-site/views/resetPasswordRequest.handlebars",
+		"/D/Javi/Dropbox/titans-site/views/layouts/react.handlebars",
+		"/D/Javi/Dropbox/titans-site/views/layouts/main.handlebars",
+		"/D/Javi/Dropbox/titans-site/public/js/register.js",
+		"/D/Javi/Dropbox/titans-site/views/home.handlebars",
+		"/D/Javi/Dropbox/titans-site/server2.js",
+		"/D/Javi/Dropbox/titans-site/server/routes-loader.js",
+		"/D/Javi/Dropbox/titans-site/server/routes/pages.js",
+		"/D/Javi/Dropbox/titans-site/server/routes/accounts.js",
+		"/D/Javi/Dropbox/titans-site/server/auth.js",
+		"/D/Javi/Dropbox/titans-site/node_modules/passport-google-openidconnect/package.json",
+		"/C/Users/Javi/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Javi/AppData/Roaming/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/D/Javi/Dropbox/titans-site/server/routes.js",
+		"/D/Javi/Dropbox/titans-site/routes.js",
+		"/D/Javi/Dropbox/titans-site/User.js",
+		"/D/Javi/Dropbox/titans-site/public/index.html",
+		"/D/Javi/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1",
+		"/D/Javi/Desktop/bg.jpg",
+		"/D/Javi/Desktop/index.html",
+		"/D/Javi/Documents/GitHub/react-tweets/utils/streamHandler.js",
+		"/D/Javi/Documents/GitHub/react-tweets/server.js",
+		"/D/Javi/Documents/GitHub/react-tweets/config.js",
+		"/D/Javi/react-0.11.2/examples/ballmer-peak/example.js",
+		"/D/Javi/krPano/output/climbTest/hi-res/xml/254-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/html/demo.html",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/1-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/10-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/100-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/101-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/102-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/103-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/104-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/105-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/106-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/107-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/108-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/109-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/11-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/110-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/111-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/112-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/113-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/114-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/115-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/116-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/117-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/118-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/119-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/12-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/120-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/121-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/122-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/123-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/124-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/125-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/126-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/127-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/128-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/129-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/13-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/130-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/131-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/132-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/133-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/134-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/135-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/136-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/137-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/138-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/139-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/14-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/140-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/141-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/142-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/143-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/144-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/145-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/146-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/147-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/148-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/149-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/15-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/150-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/151-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/152-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/153-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/154-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/155-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/156-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/157-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/158-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/159-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/16-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/160-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/161-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/162-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/163-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/164-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/165-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/166-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/167-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/168-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/169-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/17-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/170-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/171-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/172-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/173-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/174-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/175-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/176-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/177-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/178-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/179-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/18-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/180-1_Panorama.xml",
+		"/D/Javi/krPano/output/fullClimb/low-res/xml/181-1_Panorama.xml"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"D:\\Javi\\Dropbox\\titans-site,-*node_modules",
+			"D:\\Javi\\Dropbox\\titans-site,-D:\\Javi\\Dropbox\\titans-site\\node_modules\\*",
+			"D:\\Javi\\Dropbox\\titans-site,-D:\\Javi\\Dropbox\\titans-site\\node_modules",
+			"D:\\Javi\\Dropbox\\titans-site",
+			"D:\\Javi\\krPano\\output\\fullClimb\\low-res\\xml",
+			"D:\\Javi\\krPano\\output\\fullClimb\\lo-res\\xml",
+			"D:\\Javi\\krPano\\output\\fullClimb\\hi-res\\xml",
+			"D:\\Javi\\krPano\\output\\climbTest\\low-res\\xml",
+			"D:\\Javi\\krPano\\output\\climbTest\\hi-res\\xml",
+			"D:\\Javi\\krPano\\output\\climbTest\\low-res\\xml",
+			"D:\\Javi\\krPano\\output\\climbTest\\hi-res\\xml",
+			"D:\\Javi\\krPano\\output\\climbTest",
+			"D:\\Javi\\krPano\\output\\fullClimb",
+			"D:\\Javi\\krPano\\output\\fullClimb\\xml",
+			"D:\\Javi\\krPano\\output\\fullClimb\\low-res\\xml,<open folders>",
+			"D:\\Javi\\krPano\\output\\fullClimb\\low-res\\xml",
+			"D:\\Javi\\krPano\\output\\fullClimb\\xml",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"eval",
+			"User",
+			"\"bio.",
+			"this",
+			"name",
+			"location",
+			"info",
+			"newUser",
+			"success",
+			"newUser",
+			"= function",
+			"this",
+			"changePassword",
+			"this",
+			"user",
+			"newUser[",
+			"newUser['hashedPassword']",
+			" user.emailVerifyToken",
+			"cb",
+			").v",
+			"app",
+			"http",
+			"username",
+			"[",
+			"<",
+			"console.log",
+			"displayName",
+			"Schema",
+			"schema",
+			"twoseventy",
+			"/fullClimb/sharedXml",
+			"\"../sharedXml",
+			"\"../shared-xml",
+			"\"../sharedXml",
+			"\"../shared-xml",
+			"sharedXml",
+			"onstart=\"setup()\"",
+			"onstart=\"setup()\" ",
+			"\"../shared-xml",
+			"\n\n  <layer name=\"next\" url=\"../images/next.jpg\" onclick=\"loadNextPano()\" align=\"righttop\" />",
+			"365",
+			"362",
+			"fullClimb",
+			"jpeg",
+			"fullClimb",
+			"..",
+			"../images",
+			"txtadd",
+			",../images",
+			"embedPano",
+			"..",
+			"options.swf",
+			"res",
+			"preload",
+			"money maker",
+			"onover",
+			"climbButtonContainer",
+			"showCont",
+			"showControls",
+			"onover",
+			"trace",
+			"nextPrevControls",
+			"climbButton",
+			"skip]",
+			"fullClimb",
+			"preload",
+			"pre_%1_",
+			"pre_%1_r",
+			"pause",
+			"js(",
+			"js(setPaused",
+			"js(setPaus",
+			"<style .* zorder=\"99\" />",
+			"<style .* peak-hidden.gif\" zorder=\"99\" />",
+			"peak-hidden.gif",
+			"\n	<action name=\"hs_animate\"> \n  	add(maxv, startv, 1);\n    inc(atv, 0.2, get(maxv), get(startv));\n    delayedcall(0.1, if(loaded, hs_animate() ) );\n  </action>",
+			"<style align=\"center\" .*zorder=\"99\" />",
+			"<style align=\"center\" ",
+			"<style align=\"center\" alpha=\"0.5\" ath=\"116.2454026\" atv=\"-6.097157521\" currentstep=\"0\" direction=\"up\" edge=\"bottom\" frame=\"0\" frameheight=\"128\" framewidth=\"128\" handcursor=\"false\" keep=\"false\" lastframe=\"5\" name=\"hs-animate\" onloaded=\"hs_animate()\" scale=\"0.05\" startv=\"-6.097157521\" steps=\"10\" url=\"../images/peak-hidden.gif\" zoom=\"true\" zorder=\"99\" />",
+			"hidden",
+			" <layer align=\"righttop\" name=\"next\" onclick=\"loadNextPano()\" url=\"../images/next.jpg\" />\n",
+			"<layer name=\"copy\" onclick=\"js( copyToClipboard(get(panoNumber), get(view.hlookat), get(view.vlookat), get(view.fov)) );\" url=\"https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/copy-128.png\" />",
+			"layer",
+			"hotspot",
+			"js(un",
+			"hs-animate",
+			"delayed",
+			"pause",
+			"trace",
+			"%",
+			"1-1",
+			"output/fullClimb",
+			"nextCamp",
+			"nextPano",
+			"ycrop",
+			"skip.gif",
+			"skip",
+			"trace",
+			"loadNextPano",
+			"showClimbButton",
+			"prevPic",
+			"zoomout",
+			"zoomOut",
+			"zoomout",
+			"zoomOut",
+			"zoomout",
+			"trace",
+			":",
+			"zoomin",
+			"climbButton",
+			"element.style.",
+			": blur",
+			"transform",
+			"Transform",
+			"transform",
+			"origin",
+			"TRANSITION_DURATION",
+			"magnify",
+			"TRANSITION_DURATION",
+			"shared-xml",
+			"TRANSITION_DURATION",
+			"document.body.style.transform",
+			"TRANSITION_DURATION",
+			"if",
+			"style",
+			"startv",
+			"showcoordinates",
+			"showcoor"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"../../shared-xml",
+			"\"../../shared-xml",
+			"shared-xml",
+			"onstart=\"setup()\" showerrors=\"false\"",
+			"\"../../shared-xml",
+			"",
+			"output/fullClimb/low-res",
+			"sharedXml"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4975,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1859,
+								1859
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"incomplete_sync": null,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 294.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/home.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								864,
+								864
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2860,
+								2860
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 924.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/Subscriber.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 218,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								218,
+								141
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/User.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5080,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5024,
+								5024
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2310.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "titans-site.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"routes",
+				"routes.js"
+			],
+			[
+				"su",
+				"models\\Subscriber.js"
+			],
+			[
+				"user",
+				"models\\User.js"
+			],
+			[
+				"subsc",
+				"models\\Subscriber.js"
+			],
+			[
+				"emailsend",
+				"email-sender.js"
+			],
+			[
+				"account",
+				"views\\account.handlebars"
+			],
+			[
+				"accoun",
+				"views\\account.handlebars"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"server",
+				"server.js"
+			],
+			[
+				"route",
+				"routes.js"
+			],
+			[
+				"email-",
+				"email-sender.js"
+			],
+			[
+				"users",
+				"models\\User.js"
+			],
+			[
+				"regis",
+				"public\\js\\register.js"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"user.js",
+				"models\\User.js"
+			],
+			[
+				"tweetsapp",
+				"components\\TweetsApp.react.js"
+			],
+			[
+				"app.js",
+				"app.js"
+			],
+			[
+				"home.hand",
+				"views\\home.handlebars"
+			],
+			[
+				"main.han",
+				"views\\layouts\\main.handlebars"
+			],
+			[
+				"routes.js",
+				"routes.js"
+			],
+			[
+				"streamhandler",
+				"utils\\streamHandler.js"
+			],
+			[
+				"tweet.js",
+				"models\\Tweet.js"
+			],
+			[
+				"multire",
+				"templates\\270_multires.config"
+			],
+			[
+				"trail",
+				"js\\trailtitans.js"
+			],
+			[
+				"demo",
+				"demo.html"
+			],
+			[
+				"multi",
+				"templates\\javi_multires.config"
+			],
+			[
+				"mulit",
+				"templates\\270_multires.config"
+			],
+			[
+				"gener",
+				"generatePanos.py"
+			],
+			[
+				"gene",
+				"generatePanos.py"
+			],
+			[
+				"javi",
+				"templates\\javi_default.xml"
+			],
+			[
+				"move",
+				"moveStaticFiles.py"
+			],
+			[
+				"base",
+				"shared-xml\\basefunctions.xml"
+			],
+			[
+				"controls",
+				"shared-xml\\controls.xml"
+			],
+			[
+				"contorl",
+				"shared-xml\\controls.xml"
+			],
+			[
+				"contr",
+				"shared-xml\\controls.xml"
+			],
+			[
+				"mike-u",
+				"js\\mike-utilities.js"
+			],
+			[
+				"bs",
+				"shared-xml\\basefunctions.xml"
+			],
+			[
+				"ba",
+				"shared-xml\\basefunctions.xml"
+			],
+			[
+				"controls.xml",
+				"shared-xml\\controls.xml"
+			],
+			[
+				"py",
+				"updatePresets.py"
+			],
+			[
+				"basefu",
+				"shared-xml\\basefunctions.xml"
+			],
+			[
+				"basefunc",
+				"shared-xml\\basefunctions.xml"
+			],
+			[
+				"gne",
+				"generatePanos.py"
+			],
+			[
+				"showtext",
+				"shared-xml\\showtext.xml"
+			],
+			[
+				"trailt",
+				"js\\trailtitans.js"
+			],
+			[
+				"de",
+				"demo.html"
+			],
+			[
+				"static",
+				"moveStaticFiles.py"
+			],
+			[
+				"zoom.js",
+				"js\\zoom.js"
+			],
+			[
+				"javi_html",
+				"D:\\Javi\\krPano\\templates\\html\\javi_embedpano.html"
+			],
+			[
+				"javi_",
+				"D:\\Javi\\krPano\\templates\\html\\javi_embedpano.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 232.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
