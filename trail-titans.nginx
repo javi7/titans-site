@@ -1,0 +1,17 @@
+server {  
+  server_name trailtitans.com;
+  listen 80;
+  listen 443 ssl;
+
+  ssl_certificate /home/ubuntu/titans-site/config/ssl/cert.pem;
+  ssl_certificate_key /home/ubuntu/titans-site/config/ssl/key.pem;
+
+  location / {
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-NginX-Proxy true;
+    proxy_pass http://127.0.0.1:3000;
+    proxy_redirect off;
+  }
+}
