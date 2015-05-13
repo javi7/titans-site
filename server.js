@@ -27,7 +27,7 @@ var loggedIn = function(req, res, next) {
   }
 }
 
-mongoose.connect('mongodb://localhost/trail-titans');
+mongoose.connect(process.env.mongo);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -37,14 +37,14 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection }), 
   resave: false, 
   saveUninitialized: false,
-  cookie: {httpOnly: true, secure: true}
+  cookie: {httpOnly: true, secure: false}
 }));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(helmet());
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(bodyParser.urlencoded({ extended: false, type: 'application/x-www-form-urlencoded' }));
 app.use(validator());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static('public'));
 
 app.get('', routes.index);
@@ -77,10 +77,12 @@ app.post('/subscribe', routes.subscribe);
 app.get('/testMap', function(req, res) { res.render('map') });
 
 passport.serializeUser(function(user, done) {
+  console.log('serializing: ' + user);
   done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
+  console.log('deserializing: ' + id);
   User.findById(id, function(err, user) {
     done(err, user); 
   });
@@ -88,9 +90,9 @@ passport.deserializeUser(function(id, done) {
 
 passport.use(
   new FacebookStrategy({
-    clientID: 817521254997988,
-    clientSecret: 'b352bac698b966cdb861ca6d06ce2ba3',
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    clientID: process.env.facebook_clientId,
+    clientSecret: process.env.facebook_clientSecret,
+    callbackURL: process.env.facebook_callback,
     profileFields: ['id', 'displayName', 'photos']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -105,9 +107,9 @@ passport.use(
 ));
 
 passport.use(new GoogleStrategy({
-    clientID: '390985003318-109t6a5j51l7vaigo2lb3r8n79junder.apps.googleusercontent.com',
-    clientSecret: 'Uk_h9XJDJEAQM3puGOvAjkkL',
-    callbackURL: "http://localhost:3000/auth/google/callback",
+    clientID: process.env.google_clientId,
+    clientSecret: process.env.google_clientSecret,
+    callbackURL: process.env.google_callback,
     profileFields: ['id', 'displayName', 'photos']
   },
   function(iss, sub, profile, accessToken, refreshToken, done) {
@@ -146,8 +148,8 @@ passport.use(new LocalStrategy(
 ));
 
 var options = {
-  key: fs.readFileSync('config/ssl/key.pem'),
-  cert: fs.readFileSync('config/ssl/cert.pem')
+  key: fs.readFileSync(process.env.ssl_key),
+  cert: fs.readFileSync(process.env.ssl_cert)
 };
 
 http.createServer(app).listen(port);

@@ -1,10 +1,12 @@
-var nodemailer = require('nodemailer'),
-    config = require('./config/email');
+var nodemailer = require('nodemailer');
 
 module.exports = function() {
   var transporter = nodemailer.createTransport({
     service: 'Gmail',
-    auth: config
+    auth: {
+      user: process.env.gmail_user,
+      pass: process.env.gmail_pw
+    }
   });
   return {
     sendVerificationEmail: function(user, cb) {

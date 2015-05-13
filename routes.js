@@ -4,6 +4,7 @@ var User = require('./models/User'),
 
 module.exports = {
   index: function(req, res) {
+    console.log(req.user);
     res.render('home', {'user': req.user});
   },
   register: function(req, res) {
