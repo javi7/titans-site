@@ -147,10 +147,4 @@ passport.use(new LocalStrategy(
   }
 ));
 
-var options = {
-  key: fs.readFileSync(process.env.ssl_key),
-  cert: fs.readFileSync(process.env.ssl_cert)
-};
-
 http.createServer(app).listen(port);
-https.createServer(options, app).listen(443);
