@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo su ubuntu
+sudo apt-get update
+sudo apt-get install -y python-pip
+sudo pip install awscli
+
+aws s3 cp s3://trail-titans-bootstrap/startup.sh /home/ubuntu/startup.sh
+cd /home/ubuntu
+chmod +x startup.sh
+sudo -H -u ubuntu ./startup.sh

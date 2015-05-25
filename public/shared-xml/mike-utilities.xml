@@ -1,0 +1,20 @@
+<krpano>
+  <action name="hideUtilities">
+    removelayer(copy);
+    removelayer(next);
+  </action>
+
+  <action name="showCoordinates">
+    txtadd(coords, 'horizontal - ', get(view.hlookat), [br], 'vertical - ', get(view.vlookat), [br], 'fov - ', get(view.fov));
+    showtext(get(coords), coordinates);
+  </action>
+
+  <action name="getMousePosition">
+    screentosphere(mouse.x, mouse.y, x, y);
+    js(copyCursorPos(get(x), get(y), get(panoNumber)));
+  </action>
+
+  <textstyle  name="coordinates"
+              showtime="60"
+  />
+</krpano>

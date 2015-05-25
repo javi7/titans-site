@@ -1,0 +1,128 @@
+<krpano>
+  <action name="setupDemoMode">
+    hideUtilities();
+    <!-- ifnot(staticsLoaded == true, loadStaticElements()); -->
+    js(setCampVariables(get(panoNumber)););
+    <!-- updateProgress(); -->
+  </action>
+
+  <action name="showControls">
+    removelayer(next);
+    removelayer(copy);
+    addlayer(zoom);
+    set(layer[zoom].type, container);
+    set(layer[zoom].height, 120);
+    set(layer[zoom].width, 52);
+    set(layer[zoom].align, bottomright);
+    set(layer[zoom].x, 30);
+    set(layer[zoom].y, 30);
+    addlayer(zoomin);
+    set(layer[zoomin].url, /images/zoom.gif);
+    set(layer[zoomin].align, top);
+    set(layer[zoomin].scale, 0.4);
+    set(layer[zoomin].onclick, zoomIn());
+    set(layer[zoomin].keep, false);
+    set(layer[zoomin].parent, layer[zoom]);
+    set(layer[zoomin].crop, 0|0|130|149);
+    set(layer[zoomin].onhover, 
+      layer[zoomin].loadstyle(opaque);
+      showtext(Zoom in, tooltip);
+    );
+    set(layer[zoomin].onout, 
+      layer[zoomin].loadstyle(transparent);
+      showtext(james, invisible);
+    );
+    layer[zoomin].loadstyle(transparent);
+    addlayer(zoomout);
+    set(layer[zoomout].url, /images/zoom.gif);
+    set(layer[zoomout].align, bottom);
+    set(layer[zoomout].scale, 0.4);
+    set(layer[zoomout].onclick, zoomOut());
+    set(layer[zoomout].keep, false);
+    set(layer[zoomout].parent, layer[zoom]);
+    set(layer[zoomout].crop, 0|149|130|149);
+    set(layer[zoomout].onhover, 
+      layer[zoomout].loadstyle(opaque);
+      showtext(Zoom out, tooltip);
+    );
+    set(layer[zoomout].onout, 
+      layer[zoomout].loadstyle(transparent);
+      showtext(krispy kreme, invisible);
+    );
+    layer[zoomout].loadstyle(transparent);
+    addlayer(nextPrevControls);
+    set(layer[nextPrevControls].type, container);
+    set(layer[nextPrevControls].height, 120);
+    set(layer[nextPrevControls].width, 52);
+    set(layer[nextPrevControls].align, bottomright);
+    set(layer[nextPrevControls].x, 100);
+    set(layer[nextPrevControls].y, 30);
+    addlayer(nextPic);
+    set(layer[nextPic].url, /images/2-arrows.gif);
+    set(layer[nextPic].align, top);
+    set(layer[nextPic].scale, 0.4);
+    set(layer[nextPic].onclick, loadNextPano(false, false));
+    set(layer[nextPic].keep, false);
+    set(layer[nextPic].parent, layer[nextPrevControls]);
+    set(layer[nextPic].crop, 0|0|130|149);
+    set(layer[nextPic].onhover, 
+      layer[nextPic].loadstyle(opaque);
+      showtext(Next, tooltip);
+    );
+    set(layer[nextPic].onout, 
+      layer[nextPic].loadstyle(transparent);
+      showtext(gifted boy for jesus, invisible);
+    );
+    layer[nextPic].loadstyle(transparent);
+    addlayer(prevPic);
+    set(layer[prevPic].url, /images/2-arrows.gif);
+    set(layer[prevPic].align, bottom);
+    set(layer[prevPic].scale, 0.4);
+    set(layer[prevPic].onclick, loadPrevPano(false, false));
+    set(layer[prevPic].keep, false);
+    set(layer[prevPic].parent, layer[nextPrevControls]);
+    set(layer[prevPic].crop, 0|149|130|149);
+    set(layer[prevPic].onhover, 
+      layer[prevPic].loadstyle(opaque);
+      showtext(Previous, tooltip);
+    );
+    set(layer[prevPic].onout, 
+      layer[prevPic].loadstyle(transparent);
+      showtext(old pat, invisible);
+    );
+    layer[prevPic].loadstyle(transparent);
+  </action>
+
+  <action name="hideControls">
+    removelayer(nextPrevControls);
+    removelayer(zoom);
+  </action>
+
+  <style 
+    name="transparent"
+    alpha="0.5"
+  />
+
+  <style
+    name="opaque"
+    alpha="1"
+  />
+
+  <action name="zoomIn">
+    mul(newfov, get(view.fov), 0.9);
+    zoomto(get(newfov));
+  </action>
+
+  <action name="zoomOut">
+    mul(newfov, get(view.fov), 1.1);
+    zoomto(get(newfov));
+  </action>
+
+  <textstyle name="tooltip"
+    showtime="2"
+  />
+
+  <textstyle name="invisible"
+    showtime="0"
+  />
+</krpano>

@@ -1,3 +1,4 @@
+require('pmx').init();
 var passport = require('passport'),
   session = require('express-session'),
   MongoStore = require('connect-mongo')(session),
@@ -14,10 +15,17 @@ var passport = require('passport'),
   mongoose = require('mongoose'),
   fs = require('fs'),
   helmet = require('helmet'),
-  validator = require('express-validator');
+  validator = require('express-validator'),
+  knox = require('knox'),
+  mime = require('mime');
 
 var app = express();
 var port = process.env.PORT || 3000;
+var aws = knox.createClient({
+  key: process.env.aws_key,
+  secret: process.env.aws_secret,
+  bucket: process.env.aws_bucket
+});
 
 var loggedIn = function(req, res, next) {
   if (req.user) {
@@ -75,6 +83,25 @@ app.post('/updateEmail', routes.updateEmail);
 app.post('/updateBio', routes.updateBio);
 app.post('/subscribe', routes.subscribe);
 app.get('/testMap', function(req, res) { res.render('map') });
+app.get('/mountain-data/:mountain/:resolution/:folder/:filename', function(req, res, next) {
+  aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.filename].join('/')).on('response', function(resp){
+    res.setHeader('Content-Length', resp.headers['content-length']);
+    res.setHeader('Content-Type', resp.headers['content-type']);
+    resp.pipe(res);
+  }).end();
+});
+app.get('/mountain-data/:mountain/:resolution/:folder/:side/:res/:level/:filename', function(req, res, next) {
+  aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.side, req.params.res, req.params.level, req.params.filename].join('/')).on('response', function(resp){
+    res.setHeader('Content-Length', resp.headers['content-length']);
+    res.setHeader('Content-Type', resp.headers['content-type']);
+    resp.pipe(res);
+  }).end();
+});
+app.get('/low-res|hi-res/:folder/:side/:res/:level/:filename', function(req, res, next) {
+  var mountain = req.headers.referer.split('/')[req.headers.referer.split('/').length - 1];
+  res.redirect('/mountain-data/' + mountain + req.url);
+});
+app.get('/climb/:mountain', routes.climb);
 
 passport.serializeUser(function(user, done) {
   console.log('serializing: ' + user);
@@ -147,4 +174,5 @@ passport.use(new LocalStrategy(
   }
 ));
 
+app.use(pmx.expressErrorHandler());
 http.createServer(app).listen(port);

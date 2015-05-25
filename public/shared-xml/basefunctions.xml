@@ -1,0 +1,172 @@
+<krpano> 
+  <network caching="false" />
+  <include url="controls.xml" />
+  <include url="mike-utilities.xml" />
+
+  <action name="setup">
+    indexoftxt(dashIndex, get(preview.url), -1_Panorama);
+    sub(startSearch, dashIndex, 4);
+    indexoftxt(slashIndex, get(preview.url), /, get(startSearch));
+    add(slashIndex, 1);
+    sub(panoNumberLength, get(dashIndex), get(slashIndex));
+    subtxt(panoNumber, get(preview.url), get(slashIndex), get(panoNumberLength));
+    initializeVars();
+  </action>
+
+  <action name="initializeVars">
+    set(initialHlookat, get(view.hlookat));
+    set(initialVlookat, get(view.vlookat));
+    if(panoNumber == nextCamp AND climbing == true, 
+      pause(false););
+    setupDemoMode();
+    if(climbing == false AND descending == false, showControls(), hideControls());
+    trace(climbing, '  ', descending);
+    delayedcall(keepClimbing, 1, 
+      if(climbing == true,
+        wait(LOAD);
+        loadNextPano(true, false);,
+        if(descending == true,
+          trace(you right);
+          wait(LOAD);
+          loadPrevPano(false, true);
+        );
+      );
+    );
+    wait(LOAD);
+    add(nextPano, panoNumber, 1);
+    if(climbing == true AND panoNumber LT get(lastPano), 
+      preload(get(nextPano), low-res);
+      preload(get(panoNumber), hi-res);,
+      if(panoNumber LT get(lastPano),
+      preload(get(nextPano), low-res);
+      preload(get(nextPano), hi-res))
+    );
+    <!-- js(finishTransition();); -->
+  </action>
+
+  <action name="resetView">
+    removelayer(climbButton);
+    if(descending == true, lookat(get(view.hlookatdesc), get(initialVlookat)), lookat(get(view.hlookatasc), get(initialVlookat)));
+  </action>
+
+  <action name="loadNextPano">
+    add(targetPano, get(panoNumber), 1);
+    loadPanoWrapper(get(targetPano), %1, %2);
+    <!-- js(startTransition();); -->
+  </action>
+
+  <!-- loadNextPano(imageNumber, isClimbing, isDescending) -->
+  <action name="loadPanoWrapper">
+    resetView();
+    trace(loading new pano);
+    set(xmlFile, '%1-1_Panorama');
+    if (%3 == true, txtadd(xmlFile, get(xmlFile), '_desc.xml'), txtadd(xmlFile, get(xmlFile), '.xml'));
+    if(%2 == true OR %3 == true, txtadd(xmlFile, ../../low-res/xml/, get(xmlFile)), txtadd(xmlFile, ../../hi-res/xml/, get(xmlFile)));
+    txtadd(loadPanoCall, 'loadpano(', get(xmlFile), ',staticsLoaded=true&amp;panoNumber=%1&amp;climbing=%2&amp;descending=%3, null, BLEND(0.5));');
+    trace(loadPanoCall);
+    call(loadPanoCall);
+  </action>
+
+  <action name="loadPrevPano">
+    sub(targetPano, get(panoNumber), 1);
+    loadPanoWrapper(get(targetPano), %1, %2, %3);
+  </action>
+
+  <action name="spacebar">
+    if(climbing == true, pause(false), loadNextPano(true, false));
+  </action>
+
+  <action name="pause">
+    if(climbing == true OR %1 == true, 
+      stopdelayedcall(keepClimbing);
+      set(climbing, false);
+      set(descending, false);
+      loadPanoWrapper(get(panoNumber), false, false);
+    );
+  </action>
+
+  <action name="preload">
+    <!-- trace(preload %1 %2); -->
+    addplugin(pre_%1_r_%2);
+    addplugin(pre_%1_d_%2);
+    addplugin(pre_%1_b_%2);
+    addplugin(pre_%1_u_%2);
+    addplugin(pre_%1_f_%2);
+    addplugin(pre_%1_l_%2);
+
+    set(plugin[pre_%1_r_%2].onloaded, <!-- trace(preload pre_%1_r_%2 done); -->removeplugin(pre_%1_r_%2) );
+    set(plugin[pre_%1_d_%2].onloaded, <!-- trace(preload pre_%1_d_%2 done); -->removeplugin(pre_%1_d_%2) );
+    set(plugin[pre_%1_b_%2].onloaded, <!-- trace(preload pre_%1_b_%2 done); -->removeplugin(pre_%1_b_%2) );
+    set(plugin[pre_%1_u_%2].onloaded, <!-- trace(preload pre_%1_u_%2 done); -->removeplugin(pre_%1_u_%2) );
+    set(plugin[pre_%1_f_%2].onloaded, <!-- trace(preload pre_%1_f_%2 done); -->removeplugin(pre_%1_f_%2) );
+    set(plugin[pre_%1_l_%2].onloaded, <!-- trace(preload pre_%1_l_%2 done); -->removeplugin(pre_%1_l_%2) );
+    set(plugin[pre_%1_r_%2].visible, false);
+    set(plugin[pre_%1_d_%2].visible, false);
+    set(plugin[pre_%1_b_%2].visible, false);
+    set(plugin[pre_%1_u_%2].visible, false);
+    set(plugin[pre_%1_f_%2].visible, false);
+    set(plugin[pre_%1_l_%2].visible, false);
+
+   <!--  set(url_r, /fullClimb);
+    set(url_d, /fullClimb);
+    set(url_b, /fullClimb);
+    set(url_u, /fullClimb);
+    set(url_f, /fullClimb);
+    set(url_l, /fullClimb);
+
+    if(%2 == low-res, txtadd(url_r, /low-res));
+    if(%2 == low-res, txtadd(url_d, /low-res));
+    if(%2 == low-res, txtadd(url_b, /low-res));
+    if(%2 == low-res, txtadd(url_u, /low-res));
+    if(%2 == low-res, txtadd(url_f, /low-res));
+    if(%2 == low-res, txtadd(url_l, /low-res)); -->
+
+    set(url_r, ../%2/%1-1_Panorama.tiles/mres_r/l1/1/l1_r_1_1.jpg);
+    set(url_d, ../%2/%1-1_Panorama.tiles/mres_d/l1/1/l1_d_1_1.jpg);
+    set(url_b, ../%2/%1-1_Panorama.tiles/mres_b/l1/1/l1_b_1_1.jpg);
+    set(url_u, ../%2/%1-1_Panorama.tiles/mres_u/l1/1/l1_u_1_1.jpg);
+    set(url_f, ../%2/%1-1_Panorama.tiles/mres_f/l1/1/l1_f_1_1.jpg);
+    set(url_l, ../%2/%1-1_Panorama.tiles/mres_l/l1/1/l1_l_1_1.jpg);
+
+    set(plugin[pre_%1_r_%2].url, get(url_r));
+    set(plugin[pre_%1_d_%2].url, get(url_d));
+    set(plugin[pre_%1_b_%2].url, get(url_b));
+    set(plugin[pre_%1_u_%2].url, get(url_u));
+    set(plugin[pre_%1_f_%2].url, get(url_f));
+    set(plugin[pre_%1_l_%2].url, get(url_l));
+  </action>
+
+  <style 
+    name="hs-animate" 
+    url="/fullClimb/images/peak.gif"     
+    zorder="99"     
+    scale="0.1"
+    startv="-2.3985087372234783" 
+    align="center"        
+    framewidth="128"
+    frameheight="128"
+    frame="0" 
+    lastframe="5"
+    handcursor="false"
+    onloaded="hs_animate()"
+  />
+
+  <action name="hs_animate"> 
+    add(maxv, startv, 0.5);
+    if(direction==down, bounce_down(), bounce_up());
+    delayedcall(0.1, if(loaded, hs_animate() ) );
+  </action>
+
+  <action name="bounce_down">
+    sub(atv, 0.05);
+    sub(currentstep, 1);
+    if(currentstep==0, set(direction, up));
+  </action>
+
+  <action name="bounce_up">
+    add(atv, 0.05);
+    add(currentstep, 1);
+    if(currentstep==10, set(direction, down));
+  </action>
+    
+</krpano>
