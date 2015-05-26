@@ -41,7 +41,7 @@ mongoose.connect(process.env.mongo);
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.use(session({
+var sessionMiddleware = session({
   secret: 'javijavijavi',
   store: new MongoStore({ 
     mongooseConnection: mongoose.connection,
@@ -49,8 +49,15 @@ app.use(session({
   }), 
   resave: false, 
   saveUninitialized: false,
-  cookie: {httpOnly: true, secure: false, maxAge: 24 * 60 * 60 * 1000 }
-}));
+  cookie: {httpOnly: true, secure: false, maxAge: 24 * 60 * 60 * 1000}
+});
+app.use(function(req, res, next) {
+  if (req.url.indexOf('/mountain-data') === 0) {
+    return next();
+  } else {
+    return sessionMiddleware(req, res, next);
+  }
+});
 app.use(helmet());
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(bodyParser.urlencoded({ extended: false, type: 'application/x-www-form-urlencoded' }));
