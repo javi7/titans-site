@@ -43,14 +43,13 @@ app.set('view engine', 'handlebars');
 
 app.use(session({
   secret: 'javijavijavi',
-  cookie: {maxAge: 24 * 60 * 60 * 1000 }, 
   store: new MongoStore({ 
     mongooseConnection: mongoose.connection,
     clear_interval: 3600 
   }), 
   resave: false, 
   saveUninitialized: false,
-  cookie: {httpOnly: true, secure: false}
+  cookie: {httpOnly: true, secure: false, maxAge: 24 * 60 * 60 * 1000 }}
 }));
 app.use(helmet());
 app.use(bodyParser.json({ type: 'application/json' }))
@@ -90,6 +89,7 @@ app.post('/subscribe', routes.subscribe);
 app.get('/testMap', function(req, res) { res.render('map') });
 app.get('/mountain-data/:mountain/:resolution/:folder/:filename', function(req, res, next) {
   aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.filename].join('/')).on('response', function(resp){
+    res.removeHeader('set-cookie');
     res.setHeader('Content-Length', resp.headers['content-length']);
     res.setHeader('Content-Type', resp.headers['content-type']);
     resp.pipe(res);
@@ -97,6 +97,7 @@ app.get('/mountain-data/:mountain/:resolution/:folder/:filename', function(req, 
 });
 app.get('/mountain-data/:mountain/:resolution/:folder/:side/:res/:level/:filename', function(req, res, next) {
   aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.side, req.params.res, req.params.level, req.params.filename].join('/')).on('response', function(resp){
+    res.removeHeader('set-cookie');
     res.setHeader('Content-Length', resp.headers['content-length']);
     res.setHeader('Content-Type', resp.headers['content-type']);
     resp.pipe(res);
