@@ -18,9 +18,11 @@ var passport = require('passport'),
   helmet = require('helmet'),
   validator = require('express-validator'),
   knox = require('knox'),
-  mime = require('mime');
+  mime = require('mime'),
+  favicon = require('serve-favicon');
 
 var app = express();
+app.use(favicon('./public/images/favicon.ico'));
 var port = process.env.PORT || 3000;
 var aws = knox.createClient({
   key: process.env.aws_key,

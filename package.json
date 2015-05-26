@@ -28,7 +28,8 @@
     "passport-google": "^0.3.0",
     "passport-google-openidconnect": "0.0.4",
     "passport-local": "^1.0.0",
-    "pmx": "^0.3.14"
+    "pmx": "^0.3.14",
+    "serve-favicon": "^2.2.1"
   },
   "devDependencies": {
     "node-inspector": "^0.10.0",
