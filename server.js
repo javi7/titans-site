@@ -42,8 +42,12 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.use(session({
-  secret: 'javijavijavi', 
-  store: new MongoStore({ mongooseConnection: mongoose.connection }), 
+  secret: 'javijavijavi',
+  cookie: {maxAge: 24 * 60 * 60 * 1000 }, 
+  store: new MongoStore({ 
+    mongooseConnection: mongoose.connection,
+    clear_interval: 3600 
+  }), 
   resave: false, 
   saveUninitialized: false,
   cookie: {httpOnly: true, secure: false}
