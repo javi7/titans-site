@@ -1,4 +1,5 @@
-require('pmx').init();
+var pmx = require('pmx');
+pmx.init();
 var passport = require('passport'),
   session = require('express-session'),
   MongoStore = require('connect-mongo')(session),

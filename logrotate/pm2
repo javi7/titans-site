@@ -1,4 +1,4 @@
-/root/.pm2/logs/*.log {
+/home/ubuntu/.pm2/logs/*.log {
   daily
   rotate 5
   missingok
