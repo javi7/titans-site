@@ -3,8 +3,22 @@ var panoDiv = document.getElementById("pano");
 
 var contextMap = null;
 
+function getQueryVariable() {
+  var variable = 'startAt';
+  var query = window.location.search.substring(1);
+  var vars = query.split('&');
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=');
+    if (decodeURIComponent(pair[0]) == variable) {
+      return decodeURIComponent(pair[1]);
+    }
+  }
+  return null;
+}
+
 initClimbMode = function() {
-  krpano.call('set(panoNumber, 1);');
+  var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
+  krpano.call('set(panoNumber,' + initialPanoNumber + ');');
   krpano.call('setupDemoMode();');
   krpano.call('pause(true);');
   krpano.call('set(lastPano, ' + campInfo[campInfo.length - 1].panoNumber + ');');

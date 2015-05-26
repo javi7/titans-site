@@ -9,6 +9,20 @@
 **/
 
 var ContextMap = function(canvasId, config) {
+  function testCSS(prop) {
+    return prop in document.documentElement.style;
+  }
+  var cssPrefix = testCSS('MozBoxSizing') ? '-moz-' : testCSS('WebkitTransform') ? '-webkit-' : '';
+  var devicePixelRatio = window.devicePixelRatio || 1;
+  var context = document.getElementById(canvasId).getContext('2d');
+  var backingStoreRatio = context.webkitBackingStorePixelRatio ||
+                      context.mozBackingStorePixelRatio ||
+                      context.msBackingStorePixelRatio ||
+                      context.oBackingStorePixelRatio ||
+                      context.backingStorePixelRatio || 1;
+
+  var ratio = devicePixelRatio / backingStoreRatio;
+
   var climbHeight = config.campInfo[config.campInfo.length - 1].elevation - config.campInfo[0].elevation;
   var climbLength = config.campInfo[config.campInfo.length - 1].panoNumber;
   var lastClick = null;
@@ -61,18 +75,36 @@ var ContextMap = function(canvasId, config) {
   box.originalDimensions = {'width': config.buttonWidth * canvasWidth, 'height': 2 * config.topMargin * canvasHeight};
   box.graphics.beginFill('gray').beginStroke('black').drawRect(0, 0, box.originalDimensions.width, box.originalDimensions.height);
   button.addChild(box);
-  var arrow = new createjs.Shape();
-  arrow.graphics.beginStroke('black').setStrokeStyle(2).moveTo(0.25 * box.originalDimensions.width, 0.25 * box.originalDimensions.height)
-  arrow.graphics.lineTo(0.5 * box.originalDimensions.width, 0.75 * box.originalDimensions.height)
-  arrow.graphics.lineTo(0.75 * box.originalDimensions.width, 0.25 * box.originalDimensions.height);
-  button.addChild(arrow);
-  button.resize = function() {
-    button.x = (1 - config.buttonWidth) * canvasWidth / 2;
+  button.z = 750;
+  button.getBox = function() {
+    return button.children[0];
+  };
+  button.drawArrow = function() {
+    button.removeChild(button.children[1]);
+    var arrow = new createjs.Shape();
+    arrow.graphics.beginStroke('black').setStrokeStyle(2);
+    if (mapUp) {
+      arrow.graphics.moveTo(0.25 * box.originalDimensions.width, 0.25 * box.originalDimensions.height)
+      arrow.graphics.lineTo(0.5 * box.originalDimensions.width, 0.75 * box.originalDimensions.height)
+      arrow.graphics.lineTo(0.75 * box.originalDimensions.width, 0.25 * box.originalDimensions.height);
+    } else {
+      arrow.graphics.moveTo(0.25 * box.originalDimensions.width, 0.75 * box.originalDimensions.height)
+      arrow.graphics.lineTo(0.5 * box.originalDimensions.width, 0.25 * box.originalDimensions.height)
+      arrow.graphics.lineTo(0.75 * box.originalDimensions.width, 0.75 * box.originalDimensions.height);
+    }
+    button.addChild(arrow);
+  };
+  button.resize = function(scaleFactor) {
+    button.scaleX *= scaleFactor.x;
+    button.scaleY *= scaleFactor.y;
+    button.regX = button.getBox().originalDimensions.width * button.scaleX / 2;
+    button.x = canvasWidth / 2;
     if (mapUp) {
       button.y = 0;
     } else {
       button.y = (1 - 2.5 * config.bottomMargin) * canvasHeight;
     }
+    button.drawArrow();
   };
   addElement(button);
 
@@ -87,15 +119,15 @@ var ContextMap = function(canvasId, config) {
       placePositionMarkerOnSlope();
     } 
     stage.update();
-    document.body.style.cursor = '-webkit-grabbing';
-    currentPositionMarker.cursor = '-webkit-grabbing';
+    document.body.style.cursor = cssPrefix + 'grabbing';
+    currentPositionMarker.cursor = cssPrefix + 'grabbing';
   });
-  currentPositionMarker.cursor = '-webkit-grab';
+  currentPositionMarker.cursor = cssPrefix + 'grab';
   currentPositionMarker.on('pressup', function() {
     var skipToPanoNumber = Math.round((currentPositionMarker.x - config.sideMargin * canvasWidth) / ((1 - 2 * config.sideMargin) * canvasWidth) * climbLength);
     krpano.call('loadPanoWrapper(' + skipToPanoNumber + ', false, false);');
     document.body.style.cursor = 'default';
-  currentPositionMarker.cursor = '-webkit-grab';
+  currentPositionMarker.cursor = cssPrefix + 'grab';
   });
   stage.addChild(currentPositionMarker);
 
@@ -209,9 +241,21 @@ var ContextMap = function(canvasId, config) {
   };
 
   var resize = function() {
-    var scaleFactor = {'y': 0.33 * krpano.clientHeight / stage.canvas.height, 'x': 0.33 * krpano.clientWidth / stage.canvas.width};
-    stage.canvas.height = canvasHeight = 0.33 * krpano.clientHeight;
-    stage.canvas.width = canvasWidth = 0.33 * krpano.clientWidth;
+    var newHeight = 0.33 * krpano.clientHeight * ratio;
+    var newWidth = 0.33 * krpano.clientWidth * ratio;
+    var scaleFactor = {'y': newHeight / stage.canvas.height, 'x': newWidth / stage.canvas.width};
+
+    stage.canvas.width = canvasWidth = newWidth;
+    stage.canvas.height = canvasHeight = newHeight;
+
+    stage.canvas.style.width = newWidth / ratio + 'px';
+    stage.canvas.style.height = newHeight / ratio + 'px';
+
+    // now scale the context to counter
+    // the fact that we've manually scaled
+    // our canvas element
+    context.scale(ratio, ratio);
+
     for (var elementIdx in elements) {
       elements[elementIdx].resize(scaleFactor);
     }
@@ -220,6 +264,7 @@ var ContextMap = function(canvasId, config) {
     }
     drawLines();
     updateCurrentPosition();
+
     stage.update();
   };
 
@@ -374,7 +419,6 @@ var ContextMap = function(canvasId, config) {
 
     mapToggling = true;
     var toggleStep = 0;
-    var buttonTriangle = button.children[1];
     button.visible = false;
     var summitMarker = campMarkers[campMarkers.length - 1];
     if (mapUp) {
@@ -386,14 +430,11 @@ var ContextMap = function(canvasId, config) {
     var toggleMapAnimation = setInterval(function() {
       if (toggleStep == 10) {
         mapToggling = false;
-        button.resize();
+        button.resize({'x': 1, 'y': 1});
         clearInterval(toggleMapAnimation);
-        buttonTriangle.scaleY *= -1;
         if (mapUp) {
-          buttonTriangle.y -= 2 * config.topMargin * canvasHeight;
           logo.visible = true;
         } else {
-          buttonTriangle.y += 2 * config.topMargin * canvasHeight;
           summitMarker.graphics = summitMarker.mapDownGraphic;
           summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasWidth / 500;
           summitMarker.regX = 414;
