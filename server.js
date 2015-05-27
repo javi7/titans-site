@@ -19,9 +19,11 @@ var passport = require('passport'),
   validator = require('express-validator'),
   knox = require('knox'),
   mime = require('mime'),
-  favicon = require('serve-favicon');
+  favicon = require('serve-favicon'),
+  compression = require('compression');
 
 var app = express();
+app.use(compression());
 app.use(favicon('./public/images/favicon.ico'));
 var port = process.env.PORT || 3000;
 var aws = knox.createClient({
