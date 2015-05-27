@@ -1,7 +1,5 @@
-/config
+/s3
 /node_modules
 *.sublime-project
 *.sublime-workspace
-pm2*.json
-startup.sh
 aws.txt
