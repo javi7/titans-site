@@ -1,9 +1,7 @@
 <krpano>
   <action name="setupDemoMode">
     hideUtilities();
-    <!-- ifnot(staticsLoaded == true, loadStaticElements()); -->
     js(setCampVariables(get(panoNumber)););
-    <!-- updateProgress(); -->
   </action>
 
   <action name="showControls">

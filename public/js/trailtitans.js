@@ -1,5 +1,5 @@
-var krpano = document.getElementById("krpanoSWFObject");
-var panoDiv = document.getElementById("pano");
+var krpano = null;
+var panoDiv = null;
 
 var contextMap = null;
 
@@ -17,6 +17,8 @@ function getQueryVariable() {
 }
 
 initClimbMode = function() {
+  krpano = document.getElementById("krpanoSWFObject");
+  panoDiv = document.getElementById("pano");
   var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
   krpano.call('set(panoNumber,' + initialPanoNumber + ');');
   krpano.call('setupDemoMode();');

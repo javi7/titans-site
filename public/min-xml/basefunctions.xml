@@ -1,7 +1,5 @@
-<krpano>
-  <network caching="false" />
 
-  <action name="setup">
+  <network caching="false" /><action name="setup">
     indexoftxt(dashIndex, get(preview.url), -1_Panorama);
     sub(startSearch, dashIndex, 4);
     indexoftxt(slashIndex, get(preview.url), /, get(startSearch));
@@ -9,9 +7,7 @@
     sub(panoNumberLength, get(dashIndex), get(slashIndex));
     subtxt(panoNumber, get(preview.url), get(slashIndex), get(panoNumberLength));
     initializeVars();
-  </action>
-
-  <action name="initializeVars">
+  </action><action name="initializeVars">
     set(initialHlookat, get(view.hlookat));
     set(initialVlookat, get(view.vlookat));
     if(panoNumber == nextCamp AND climbing == true, 
@@ -39,22 +35,15 @@
       preload(get(nextPano), low-res);
       preload(get(nextPano), hi-res))
     );
-    <!-- js(finishTransition();); -->
-  </action>
-
-  <action name="resetView">
+    
+  </action><action name="resetView">
     removelayer(climbButton);
     if(descending == true, lookat(get(view.hlookatdesc), get(initialVlookat)), lookat(get(view.hlookatasc), get(initialVlookat)));
-  </action>
-
-  <action name="loadNextPano">
+  </action><action name="loadNextPano">
     add(targetPano, get(panoNumber), 1);
     loadPanoWrapper(get(targetPano), %1, %2);
-    <!-- js(startTransition();); -->
-  </action>
-
-  <!-- loadNextPano(imageNumber, isClimbing, isDescending) -->
-  <action name="loadPanoWrapper">
+    
+  </action><action name="loadPanoWrapper">
     resetView();
     trace(loading new pano);
     set(xmlFile, '%1-1_Panorama');
@@ -63,28 +52,20 @@
     txtadd(loadPanoCall, 'loadpano(', get(xmlFile), ',staticsLoaded=true&amp;panoNumber=%1&amp;climbing=%2&amp;descending=%3, null, BLEND(0.5));');
     trace(loadPanoCall);
     call(loadPanoCall);
-  </action>
-
-  <action name="loadPrevPano">
+  </action><action name="loadPrevPano">
     sub(targetPano, get(panoNumber), 1);
     loadPanoWrapper(get(targetPano), %1, %2, %3);
-  </action>
-
-  <action name="spacebar">
+  </action><action name="spacebar">
     if(climbing == true, pause(false), loadNextPano(true, false));
-  </action>
-
-  <action name="pause">
+  </action><action name="pause">
     if(climbing == true OR %1 == true, 
       stopdelayedcall(keepClimbing);
       set(climbing, false);
       set(descending, false);
       loadPanoWrapper(get(panoNumber), false, false);
     );
-  </action>
-
-  <action name="preload">
-    <!-- trace(preload %1 %2); -->
+  </action><action name="preload">
+    
     addplugin(pre_%1_r_%2);
     addplugin(pre_%1_d_%2);
     addplugin(pre_%1_b_%2);
@@ -92,12 +73,12 @@
     addplugin(pre_%1_f_%2);
     addplugin(pre_%1_l_%2);
 
-    set(plugin[pre_%1_r_%2].onloaded, <!-- trace(preload pre_%1_r_%2 done); -->removeplugin(pre_%1_r_%2) );
-    set(plugin[pre_%1_d_%2].onloaded, <!-- trace(preload pre_%1_d_%2 done); -->removeplugin(pre_%1_d_%2) );
-    set(plugin[pre_%1_b_%2].onloaded, <!-- trace(preload pre_%1_b_%2 done); -->removeplugin(pre_%1_b_%2) );
-    set(plugin[pre_%1_u_%2].onloaded, <!-- trace(preload pre_%1_u_%2 done); -->removeplugin(pre_%1_u_%2) );
-    set(plugin[pre_%1_f_%2].onloaded, <!-- trace(preload pre_%1_f_%2 done); -->removeplugin(pre_%1_f_%2) );
-    set(plugin[pre_%1_l_%2].onloaded, <!-- trace(preload pre_%1_l_%2 done); -->removeplugin(pre_%1_l_%2) );
+    set(plugin[pre_%1_r_%2].onloaded, removeplugin(pre_%1_r_%2) );
+    set(plugin[pre_%1_d_%2].onloaded, removeplugin(pre_%1_d_%2) );
+    set(plugin[pre_%1_b_%2].onloaded, removeplugin(pre_%1_b_%2) );
+    set(plugin[pre_%1_u_%2].onloaded, removeplugin(pre_%1_u_%2) );
+    set(plugin[pre_%1_f_%2].onloaded, removeplugin(pre_%1_f_%2) );
+    set(plugin[pre_%1_l_%2].onloaded, removeplugin(pre_%1_l_%2) );
     set(plugin[pre_%1_r_%2].visible, false);
     set(plugin[pre_%1_d_%2].visible, false);
     set(plugin[pre_%1_b_%2].visible, false);
@@ -105,19 +86,7 @@
     set(plugin[pre_%1_f_%2].visible, false);
     set(plugin[pre_%1_l_%2].visible, false);
 
-   <!--  set(url_r, /fullClimb);
-    set(url_d, /fullClimb);
-    set(url_b, /fullClimb);
-    set(url_u, /fullClimb);
-    set(url_f, /fullClimb);
-    set(url_l, /fullClimb);
-
-    if(%2 == low-res, txtadd(url_r, /low-res));
-    if(%2 == low-res, txtadd(url_d, /low-res));
-    if(%2 == low-res, txtadd(url_b, /low-res));
-    if(%2 == low-res, txtadd(url_u, /low-res));
-    if(%2 == low-res, txtadd(url_f, /low-res));
-    if(%2 == low-res, txtadd(url_l, /low-res)); -->
+   
 
     set(url_r, ../%2/%1-1_Panorama.tiles/mres_r/l1/1/l1_r_1_1.jpg);
     set(url_d, ../%2/%1-1_Panorama.tiles/mres_d/l1/1/l1_d_1_1.jpg);
@@ -132,9 +101,7 @@
     set(plugin[pre_%1_u_%2].url, get(url_u));
     set(plugin[pre_%1_f_%2].url, get(url_f));
     set(plugin[pre_%1_l_%2].url, get(url_l));
-  </action>
-
-  <style 
+  </action><style 
     name="hs-animate" 
     url="/fullClimb/images/peak.gif"     
     zorder="99"     
@@ -147,23 +114,17 @@
     lastframe="5"
     handcursor="false"
     onloaded="hs_animate()"
-  />
-
-  <action name="hs_animate"> 
+  /><action name="hs_animate"> 
     add(maxv, startv, 0.5);
     if(direction==down, bounce_down(), bounce_up());
     delayedcall(0.1, if(loaded, hs_animate() ) );
-  </action>
-
-  <action name="bounce_down">
+  </action><action name="bounce_down">
     sub(atv, 0.05);
     sub(currentstep, 1);
     if(currentstep==0, set(direction, up));
-  </action>
-
-  <action name="bounce_up">
+  </action><action name="bounce_up">
     add(atv, 0.05);
     add(currentstep, 1);
     if(currentstep==10, set(direction, down));
   </action>
-    </krpano>
+    
