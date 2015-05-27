@@ -4,6 +4,16 @@ module.exports = function(grunt) {
       options: {
         mangle: {
           except: ['initClimbMode']
+        },
+        compress: {
+          sequences: true,
+          dead_code: true,
+          conditionals: true,
+          booleans: true,
+          unused: true,
+          if_return: true,
+          join_vars: true,
+          drop_console: true
         }
       },
       my_target: {
@@ -15,7 +25,13 @@ module.exports = function(grunt) {
     concat: {
       options: {
         banner: '<krpano>',
-        footer: '</krpano>'
+        footer: '</krpano>',
+        process: function(src, filepath) {
+          src = src.replace(/<krpano>/g, '');
+          src = src.replace(/<\/krpano>/g, '');
+          src = src.replace(/\r\n/g, '');
+          return src;
+        }
       },
       dist: {
         src: ['public/shared-xml/basefunctions.xml', 'public/shared-xml/controls.xml', 'public/shared-xml/mike-utilites.xml', 'public/shared-xml/showtext.xml'],
