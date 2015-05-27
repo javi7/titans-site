@@ -1,7 +1,8 @@
 var User = require('./models/User'),
     emailSender = require('./email-sender')(),
     Subscriber = require('./models/Subscriber'),
-    Mountain = require('./models/Mountain');
+    Mountain = require('./models/Mountain'),
+    mountainInfo = require('./models/mountain-info');
 
 module.exports = {
   index: function(req, res) {
@@ -95,13 +96,11 @@ module.exports = {
     });
   },
   climb: function(req, res) {
-    Mountain.findOne({'mountainName': req.params.mountain}, function(err, mountainInfo) {
-      if (mountainInfo) {
-        res.render('climb', {layout: false, 'mountainInfo': mountainInfo});
-      } else {
-        res.status(400).send(err);
-      }
-    })
+    if (mountainInfo[req.params.mountain]) {
+      res.render('climb', {layout: false, 'mountainInfo': mountainInfo[req.params.mountain]});
+    } else {
+      res.status(400).send(err);
+    }
   }
 };
 
