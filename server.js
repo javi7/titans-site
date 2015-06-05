@@ -100,26 +100,26 @@ app.post('/updatePassword', routes.updatePassword);
 app.post('/updateEmail', routes.updateEmail);
 app.post('/subscribe', routes.subscribe);
 app.get('/testMap', function(req, res) { res.render('map') });
-app.get('/mountain-data/:mountain/:resolution/:folder/:filename', function(req, res, next) {
-  aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.filename].join('/')).on('response', function(resp){
-    res.removeHeader('set-cookie');
-    res.setHeader('Content-Length', resp.headers['content-length']);
-    res.setHeader('Content-Type', resp.headers['content-type']);
-    resp.pipe(res);
-  }).end();
-});
-app.get('/mountain-data/:mountain/:resolution/:folder/:side/:res/:level/:filename', function(req, res, next) {
-  aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.side, req.params.res, req.params.level, req.params.filename].join('/')).on('response', function(resp){
-    res.removeHeader('set-cookie');
-    res.setHeader('Content-Length', resp.headers['content-length']);
-    res.setHeader('Content-Type', resp.headers['content-type']);
-    resp.pipe(res);
-  }).end();
-});
-app.get('/low-res|hi-res/:folder/:side/:res/:level/:filename', function(req, res, next) {
-  var mountain = req.headers.referer.split('/')[req.headers.referer.split('/').length - 1];
-  res.redirect('/mountain-data/' + mountain + req.url);
-});
+// app.get('/mountain-data/:mountain/:resolution/:folder/:filename', function(req, res, next) {
+//   aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.filename].join('/')).on('response', function(resp){
+//     res.removeHeader('set-cookie');
+//     res.setHeader('Content-Length', resp.headers['content-length']);
+//     res.setHeader('Content-Type', resp.headers['content-type']);
+//     resp.pipe(res);
+//   }).end();
+// });
+// app.get('/mountain-data/:mountain/:resolution/:folder/:side/:res/:level/:filename', function(req, res, next) {
+//   aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.side, req.params.res, req.params.level, req.params.filename].join('/')).on('response', function(resp){
+//     res.removeHeader('set-cookie');
+//     res.setHeader('Content-Length', resp.headers['content-length']);
+//     res.setHeader('Content-Type', resp.headers['content-type']);
+//     resp.pipe(res);
+//   }).end();
+// });
+// app.get('/low-res|hi-res/:folder/:side/:res/:level/:filename', function(req, res, next) {
+//   var mountain = req.headers.referer.split('/')[req.headers.referer.split('/').length - 1];
+//   res.redirect('/mountain-data/' + mountain + req.url);
+// });
 app.get('/climb/:mountain', routes.climb);
 
 passport.serializeUser(function(user, done) {

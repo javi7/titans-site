@@ -30,7 +30,14 @@
 <div id="pano" style="width:100%;height:100%;">
 	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
 	<script>
-		embedpano({xml:"http://d71k0z0ouu4ph.cloudfront.net/mountains/{{mountainInfo.mountainName}}/hi-res/xml/1-1_Panorama.xml?testing2", target:"pano", html5:"only", passQueryParameters:true});
+		var w = window,
+	    d = document,
+	    e = d.documentElement,
+	    g = d.getElementsByTagName('body')[0],
+	    x = w.innerWidth || e.clientWidth || g.clientWidth;
+	  if (x > 768) {
+			embedpano({xml:"http://d71k0z0ouu4ph.cloudfront.net/mountains/{{mountainInfo.mountainName}}/hi-res/xml/1-1_Panorama.xml?testing2", target:"pano", html5:"only", passQueryParameters:true});
+		}
 	</script>
 	<div id="clickToPause" style="display:none;position:absolute;color:#373737;margin:auto;left:0;right:0;bottom:0;top:0;height:100px;font-size:3em;text-align:center;z-index:1000;">
 		<p style="display:inline-block;background-color:white;background-color:rgba(255,255,255,0.75);padding:10px">
@@ -39,6 +46,8 @@
 	</div>
 </div>
 <canvas id="contextMap" height="500" width="500" style="position:absolute;bottom:25px;left:25px;">Your must have a browser that supports canvas in order experience the complete climb</canvas>
+<div id="nosoupforyou" style="display:none;position:absolute;top:0;margin:5px">
+	Please visit this page on a device with a larger screen to climb {{mountainInfo.displayName}}. You could also try maximizing your window or using your tablet in landscape mode.
 </body>
 {{!-- <script src="/climb-min.js"></script> --}}
 <script src="/js/contextMap.js"></script>
@@ -46,7 +55,11 @@
 <script src="/js/mike-utilities.js"></script>
 <script src="/js/trailtitans.js"></script>
 <script>
-	initClimbMode('{{mountainInfo.mountainName}}');
+	if (x > 768) {
+		initClimbMode('{{mountainInfo.mountainName}}');
+	} else {
+		document.getElementById('nosoupforyou').style.display="block";
+	}
 </script>
 </html>
 

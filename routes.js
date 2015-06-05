@@ -138,7 +138,7 @@ module.exports = {
         });
       });
     } else {
-      res.status(400).send(err);
+      res.status(400).send('invalid mountain name');
     }
   }
 };
