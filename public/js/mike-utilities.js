@@ -14,4 +14,3 @@ var getMousePos = function(event) {
     krpano.call('getMousePosition();');
   }
 };
-document.addEventListener("keydown", getMousePos, false);

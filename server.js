@@ -69,6 +69,7 @@ app.use(validator());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public'));
+app.use('/mountains', express.static('D:/Javi/krPano/output'));
 
 app.get('', routes.index);
 app.get('/auth/facebook', passport.authenticate('facebook'));
@@ -86,6 +87,8 @@ app.post('/login',
   passport.authenticate('local', { successRedirect: '/',
                                    failureRedirect: '/' })
 );
+app.post('/apply', routes.apply);
+app.post('/feedback', routes.feedback);
 
 app.get('/verifyEmail', routes.verifyEmail);
 app.get('/resetPasswordRequest', routes.resetPasswordRequest);
@@ -95,7 +98,6 @@ app.post('/resetPassword', routes.resetPasswordPost);
 app.get('/account', loggedIn, routes.accountPage);
 app.post('/updatePassword', routes.updatePassword);
 app.post('/updateEmail', routes.updateEmail);
-app.post('/updateBio', routes.updateBio);
 app.post('/subscribe', routes.subscribe);
 app.get('/testMap', function(req, res) { res.render('map') });
 app.get('/mountain-data/:mountain/:resolution/:folder/:filename', function(req, res, next) {
@@ -191,5 +193,6 @@ passport.use(new LocalStrategy(
   }
 ));
 
+process.setMaxListeners(0);
 app.use(pmx.expressErrorHandler());
 http.createServer(app).listen(port);

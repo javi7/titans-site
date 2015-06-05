@@ -15,24 +15,38 @@
 	</style>
 	<script>
 		var campInfo = {{{mountainInfo.js}}};
+		{{#if cacheBusters}}
+			var cacheBusters = {{{cacheBusters}}};
+		{{/if}}
 	</script>
-	<script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>
 </head>
 <body>
 
-<script src="/min.js"></script>
+{{#if krpanojs}}
+  <script>{{{krpanojs}}}</script>
+  {{else}}
+	<script src="/js/krpano.js"></script>
+{{/if}}
 <div id="pano" style="width:100%;height:100%;">
 	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
 	<script>
-		embedpano({swf:"/mountain-data/{{mountainInfo.mountainName}}/hi-res/xml/1-1_Panorama.swf", xml:"/mountain-data/{{mountainInfo.mountainName}}/hi-res/xml/1-1_Panorama.xml", target:"pano", html5:"only", passQueryParameters:true});
+		embedpano({xml:"http://d71k0z0ouu4ph.cloudfront.net/mountains/{{mountainInfo.mountainName}}/hi-res/xml/1-1_Panorama.xml?testing2", target:"pano", html5:"only", passQueryParameters:true});
 	</script>
-	<div id="clickToPause" style="display:none;position:absolute;margin:auto;left:0;right:0;bottom:0;top:0;height:100px;font-size:3em;text-align:center;z-index:1000;text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000;">
-		click anywhere to pause
+	<div id="clickToPause" style="display:none;position:absolute;color:#373737;margin:auto;left:0;right:0;bottom:0;top:0;height:100px;font-size:3em;text-align:center;z-index:1000;">
+		<p style="display:inline-block;background-color:white;background-color:rgba(255,255,255,0.75);padding:10px">
+			click anywhere to pause
+		</p>
 	</div>
 </div>
-<canvas id="contextMap" height="500" width="500" style="position:absolute;bottom:25px;left:25px;">NO CANVAS SUPPORT LOL</canvas>
+<canvas id="contextMap" height="500" width="500" style="position:absolute;bottom:25px;left:25px;">Your must have a browser that supports canvas in order experience the complete climb</canvas>
 </body>
+{{!-- <script src="/climb-min.js"></script> --}}
+<script src="/js/contextMap.js"></script>
+<script src="/js/easeljs-0.8.0.min.js"></script>
+<script src="/js/mike-utilities.js"></script>
+<script src="/js/trailtitans.js"></script>
 <script>
-	initClimbMode();
+	initClimbMode('{{mountainInfo.mountainName}}');
 </script>
 </html>
+

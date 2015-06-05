@@ -1,0 +1,406 @@
+body {
+  font-size: 16px;
+}
+@media (max-width: 1000px) {
+  body { font-size: 12px; }
+}
+.navbar-default
+{
+  background-color: rgba(55, 55, 55, 0.7);
+  margin-bottom: 0px;
+}
+.navbar {
+  min-height: 120px;
+  border: none;
+}
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+    height: 0;
+}
+.navbar-brand img {
+  margin-top: 10px;
+}
+.navbar-right
+{
+  margin-top: 40px;
+  margin-right: 50px;
+}
+.btn-titan, .btn-titan.active, .btn-titan:active, .btn-titan:focus, .btn-titan:hover
+{
+  word-spacing: 1px;
+  letter-spacing: 1px;
+  color: white;
+  background-color: #dc6026;
+  border-color: white;
+  border-radius: 2px;
+  font-size: 0.75em;
+  padding: 5px 30px;
+}
+nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:focus, nav .btn-titan:hover {
+  font-size: 1.25em;
+}
+#titans .btn-titan, #titans .btn-titan.active, #titans .btn-titan:active, #titans .btn-titan:focus, #titans .btn-titan:hover {
+  background-color: white;
+  color: #dc6026;
+  padding: 10px 30px;
+  font-size: 1.5em;
+  border-color: #dc6026;
+  border-width: 5px;
+}
+
+#subscribe-form .btn-titan, #subscribe-form .btn-titan.active, #subscribe-form .btn-titan:active, #subscribe-form .btn-titan:focus, #subscribe-form .btn-titan:hover {
+  background-color: white;
+  color: #373737;
+  padding: 5px 20px;
+  font-size: 1em;
+  border-color: #373737;
+  border-width: 3px;
+}
+
+#collapse-menu
+{
+  position: absolute;
+  visibility: hidden;
+}
+#collapse-menu.collapse
+{
+  position: relative;
+  visibility: visible;
+}
+.font-code-pro { 
+  font-family: Code-Pro-Demo;
+  font-weight: normal;
+  font-style: normal;
+}
+
+#contact h1 {
+    white-space: nowrap;
+    border-bottom: 3px solid #dc6026;
+    font-size: 2.5em;
+}
+
+.lightbox h1 {
+    font-size: 2.5em;
+}
+.font-helvetica {
+  font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; font-weight:600; font-stretch:condensed;
+}
+
+#contact p {
+    font-size: 1.25em;
+    text-align: justify;
+}
+
+#climb p {
+    /* width: 20vw; */
+    text-align: justify;
+    color: #373737;
+}
+#climb input {
+  color: #373737;
+}
+.section-content {
+  position: relative;
+  top: 0px;
+}
+#contact, #footer {
+  height: inherit;
+}
+.home-section {
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-bottom: 0;
+  position: relative;
+  color: white;
+  text-align: center;
+  background-position: center top;
+  background-size: cover;
+  padding: 120px 0 30px 0;
+  min-height: 95vh;
+}
+
+.image-container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+
+#home, #about, #climb, #mobile-home {
+  display: none;
+}
+@media (max-width: 768px) {
+  #mobile-home {
+    display: inherit;
+    color: #373737;
+    background-image: url(/images/mobile-bg.png);
+  }
+
+#mobile-home #subscribe-form {
+    margin-top: 30px;
+}
+  #mobile-home img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+  #mobile-home p {
+    margin: 20px 0;
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 769px) {
+  #home { 
+    display: inherit;
+    background-image: url(/images/5.jpg);
+    background-color: #373737;
+  }
+  #about {
+    background-image: url(/images/about.jpg);
+    text-align: left;
+    display:inherit;
+  }
+  #climb { display: inherit;}
+}
+#footer {
+  background-color: #373737;
+  padding: 10px 0;
+}
+
+#contact .form-control {
+  color: white;
+  background-color: #373737;
+  border-radius: 0px;
+}
+#contact {
+  color: #373737;
+  background-color: white;
+  padding: 30px 0;
+}
+#about::after {
+  content: "";
+  background: rgba(55, 55, 55, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: block;
+}
+#about > * {
+  z-index: 10;
+}
+
+#about .section-content {
+    margin-left:50px;
+    width: 70vw;
+}
+#about h2 {
+  font-size: 2.5em;
+  color: white;
+}
+#about h1 {
+  color: white;
+  font-size: 3em;
+  margin-top: 0;
+}
+#about p {
+  font-size: 1.25em;
+  line-height: 175%;
+  text-align: justify;
+}
+.orangeText {
+  color: #dc6026;
+}
+#titans { 
+  background-image: url(/images/10.jpg);
+  display: block;
+  position: relative;
+}
+#titans:after {
+  content: "";
+  background: rgba(220, 96, 38, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: block;
+}
+#titans > * {
+  z-index: 10;
+}
+.grayText {
+  color: #373737;
+}
+#titans h1 {
+  border-bottom: 5px solid #373737;
+  display: inline-block;
+  font-size: 5em;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+#titans p {
+  text-align: justify;
+  font-size: 1.5em;
+  line-height: 175%;
+  letter-spacing: 1px;
+  margin-bottom: 5vh;
+}
+#titans .section-content, #home .section-content, #climb .section-content {
+  width: 60vw;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+#climb .section-content {
+    position: relative;
+    margin-right: 50px;
+    right: 0;
+    z-index: 2;
+}
+#climb {
+  text-align: left;
+  height: 800px;
+}
+
+#climb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#climb h1 {
+  border-bottom: 5px solid #dc6026;
+  color: #373737;
+  font-size: 5em;
+  /* margin-right: 30px; */
+  white-space: nowrap;
+}
+#home h1 {
+  font-size: 8em;
+  letter-spacing: 5px;
+  white-space: nowrap;
+}
+#home p {
+  display: inline-block;
+  padding: 5px 20px;
+  background-color: rgba(220, 96, 38, 0.85);
+  font-size: 2em;
+  letter-spacing: 3px;
+  width: 100%;
+}
+a.anchor {
+  display: block;
+  position: relative;
+  top: -110px;
+  visibility: hidden;
+}
+.background-fit {
+  vertical-align: top;
+  line-height: 0;
+  display: block;
+  visibility:hidden;
+  max-width: 1200%;
+  position: relative;
+  top: -110px;
+}
+.background-fit-container {
+  padding: 0;
+}
+#contact ::-webkit-input-placeholder {
+   color: white;
+   font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; font-weight:600; font-stretch:condensed;
+}
+#contact :-moz-placeholder { /* Firefox 18- */
+   color: white;
+   font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; font-weight:600; font-stretch:condensed;
+}
+
+#contact ::-moz-placeholder {  /* Firefox 19+ */
+   color: white;
+   font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; font-weight:600; font-stretch:condensed;
+}
+
+#contact :-ms-input-placeholder {  
+   color: white;
+   font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; font-weight:600; font-stretch:condensed;
+}
+#contact button {
+  border-radius: 0;
+  border-color: #373737;
+  border-width: 2px;
+  background-color: white;
+  font-size: 22px;
+}
+.lightbox button, .lightbox button.active, .lightbox button:active, .lightbox button:focus, .lightbox button:hover {
+  font-size: 1.5em;
+  border-radius: 0;
+  border-color: white;
+  border-width: 2px;
+  background-color: transparent;
+  color: white;
+}
+.navbar-left img {
+    margin-top: 10px;
+}
+.lightbox {
+  visibility: hidden;
+  z-index: 1500;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(55, 55, 55, 0.9);
+}
+.lightbox-inner {
+  color: white;
+  background-color: #393d49;
+  text-align: center;
+  padding: 20px 10%;
+  position: relative;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+#close-lightbox {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+area {
+  outline: none;
+}
+.subscribe-button-container {
+  text-align: center;
+}
+.no-bg-img {
+  min-height: 0;
+}
+.no-touch .mountain-label {
+  display: none;
+}
+.touch #climb .mountain-label {
+  color: #373737;
+  position: absolute;
+}
+@media (max-width: 768px) {
+  .disappear-at-md { display: none; }
+  #titans h1, #climb h1 { white-space: inherit; }
+  #titans .section-content, #climb .section-content { width: inherit; padding: 0 10px; }
+  #titans { background-image: url(/images/10-mobile.jpg); padding: 30px 0; }
+}
+@media (max-width: 860px) {
+  #climb .section-content {
+    margin-top: 125px;
+  }
+}

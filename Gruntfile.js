@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'public/min.js': ['public/js/contextMap.js', 'public/js/krpano.js', 'public/js/mike-utilities.js', 'public/js/trailtitans.js']
+          'public/climb-min.js': ['public/js/contextMap.js', 'public/js/easeljs-0.8.0.min.js', 'public/js/mike-utilities.js', 'public/js/trailtitans.js']
         }
       }
     },
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
           preserveComments: false
         },
         files: {                                // Dictionary of files 
-          'public/min.xml': 'public/combined.xml'   // 'destination': 'source' 
+          'public/shared-xml/min.xml': 'public/combined.xml'   // 'destination': 'source' 
         }
       }
     }

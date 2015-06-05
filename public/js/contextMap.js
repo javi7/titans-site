@@ -30,6 +30,7 @@ var ContextMap = function(canvasId, config) {
   var campMarkers = [];
   var campLines = [];
   var mountain = null;
+  var lastPano = campInfo[campInfo.length - 1].panoNumber;
 
   var addElement = function(newElement) {
     elements.push(newElement);
@@ -42,22 +43,22 @@ var ContextMap = function(canvasId, config) {
   stage.canvas.height = canvasHeight = 0.33 * krpano.clientHeight;
   stage.canvas.width = canvasWidth = 0.33 * krpano.clientWidth;
   stage.on('mouseover', function() {
-    backdrop.alpha = 0.25;
-    mountain.alpha = 0.25;
+    backdrop.alpha = 0.35;
+    mountain.alpha = 0.65;
     stage.update();
   });
   stage.on('mouseout', function() {
-    backdrop.alpha = 0.1;
-    mountain.alpha = 0.1;
+    backdrop.alpha = 0.2;
+    mountain.alpha = 0.5;
     stage.update();
   });
 
   // create backdrop
   var backdrop = new createjs.Shape();
-  backdrop.graphics.beginFill('white').drawRect(0, 0, canvasWidth, (1 - config.topMargin) * canvasHeight);
+  backdrop.graphics.beginFill('rgba(37,37,37,1').drawRect(0, 0, canvasWidth, (1 - config.topMargin) * canvasHeight);
+  backdrop.alpha = 0.2;
   backdrop.originalDimensions = {'width': canvasWidth, 'height':(1 - config.topMargin) * canvasHeight};
   backdrop.y = canvasHeight - backdrop.scaleY * backdrop.originalDimensions.height;
-  backdrop.alpha = 0.1;
   backdrop.resize = function(scaleFactor) {
     backdrop.scaleY *= scaleFactor.y;
     backdrop.scaleX *= scaleFactor.x;
@@ -75,6 +76,7 @@ var ContextMap = function(canvasId, config) {
   box.originalDimensions = {'width': config.buttonWidth * canvasWidth, 'height': 2 * config.topMargin * canvasHeight};
   box.graphics.beginFill('gray').beginStroke('black').drawRect(0, 0, box.originalDimensions.width, box.originalDimensions.height);
   button.addChild(box);
+  button.cursor = 'pointer';
   button.z = 750;
   button.getBox = function() {
     return button.children[0];
@@ -102,7 +104,7 @@ var ContextMap = function(canvasId, config) {
     if (mapUp) {
       button.y = 0;
     } else {
-      button.y = (1 - 2.5 * config.bottomMargin) * canvasHeight;
+      button.y = (1 - 3.5 * config.bottomMargin) * canvasHeight;
     }
     button.drawArrow();
   };
@@ -110,7 +112,7 @@ var ContextMap = function(canvasId, config) {
 
   // create current position marker
   var currentPositionMarker = new createjs.Shape();
-  currentPositionMarker.graphics.setStrokeStyle(2).beginStroke('black').beginFill('rgba(229,61,0,1)').drawPolyStar(0, 0, 12, 5, 0.6, -90);  
+  currentPositionMarker.graphics.setStrokeStyle(2).beginStroke('black').beginFill('rgba(229,61,0,1)').drawCircle(0, 0, 9);  
   currentPositionMarker.z = 201;
   currentPositionMarker.on('pressmove', function(event) {
     currentPositionMarker.x = Math.min(event.stageX, campMarkers[campMarkers.length - 1].x);
@@ -126,18 +128,19 @@ var ContextMap = function(canvasId, config) {
   currentPositionMarker.on('pressup', function() {
     var skipToPanoNumber = Math.round((currentPositionMarker.x - config.sideMargin * canvasWidth) / ((1 - 2 * config.sideMargin) * canvasWidth) * climbLength);
     krpano.call('loadPanoWrapper(' + skipToPanoNumber + ', false, false);');
+    pause();
     document.body.style.cursor = 'default';
   currentPositionMarker.cursor = cssPrefix + 'grab';
   });
   stage.addChild(currentPositionMarker);
 
   var logo = new createjs.Shape();
-  logo.graphics.f("rgba(229,61,0,254)").p("EB7cBZYMhIqAAAMAAAhBeMBIqAAAMAAABBe").cp().ef().f("rgba(255,255,255,254)").p("EBCuApQIE2AAIAAA8IhkAAIAADmIhkAAIAAjmIhuAAIAAg8").cp().ef().f("rgba(255,255,255,254)").p("EBICApQIDmAAYBGAAAeAeAAAyYAAAogUAUgeAAIAAAAYAUAKAKAUAAAeYAKAyAAAUAKAUIhkAAYgKgUAAgKAAgUYAAgogKgKgeAAIhQAAIAABkIhkAAIAAki").cp().ef().f("rgba(229,61,0,254)").p("EBJmArSIBaAAYAUAAAKgUAAgUYAAgUgKgKgUAAIhaAAIAABG").cp().ef().f("rgba(255,255,255,254)").p("EBPOApQIBuAAICCEiIhuAAIgKgyIiCAAIgUAyIhkAAICCki").cp().ef().f("rgba(229,61,0,254)").p("EBQAAqWIAAAAIgoBuIBQAAIgohu").cp().ef().f("rgba(255,255,255,254)").p("EBTSApQIBaAAIAAEiIhaAAIAAki").cp().ef().f("rgba(255,255,255,254)").p("EBVoApQIBkAAIAADcICqAAIAABGIkOAAIAAki").cp().ef().f("rgba(255,255,255,254)").p("EBbQAt8IDSAAIFyjmIi+DcIHMAAIjwlyIpiF8").cp().ef().f("rgba(255,255,255,254)").p("EBBeAyeIiWEEIAAmaIHCAAIAACWIiWAAIAUUKIigAAIgK0K").cp().ef().f("rgba(255,255,255,254)").p("EBHuAwIICWAAIAAWgIiWAAIAA2g").cp().ef().f("rgba(255,255,255,254)").p("EBN0AyeIiWAAIAAiWIHCAAIAACWIiWAAIAAUKIiWAAIAA0K").cp().ef().f("rgba(255,255,255,254)").p("EBT6AzaYAAh4BkhuB4AAYCCAABkBuAAB4IAATOIiWAAIAAqKIiWAAIAAKKIiWAAIAAzO").cp().ef().f("rgba(229,61,0,254)").p("EBWQA6IICWAAIAAnqIiWAAIAAHq").cp().ef().f("rgba(255,255,255,254)").p("EBdSAwIICMAAYAyEsBQEsAoFAIAKAAYgKh4gKkEAAiCIAAmaICMAAIAAWgIiMAAYgykshQksgolAIAAAAYAAB4AUD6AACCIAAGkIiWAAIAA2g").cp().ef().f("rgba(255,255,255,254)").p("EBmgBAsICWAAIAADmICWAAIAAn0IiWAAYhQAAhGg8AAhaIAAmuYAAh4BkhuCCAAYB4AABkBuAAB4IAACgIiWAAIAAjcIiWAAIAAHqICWAAYBaAAA8BGAABQIAAG4YAAB4hkBkh4AAYiCAAhkhkAAh4IAAiq").cp().ef(); 
-  logo.regX = 788;
-  logo.regY = 568;
+  logo.graphics.f("white").p("EBjOBGUIEOAAIAAA8IhkAAIAADIIhQAAIAAjIIhaAAIAAg8").cp().ef().f("white").p("EBxwBGUIBQAAIAAEEIhQAAIAAkE").cp().ef().f("white").p("EBz8BGUIBQAAIAADIICgAAIAAA8IjwAAIAAkE").cp().ef().f("white").p("EB48BKiIC0AAIFAjIIigC+IGQAAIjIlKIocFU").cp().ef().f("white").p("EBh+BOmIiCDmIAAlyIGQAAIAACMIiCAAIAKR0IiMAAIgKx0").cp().ef().f("white").p("EBncBMaICCAAIAAUAIiCAAIAA0A").cp().ef().f("white").p("EBs6BOcIiCAAIAAiCIGGAAIAACCIiCAAIAAR+IiCAAIAAx+").cp().ef().f("white").p("EB6qBMaIB4AAYAyEOA8EEAoEiIAKAAYgKhugKjmAAhuIAAlyICCAAIAAUAIh4AAYgykOhGkEgokiIAAAAYAKBuAKDmAABuIAAFyIiCAAIAA0A").cp().ef().f("white").p("ECCyBbQICMAAIAADIICCAAIAAm4IiCAAYhQAAg8g8AAhQIAAl8YAAhuBahaBuAAYBuAABaBaAABuIAACMIiCAAIAAjIIiCAAIAAG4ICCAAYBGAAA8A8AABQIAAF8YAABuhaBahuAAYhuAAhahaAAhuIAAiM").cp().ef().f("white").p("EB1WBMQYhkAAhaBaAABuIAARCICCAAIAAo6IAAAAIAApEICCAAIAAJEIAAAAIAAI6ICCAAIAAxCYAAhuhahahuAA").cp().ef().f("white").p("EBzyBVeIAACCIC+AAIAAiCIi+AA").cp().ef().f("white").p("EBvuBGUIhkAAIhuEEIBaAAIAKgoIA8iWIAyCWIAUAoIBaAAIhukE").cp().ef().f("white").p("EBwMBJwIgeg8IhaAAIgeA8ICWAA").cp().ef().f("white").p("EBsIBJIYAAgegKgKgUgKIAAAAYAUAAAUgUAAgoYAAgogUgeg8AAIjSAAIAAA8IBaAAIBQAAYAUAAAKAKAAAUYAAAUgKAKgUAAIhQAAIhaAAIAACMIBaAAIAAhaIBQAAYAUAAAKAKAAAoYAAAKAAAUAKAKIBaAAYgKgUAAgKgKgy").cp().ef().f("white").p("EBnwBIWIBaAAIAAhQIhaAAIAABQ").cp().ef();
+  logo.regX = 874;
+  logo.regY = 616;
   logo.z = 50;
-  logo.scaleX=logo.scaleY=0.15;
-  logo.originalDimensions = {'x': 466, 'y': 338}
+  logo.scaleX=logo.scaleY=1;
+  logo.originalDimensions = {'x': 227, 'y': 150}
   logo.resize = function() {
     logo.x = (1 - 2 * config.sideMargin) * canvasWidth;
     logo.y = (1 - 2 * config.bottomMargin) * canvasHeight;
@@ -150,22 +153,41 @@ var ContextMap = function(canvasId, config) {
   addElement(logo);
 
   // create play button
-  // var playImage = new Image();
-  // playImage.src = '../images/play-button.gif';
-  // var playButton = new createjs.Bitmap(playImage);
   var playButton = new createjs.Shape();
-  playButton.graphics.f("rgba(109,110,113,1)").p("EBzKApkcAUKAUKAAAAgqgUAAUAcgUKAUAgggAAAgUKgUKcgUKgUAAAAggqAUAgUAcAUKgUKAggAAKAUKAUA").cp().ef().f("rgba(236,236,236,1)").p("EB7IBOSYAAYYz2T24YAAY4YAAz2z2AA4YYAA4iT2zsYYAAYYYAAT2TsAAYi").cp().ef().f("rgba(109,110,113,1)").p("EBtsAvgYRCRCAAbgxCRCYw4RC7qgKxCxCYw4w4gK7qRCw4YQ4xCbqAARCRC").cp().ef().f("rgba(241,242,242,1)").p("EBp8AyyYPKPAAAYivAPAYvKPA4YAAvKvAYvAvKAA4iPAvAYPAvAYiAAPAPK").cp().ef().f("rgba(236,236,236,1)").p("EBpoAzGYO2O2AAYEu2O2Yu2O24EAAu2u2Yu2u2AA4EO2u2YO2u2YEAAO2O2").cp().ef().f("rgba(241,242,242,0.157480315)").p("EBpoAzGYO2O2AAYEu2O2Yu2O24EAAu2u2Yu2u2AA4EO2u2YO2u2YEAAO2O2").cp().ef().f("rgba(241,242,242,0.2283464567)").p("EBpoAzGYO2O2AAYEu2O2Yu2O24EAAu2u2Yu2u2AA4EO2u2YO2u2YEAAO2O2").cp().ef().f("rgba(168,167,167,1)").p("EBicBNWI9iwaYgKAAgUAAgKAAYgKAKgKAKAAAKMAAAAgqYAAAKAKAKAKAAYAKAKAAAAAKAAYAKAAAAgKAKAAIdiwQYAKgKAAgKAAgKYAAgKAAAAgKgK").cp().ef().f("rgba(2,2,2,1)").p("EBicBNCI86v8YgKAAgKAAgKAAYgUAAgKAKAAAKMAAAAgCYAAAKAKAKAUAAIAKAAYAKAAAKAAAAAAIc6v8YAKgKAAgKAAAAYAAgKAAgKgKgK").cp().ef(); 
-  playButton.regX = 200;
-  playButton.regY = 200;
-  playButton.scaleX = playButton.scaleY = 0.1 * canvasWidth / 500;
+  playButton.graphics.f("rgba(37, 37, 37, 1)").p("EB8YBncYAAJOngHqpYAAYpYAAngnqAApOYAApYHgnqJYAAYJYAAHgHqAAJY").cp().ef().f("rgba(255,255,255,1").p("EBzoBnIIsqnCYAAAAgKAAgKAAYAAAAAAAAAAAKIAAOEIAAAKYAKAAAAAAAAAAYAKAAAAAAAAAAIMqnCYAKAAAAgKAAAAYAAAAAAgKgKAA").cp().ef();
+  playButton.alpha = 0.5;
+  playButton.regX = 580;
+  playButton.regY = 662;
+  playButton.scaleX = playButton.scaleY = 0.1 * canvasWidth / 125;
   playButton.on('click', function() {
-    krpano.call('loadNextPano(true, false);');
     lastClick = new Date().getTime();
     unpause();
   });
+  var playText = new createjs.Text('Climb', '22px Arial', 'white');
+  playText.z = 1001;
+  playText.visible = false;
+  var playTextOutline = new createjs.Text('Climb', '22px Arial', 'black');
+  playTextOutline.z = 1000;
+  playTextOutline.outline = 1;
+  playTextOutline.visible = false;
+  stage.addChild(playText);
+  stage.addChild(playTextOutline);
+
+  playButton.on('mouseover', function() {
+    playButton.alpha = 1;
+    playText.x = playTextOutline.x = playButton.x + playButton.scaleX * 221 + 5;
+    playText.y = playTextOutline.y = playButton.y - playText.getMetrics().height / 2;
+    playText.visible = playTextOutline.visible = true;
+    stage.update();
+  });
+  playButton.on('mouseout', function() {
+    playButton.alpha = 0.5;
+    playText.visible = playTextOutline.visible = false;
+    stage.update();
+  });
   playButton.resize = function(scaleFactor) {
     playButton.x = config.sideMargin * canvasWidth;
-    playButton.y = canvasHeight / 2;
+    playButton.y = 0.35 * canvasHeight;
     playButton.scaleX = playButton.scaleY *= scaleFactor.x;
   };
   playButton.cursor = 'pointer';
@@ -177,16 +199,20 @@ var ContextMap = function(canvasId, config) {
   var s = null;
 
   var unpause = function() {
-    paused = false;
-    playButton.visible = false;
-    stage.update();
-    document.getElementById('clickToPause').style.display = 'block';
-    setTimeout(function() {
-      document.getElementById('clickToPause').style.display = 'none';
-    }, 2000);
+    if (jsPanoNumber < lastPano) {
+      paused = false;
+      playButton.visible = false;
+      stage.update();
+      document.getElementById('clickToPause').style.display = 'block';
+      setTimeout(function() {
+        document.getElementById('clickToPause').style.display = 'none';
+        krpano.call('loadNextPano(true, false);');
+      }, 1000);
+    }
   };
 
   this.pause = function() {
+    krpano.call('pause(false);');
     playButton.visible = true;
     stage.update();
     paused = true;
@@ -197,35 +223,34 @@ var ContextMap = function(canvasId, config) {
   this.initialize = function() {
     initCampMarkers();
     // var g = new createjs.Graphics();
-    // g.f("rgba(229,61,0,254)").p("EB7cBZYMhIqAAAMAAAhBeMBIqAAAMAAABBe").cp().ef().f("rgba(255,255,255,254)").p("EBCuApQIE2AAIAAA8IhkAAIAADmIhkAAIAAjmIhuAAIAAg8").cp().ef().f("rgba(255,255,255,254)").p("EBICApQIDmAAYBGAAAeAeAAAyYAAAogUAUgeAAIAAAAYAUAKAKAUAAAeYAKAyAAAUAKAUIhkAAYgKgUAAgKAAgUYAAgogKgKgeAAIhQAAIAABkIhkAAIAAki").cp().ef().f("rgba(229,61,0,254)").p("EBJmArSIBaAAYAUAAAKgUAAgUYAAgUgKgKgUAAIhaAAIAABG").cp().ef().f("rgba(255,255,255,254)").p("EBPOApQIBuAAICCEiIhuAAIgKgyIiCAAIgUAyIhkAAICCki").cp().ef().f("rgba(229,61,0,254)").p("EBQAAqWIAAAAIgoBuIBQAAIgohu").cp().ef().f("rgba(255,255,255,254)").p("EBTSApQIBaAAIAAEiIhaAAIAAki").cp().ef().f("rgba(255,255,255,254)").p("EBVoApQIBkAAIAADcICqAAIAABGIkOAAIAAki").cp().ef().f("rgba(255,255,255,254)").p("EBbQAt8IDSAAIFyjmIi+DcIHMAAIjwlyIpiF8").cp().ef().f("rgba(255,255,255,254)").p("EBBeAyeIiWEEIAAmaIHCAAIAACWIiWAAIAUUKIigAAIgK0K").cp().ef().f("rgba(255,255,255,254)").p("EBHuAwIICWAAIAAWgIiWAAIAA2g").cp().ef().f("rgba(255,255,255,254)").p("EBN0AyeIiWAAIAAiWIHCAAIAACWIiWAAIAAUKIiWAAIAA0K").cp().ef().f("rgba(255,255,255,254)").p("EBT6AzaYAAh4BkhuB4AAYCCAABkBuAAB4IAATOIiWAAIAAqKIiWAAIAAKKIiWAAIAAzO").cp().ef().f("rgba(229,61,0,254)").p("EBWQA6IICWAAIAAnqIiWAAIAAHq").cp().ef().f("rgba(255,255,255,254)").p("EBdSAwIICMAAYAyEsBQEsAoFAIAKAAYgKh4gKkEAAiCIAAmaICMAAIAAWgIiMAAYgykshQksgolAIAAAAYAAB4AUD6AACCIAAGkIiWAAIAA2g").cp().ef().f("rgba(255,255,255,254)").p("EBmgBAsICWAAIAADmICWAAIAAn0IiWAAYhQAAhGg8AAhaIAAmuYAAh4BkhuCCAAYB4AABkBuAAB4IAACgIiWAAIAAjcIiWAAIAAHqICWAAYBaAAA8BGAABQIAAG4YAAB4hkBkh4AAYiCAAhkhkAAh4IAAiq").cp().ef(); 
+    // g.f("rgba(55,55,55,0.5)").p("EB8YBncYAAJOngHqpYAAYpYAAngnqAApOYAApYHgnqJYAAYJYAAHgHqAAJY").cp().ef().f("rgba(255,255,255,.8)").p("EBzoBnIIsqnCYAAAAgKAAgKAAYAAAAAAAAAAAKIAAOEIAAAKYAKAAAAAAAAAAYAKAAAAAAAAAAIMqnCYAKAAAAgKAAAAYAAAAAAgKgKAA").cp().ef();
     // s = new createjs.Shape(g);
-    // s.regX = 788;
-    // s.regY = 568;
-    // s.x = (1 - 2 * config.sideMargin) * canvasWidth;
-    // s.y = (1 - config.bottomMargin) * canvasHeight;
+    // s.regX=s.regY = 0;
     // s.z = 1;
+    // s.x= -200;
+    // s.y = -250;
     // s.scaleX=s.scaleY=0.5;
     // s.on('click', function(event) {
     //   alert(event.stageX + ' -- ' + event.stageY);
     // });
-    // s.visible = false;
-    // var newx = -1000;
-    // var newy = -1000;
-    // var findMe = setInterval(function() {
-    //   if (newx == 1000) {
-    //     clearInterval(findMe);
-    //     return;
-    //   }
-    //   if (newy == 1000) {
-    //     newx += 100;
-    //     newy = -1000;
-    //     console.log(newx + ' -- ' + newy);
-    //   }
-    //   newy += 100;
-    //   s.x = newx;
-    //   s.y = newy;
-    //   stage.update();
-    // }, 100);
+    // s.visible = true;
+    // // var newx = -1000;
+    // // var newy = -1000;
+    // // var findMe = setInterval(function() {
+    // //   if (newx == 1000) {
+    // //     clearInterval(findMe);
+    // //     return;
+    // //   }
+    // //   if (newy == 1000) {
+    // //     newx += 100;
+    // //     newy = -1000;
+    // //     console.log(newx + ' -- ' + newy);
+    // //   }
+    // //   newy += 100;
+    // //   s.x = newx;
+    // //   s.y = newy;
+    // //   stage.update();
+    // // }, 100);
     // s.z = 2000;
     // stage.addChild(s);
     resize();
@@ -237,6 +262,9 @@ var ContextMap = function(canvasId, config) {
   };
 
   this.update = function() {
+    if (jsPanoNumber == lastPano) {
+      playButton.visible = false;
+    }
     stage.update();
   };
 
@@ -290,12 +318,12 @@ var ContextMap = function(canvasId, config) {
       }, null, false, campMarker.campInfo.panoNumber);
 
       // create info text for camp marker
-      var campText = new createjs.Text(campMarker.campInfo.name + '\n' + campMarker.campInfo.elevation + ' m', '12px Arial', 'white');
+      var campText = new createjs.Text(campMarker.campInfo.name + '\n' + campMarker.campInfo.elevation + ' m', '22px Arial', 'white');
       campText.x = campMarker.x;
       campText.y = campMarker.y;
       campText.z = 1001;
       campText.visible = false;
-      var campTextOutline = new createjs.Text(campMarker.campInfo.name + '\n' + campMarker.campInfo.elevation + ' m', '12px Arial', 'black');
+      var campTextOutline = new createjs.Text(campMarker.campInfo.name + '\n' + campMarker.campInfo.elevation + ' m', '22px Arial', 'black');
       campTextOutline.x = campMarker.x;
       campTextOutline.y = campMarker.y;
       campTextOutline.z = 1000;
@@ -315,13 +343,13 @@ var ContextMap = function(canvasId, config) {
           easelObjects.textObj.x = 0;
           easelObjects.textOutlineObj.x = 0;
         }
-        if (easelObjects.textObj.x + textSize.width > stage.canvas.width) {
-          easelObjects.textObj.x = stage.canvas.width - textSize.width - 1;
-          easelObjects.textOutlineObj.x = stage.canvas.width - textSize.width - 1;
+        if (easelObjects.textObj.x + textSize.width > (1 - config.sideMargin) * stage.canvas.width) {
+          easelObjects.textObj.x = (1 - config.sideMargin) * stage.canvas.width - textSize.width - 1;
+          easelObjects.textOutlineObj.x = (1 - config.sideMargin) * stage.canvas.width - textSize.width - 1;
         }
-        if (easelObjects.textObj.y < 0) {
-          easelObjects.textObj.y = 0;
-          easelObjects.textOutlineObj.y = 0;
+        if (easelObjects.textObj.y < config.topMargin * stage.canvas.height) {
+          easelObjects.textObj.y = config.topMargin * stage.canvas.height;
+          easelObjects.textOutlineObj.y = config.topMargin * stage.canvas.height;
         }
         if (easelObjects.textObj + textSize.height > stage.canvas.height) {
           easelObjects.textObj.y = stage.canvas.height - textSize.height - 1;
@@ -362,7 +390,8 @@ var ContextMap = function(canvasId, config) {
     campLines = [];
     var prevCampMarker = null;
     mountain = new createjs.Shape();
-    mountain.graphics.setStrokeStyle(0).beginFill('gray');
+    mountain.graphics.setStrokeStyle(0).beginFill('rgba(37,37,37,1)');
+    mountain.alpha = 0.5;
     for (var markerIdx in campMarkers) {
       var campMarker = campMarkers[markerIdx];
       if (prevCampMarker) {
@@ -378,7 +407,6 @@ var ContextMap = function(canvasId, config) {
     campLines.push(mountain);
     stage.addChild(mountain);
     mountain.graphics.lineTo(prevCampMarker.x, (1 - config.bottomMargin) * canvasHeight).closePath();
-    mountain.alpha = 0.5;
     stage.sortChildren(function(a,b) {
       z1 = a.z ? a.z : 5;
       z2 = b.z ? b.z : 5;
@@ -454,7 +482,7 @@ var ContextMap = function(canvasId, config) {
             campMarker.y -= campStep;
           }
         }
-        var boxStep = ((1 - config.topMargin) - 2 * config.bottomMargin) * canvasHeight / 10;
+        var boxStep = ((1 - config.topMargin) - 3 * config.bottomMargin) * canvasHeight / 10;
         if (mapUp) {
           boxHeight += boxStep;
         } else {

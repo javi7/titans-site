@@ -5,23 +5,24 @@ var mongoose = require('mongoose'),
   emailSender = require('../email-sender')();
 
 var schema = new mongoose.Schema({
-  authType: { type: String, required: true },
-  oauthId: { type: Number, required: true, unique: true },
-  name: { type: String },
+  authType: String, 
+  oauthId: Number,
   avatarUrl: String,
-  email: { type: String, unique: true },
+  email: {type: String, unique: true, required: true},
   hashedPassword: String,
   emailVerified: {type: Boolean, default: true},
   emailVerifyToken: String,
   emailVerifyExpiration: Date,
   resetPasswordToken: String,
   resetPasswordExpriation: Date,
-  bio: {
-    location: String,
-    climbingExperience: String,
-    dateOfBirth: Date,
-    phone: Number
-  }
+  firstName: {type: String, required: true},
+  lastName: {type: String, required: true},
+  city:  {type: String, required: true},
+  state: String,
+  country: {type: String, required: true},
+  favoriteMountain: String,
+  climbingGuide: {type: Boolean, required: true},
+  extraComments: String
 });
 
 schema.methods = {
@@ -65,24 +66,6 @@ schema.methods = {
           cb(err, result);
         });  
       })
-    });
-  },
-  updateBio: function(bioMap, cb) {
-    var user = this;
-    var newBio = user.bio.toObject();
-    for (var property in bioMap) {
-      if (bioMap.hasOwnProperty(property)) {
-        if (bioMap[property]) {
-          newBio[property] = bioMap[property];
-        }
-      }
-    }
-    User.update({'_id': user._id}, {'bio': newBio}, function(err) {
-      if (err) {
-        cb(err, false);
-      } else {
-        cb(null, true);
-      }
     });
   }
 }
@@ -152,6 +135,19 @@ schema.statics = {
             cb(err, result);
           }
         });
+      }
+    });
+  },
+  createTitanApplication: function(titanApp, cb) {
+    var newUser = new User(titanApp);
+    newUser.save(function(err) {
+      if (err) {
+        cb(err, false);
+      } else {
+        emailSender.sendTitanApplicationReceivedEmail(newUser, function(err, result) {
+          console.log('tried to email new titan applicant ' + titanApp.email + ': result - ' + result + ', err - ' + err);
+        });
+        cb(null, true);
       }
     });
   },

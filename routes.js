@@ -2,7 +2,9 @@ var User = require('./models/User'),
     emailSender = require('./email-sender')(),
     Subscriber = require('./models/Subscriber'),
     Mountain = require('./models/Mountain'),
-    mountainInfo = require('./models/mountain-info');
+    mountainInfo = require('./models/mountain-info'),
+    cacheBusters = require('./models/cache-busters'),
+    fs = require('fs');
 
 module.exports = {
   index: function(req, res) {
@@ -19,6 +21,31 @@ module.exports = {
         res.redirect('/');
       }
     });
+  },
+  apply: function(req, res) {
+    User.createTitanApplication(req.body, function(err, result) {
+      if (err) {
+        if (err.message.indexOf('duplicate key') > -1) {
+          res.status(409).send('already applied');
+        } else {
+          res.status(500).send(err);
+        }
+      } else {
+        res.status(201).send('successfully applied');
+      }
+    });
+  },
+  feedback: function(req, res) {
+    if (req.body.message) {
+      res.status(201).send('feedback submitted');
+      emailSender.sendFeedbackToBrainTrust(req.body, function(err, result) {
+        if (err || !result) {
+          console.log('failed to send feedback: ' + req.body);
+        }
+      });
+    } else {
+      res.status(422).send('no message');
+    }
   },
   logout: function(req, res){
     req.logout();
@@ -83,21 +110,33 @@ module.exports = {
   updateEmail: function(req, res) {
     req.user.updateEmail(req.body.email, handleError('/account', res));
   },
-  updateBio: function(req, res) {
-    req.user.updateBio(req.body, handleError('/account', res));
-  },
   subscribe: function(req, res) {
     Subscriber.create({email: req.body.email}, function(err, subscriber) {
       if (err) {
-        res.status(400).send(err);
+        if (err.message.indexOf('duplicate key') > -1) {
+          res.status(409).send('already subscribed');
+        } else {
+          res.status(500).send(err);
+        }
       } else {
-        res.send(subscriber.email + ' successfully subscribed for alerts!');
+        res.status(201).send('successfully subscribed');
       }
     });
   },
   climb: function(req, res) {
     if (mountainInfo[req.params.mountain]) {
-      res.render('climb', {layout: false, 'mountainInfo': mountainInfo[req.params.mountain]});
+      fs.readFile('./public/js/krpano.js', 'utf8', function (err, data) {
+        var krpanojs = null;
+        if (!err) {
+          krpanojs = data;
+        }
+        res.render('climb', {
+          layout: false, 
+          'mountainInfo': mountainInfo[req.params.mountain], 
+          'krpanojs': krpanojs,
+          'cacheBusters': cacheBusters[req.params.mountain]
+        });
+      });
     } else {
       res.status(400).send(err);
     }

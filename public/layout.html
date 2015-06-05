@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trail Titans</title>
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <link rel="stylesheet" href="/fonts/code-pro.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/modernizr.js"></script>
+  </head>
+  
+  <body>
+    <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-left disappear-at-md">
+          <img id="nav-image" src="/images/nav-home.png" width="225" height="100" alt="Image description" usemap="#navmap">
+          <map name="navmap">
+            <area shape="polygon" href="#home" alt="Alt text for #0" coords="216,16,161,16,161,3,216,3">
+            <area shape="polygon" href="#climb" alt="Alt text for #1" coords="169,30,113,30,113,17,169,17">
+            <area shape="polygon" href="#titans" alt="Alt text for #2" coords="138,52,80,52,80,39,138,39">
+            <area shape="polygon" href="#about" alt="Alt text for #3" coords="106,69,50,69,50,57,106,57">
+            <area shape="polygon" href="#contact" alt="Alt text for #4" coords="78,89,9,89,9,76,78,76">
+          </map>
+        </div>
+        <a class="font-code-pro navbar-right btn btn-default btn-titan navbar-btn disappear-at-md" href="#titans">Become A Titan</a>
+        <div class="navbar-brand">
+          <a href="#">
+            <img width="150" height="100" src="/images/white-logo.png"></img>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="home-section container-fluid" id="home">
+      <div class="section-content">
+        <h1 class="font-code-pro">climb before</h1>
+        <p>Introducing the first complete climbing experience</p>
+        <h1 class="font-code-pro">you climb</h1>
+      </div>
+    </div>
+
+    <div class="home-section container-fluid no-scroll" id="mobile-home">
+      <div class="image-container">
+        <h1 class="font-code-pro">The first complete climbing <span class="orangeText">experience</span></h1>
+        <img src="/images/preview.jpg" />
+        <h2 class="font-code-pro">Available now on <span class="orangeText">desktop</span> and <span class="orangeText">tablet</span></h2>
+        <h2 class="font-code-pro">Coming soon to <span class="orangeText">mobile</span></h2>
+        <form id="subscribe-form">
+          <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="enter your email" />
+            <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+            <label class="control-label font-helvetica" style="display:none"></label>
+          </div>
+          <div class="form-group font-code-pro subscribe-button-container">
+            <button id="subscribe-button" type="submit" class="btn btn-titan btn-default">subscribe for updates</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="home-section container-fluid" id="climb">
+      <div class="section-content">
+        <h1 class="font-code-pro text-right">Click to <span class="orangeText">climb</span></h1>
+        <p class="font-helvetica">
+          The orange mountains are ready to climb, and the gray mountains are coming soon. We will climb the tallest and most exciting mountains on every continent. Subscribe here and we will notify you each time a new mountain becomes available.
+        </p>
+        <form id="subscribe-form">
+          <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="enter your email" />
+            <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+            <label class="control-label font-helvetica" style="display:none"></label>
+          </div>
+          <div class="form-group font-code-pro subscribe-button-container">
+            <button id="subscribe-button" type="submit" class="btn btn-titan btn-default">subscribe</button>
+          </div>
+        </form>
+      </div>
+      <img src="/images/6-5.png" alt="Image description" usemap="#climbmap" width="1867.36" height="801.629999999999" />
+      <p class="mountain-label font-code-pro" style="top:615px;left:512px">Aconcagua</p>
+      <p class="mountain-label font-code-pro" style="top:517px;left:534px">Acotango</p>
+      <p class="mountain-label font-code-pro" style="top:503px;left:325px">Huayna Potosi</p>
+      <p class="mountain-label font-code-pro" style="top:197px;left:242px">Half Dome</p>
+      <p class="mountain-label font-code-pro" style="top:167px;left:234px">Shasta</p>
+      <map name="climbmap">
+        <area shape="polygon" name="aconcagua" href="/climb/aconcagua" alt="Aconcagua" coords="448,648,512,645,493,617">
+        <area shape="polygon" name="acotango" href="/climb/acotango" alt="Acotango" coords="470,551,534,547,516,520">
+        <area shape="polygon" name="huaynapotosi" href="/climb/huaynapotosi" alt="Huayna Potosi" coords="428,536,492,533,474,506">
+        <area shape="polygon" name="halfdome" href="/climb/halfdome" alt="Half Dome" coords="178,230,242,227,224,200">
+        <area shape="polygon" name="shasta" href="/climb/shasta" alt="Shasta" coords="170,200,234,197,215,169">
+      </map>
+    </div>
+    
+    <div class="home-section container-fluid" id="titans">
+      <div class="section-content">
+        <h1 class="font-code-pro">Become a <span class="grayText">Titan</span></h1>
+        <p class="font-helvetica">
+          Titans are the climbers who capture our imagery. Some of them are local guides, and others are just bad ass climbers. They are capturing imagery that has never been taken before, and so we gave them an equally epic name. Anyone can become a Titan, as long as they love climbing and money. Just register below and tell us about yourself - interesting stuff like your favorite mountain, and what your mom calls you when she's angry.
+        </p>
+        <button id="signup-button" class="btn font-code-pro btn-default btn-titan">
+          Sign up
+        </button>
+      </div>
+    </div>
+    
+    <div class="home-section container-fluid" id="about">      
+      <div class="section-content">
+        <h1 class="font-code-pro">we are</h1>
+        <h1 class="font-code-pro"><span class="orangeText">great</span> climbers</h1>
+        <h1 class="font-code-pro"><span class="orangeText">good</span> programmers</h1>
+        <h1 class="font-code-pro"><span class="orangeText">mediocre</span> basketball players</h1>
+        <p class="font-helvetica"> 
+        who want to change the way you see mountains through our 360 degree climbing experience. The idea started last year when Mike was climbing in the Andes. As he was preparing to climb Illimani, he was nervous about a section called the Stairway to Heaven. He wanted to see the trail beforehand, but nothing online really helped. After summiting, he decided to put the trail online himself, so that no one would have the same problem again. But to do it, he needed someone with a technical background.
+        </p>
+        <p class="font-helvetica">
+          A month later, Mike met a baby-faced engineer named Javi in Brazil during the World Cup. Impressed by Mike’s mountain adventures, Javi hooked Mike up with a ticket to the USA game. After the crushing loss, the two sad fans sulked their way to Bob’s Burgers in Barra, Salvador. Amidst tears and bland beef, Javi and Mike sowed the seed that would become Trail Titans. 
+        </p>
+      </div>
+    </div>
+
+    <div class="home-section container-fluid no-bg-img" id="contact">
+      <div class="col-md-6 col-md-push-6">
+        <div>
+          <h1 class="font-code-pro">Contact <span class="orangeText">us</span></h1>
+          <p class="font-helvetica">
+            Which mountain do you want to see next? What do you think of our climbing experience? <a href="https://www.youtube.com/watch?v=571BuZeeQjE">Why is James crying?</a> Whatever is on your mind, drop us a line.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-md-pull-6">
+        <form id="feedback-form" class="font-helvetica">
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="3" name="message" placeholder="Message"></textarea>
+            <label class="control-label font-helvetica" style="margin-top: 10px;display: block;"></label>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-default font-code-pro">Send<img src="/images/brown-mark.png" height="33" width="60"/></button>
+            <label class="control-label font-helvetica" style="margin-top: 10px;display: block;"></label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="home-section container-fluid no-bg-img no-scroll" id="footer">
+      <img src="/images/13.png" width="216" height="101" alt="Image description" usemap="#socialmap">
+      <map name="socialmap">
+        <area shape="circle" href="http://instagram.com/trailtitans" alt="Trail Titans on Instagram" coords="193,24,20">
+        <area shape="circle" href="http://twitter.com/trailtitans" alt="Trail Titans on Twitter" coords="98,43,20">
+        <area shape="circle" href="http://facebook.com/trailtitans" alt="Trail Titans on Facebook" coords="23,76,20">
+      </map>
+      <p class="font-code-pro">
+        &copy; Trail Titans, 2015
+      </p>
+    </div>
+
+    <div class="lightbox" id="signup-lightbox">
+      <div class="lightbox-inner">
+        <h1 class="font-code-pro">Sign <span class="orangeText">up</span></h1>
+        <form id="titan-form" class="font-helvetica">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" name="firstName" placeholder="First Name">
+                <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+                <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email">
+            <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="city" placeholder="City/State" />
+            <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+
+          </div>
+          <div class="form-group">
+            <input type="text" name="country" class="form-control" placeholder="Country" />
+            <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <input type="text" class="form-control" name="favoriteMountain" placeholder="Favorite mountain">
+                <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <select class="form-control" name="climbingGuide">
+                  <option value="foamcorner" disabled selected>Are you a climbing guide?</option>
+                  <option value="yes">yes</option>
+                  <option value="no">no</option>
+                </select>
+                <label class="control-label font-helvetica" style="display:none">Please indicate whether you are a climbing guide</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="extraComments" lines="3" placeholder="Anything else you'd like to share with us?"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-default font-code-pro">Submit<img src="/images/white-mark.png" height="33" width="60"/></button>
+            <label class="control-label font-helvetica" style="margin-top: 10px;display: block;"></label>
+          </div>
+        </form>
+        <button id="close-lightbox" class="btn btn-default font-code-pro">X</button>
+      </div>
+    </div>
+  </body>
+
+</html>

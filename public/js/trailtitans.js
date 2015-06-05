@@ -15,28 +15,29 @@ function getQueryVariable() {
   }
   return null;
 }
-
-initClimbMode = function() {
+var pause = function(event) { 
+  if (!contextMap.getLastClick() || new Date().getTime() - contextMap.getLastClick() > 10) {
+    krpano.call('pause(false);');
+    contextMap.pause();
+  }
+};
+initClimbMode = function(mountainName) {
   krpano = document.getElementById("krpanoSWFObject");
   panoDiv = document.getElementById("pano");
   var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
   krpano.call('set(panoNumber,' + initialPanoNumber + ');');
   krpano.call('setupDemoMode();');
-  krpano.call('pause(true);');
+  krpano.call('set(mountain, ' + mountainName + ');');
   krpano.call('set(lastPano, ' + campInfo[campInfo.length - 1].panoNumber + ');');
+  setTimeout(function() {
+    krpano.call('showControls();');
+  }, 500);
+
   paused = true;
-  
-  var pause =  function(event) { 
-    if (!contextMap.getLastClick() || new Date().getTime() - contextMap.getLastClick() > 10) {
-      krpano.call('pause(false);');
-      contextMap.pause();
-    }
-  };
 
   var pauseOnSpace = function(event) {
     var keycode = event.keyCode;
     if (keycode == 32) {
-      krpano.call('spacebar();');
       paused = !paused;
       if (paused) {
         contextMap.pause();
@@ -56,7 +57,7 @@ initClimbMode = function() {
 setCampVariables = function(panoNumber) {
   var prevCamp = 0;
   var nextCamp = 0;
-  jsPanoNumber = panoNumber;
+  var jsPanoNumber = parseInt(panoNumber);
   for (var i = 0; i < campInfo.length; i++) {
     prevCamp = nextCamp;
     nextCamp = campInfo[i].panoNumber;
@@ -66,9 +67,30 @@ setCampVariables = function(panoNumber) {
   };
   krpano.call('set(nextCamp,' + nextCamp + ');');
   krpano.call('set(prevCamp,' + prevCamp + ');');
+  var xmlCacheBuster = '';
+  var imgCacheBuster = '';
+  var nextImgCacheBuster = '';
+  if (typeof cacheBusters !== 'undefined') {
+    if ('img' in cacheBusters) {
+      if (jsPanoNumber in cacheBusters['img']) {
+        imgCacheBuster = cacheBusters['img'][jsPanoNumber];
+      }
+      if ((jsPanoNumber + 1) in cacheBusters['img']) {
+        nextImgCacheBuster = cacheBusters['img'][jsPanoNumber + 1];
+      }
+    }
+    if ('xml' in cacheBusters) {
+      if (jsPanoNumber in cacheBusters['xml']) {
+        xmlCacheBuster = cacheBusters['xml'][jsPanoNumber];
+      }
+    }
+  }
+  krpano.call('set(xmlCacheBuster,' + xmlCacheBuster + ');');
+  krpano.call('set(imgCacheBuster,' + imgCacheBuster + ');');
+  krpano.call('set(nextImgCacheBuster,' + nextImgCacheBuster + ');');
+  krpano.call('preloadWrapper()');
 
   contextMap.updateCurrentPosition(jsPanoNumber);
   contextMap.update();
 };
-
 

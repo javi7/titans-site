@@ -5,7 +5,7 @@ module.exports = function() {
     service: 'Gmail',
     auth: {
       user: process.env.gmail_user,
-      pass: process.env.gmail_pw
+      pass: process.env.gmail_pass
     }
   });
   return {
@@ -39,7 +39,39 @@ module.exports = function() {
         } else {
           cb(info.response, true);
         }
-      })
+      });
+    },
+    sendTitanApplicationReceivedEmail: function(user, cb) {
+      var mailOptions = {
+        from: 'Javi <javi@trailtitans.com>',
+        to: user.email,
+        subject: 'Thanks for applying to be a Titan!',
+        text: 'Thanks for your interest!',
+        html: 'Thanks for your interest!'
+      };
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          cb(error, false);
+        } else {
+          cb(null, true);
+        }
+      });
+    },
+    sendFeedbackToBrainTrust: function(feedback, cb) {
+      var mailOptions = {
+        from: 'our idiot users',
+        to: ['javi@trailtitans.com', 'michael@trailtitans.com'],
+        subject: 'Trail Titans Feedback from our loyal fans',
+        text: 'name: ' + feedback.name + '\r\nemail: ' + feedback.email + '\r\nmessage: ' + feedback.message,
+        html: 'name: ' + feedback.name + '<br />email: ' + feedback.email + '<br />message: ' + feedback.message
+      };
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          cb(error, false);
+        } else {
+          cb(null, true);
+        }
+      });
     }
   };
 }

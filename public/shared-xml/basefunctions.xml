@@ -1,6 +1,7 @@
 <krpano>
   <network caching="false" />
 
+  <include url="controls.xml" />
   <action name="setup">
     indexoftxt(dashIndex, get(preview.url), -1_Panorama);
     sub(startSearch, dashIndex, 4);
@@ -9,22 +10,21 @@
     sub(panoNumberLength, get(dashIndex), get(slashIndex));
     subtxt(panoNumber, get(preview.url), get(slashIndex), get(panoNumberLength));
     initializeVars();
+    set(initialFov, get(view.fov));
   </action>
 
   <action name="initializeVars">
     set(initialHlookat, get(view.hlookat));
     set(initialVlookat, get(view.vlookat));
     if(panoNumber == nextCamp AND climbing == true, 
-      pause(false););
+      js(pause));
     setupDemoMode();
     if(climbing == false AND descending == false, showControls(), hideControls());
-    trace(climbing, '  ', descending);
     delayedcall(keepClimbing, 1, 
       if(climbing == true,
         wait(LOAD);
         loadNextPano(true, false);,
         if(descending == true,
-          trace(you right);
           wait(LOAD);
           loadPrevPano(false, true);
         );
@@ -32,14 +32,19 @@
     );
     wait(LOAD);
     add(nextPano, panoNumber, 1);
-    if(climbing == true AND panoNumber LT get(lastPano), 
-      preload(get(nextPano), low-res);
-      preload(get(panoNumber), hi-res);,
-      if(panoNumber LT get(lastPano),
-      preload(get(nextPano), low-res);
-      preload(get(nextPano), hi-res))
-    );
     <!-- js(finishTransition();); -->
+  </action>
+
+  <action name="preloadWrapper">
+    if(climbing == true AND panoNumber LT lastPano, 
+      trace(climbing and preloading);
+      preload(get(nextPano), low-res, get(nextImgCacheBuster));
+      preload(get(panoNumber), hi-res, get(imgCacheBuster)),
+      if(panoNumber LT lastPano,
+        preload(get(nextPano), low-res, get(nextImgCacheBuster));
+        preload(get(nextPano), hi-res, get(nextImgCacheBuster))
+      )
+    );
   </action>
 
   <action name="resetView">
@@ -48,17 +53,16 @@
   </action>
 
   <action name="loadNextPano">
-    add(targetPano, get(panoNumber), 1);
-    loadPanoWrapper(get(targetPano), %1, %2);
-    <!-- js(startTransition();); -->
+      add(targetPano, get(panoNumber), 1);
+      if(targetPano LE lastPano, loadPanoWrapper(get(targetPano), %1, %2));
   </action>
 
   <!-- loadNextPano(imageNumber, isClimbing, isDescending) -->
   <action name="loadPanoWrapper">
     resetView();
-    trace(loading new pano);
     set(xmlFile, '%1-1_Panorama');
-    if (%3 == true, txtadd(xmlFile, get(xmlFile), '_desc.xml'), txtadd(xmlFile, get(xmlFile), '.xml'));
+    if(%3 == true, txtadd(xmlFile, get(xmlFile), '_desc.xml'), txtadd(xmlFile, get(xmlFile), '.xml'));
+    if(xmlCacheBuster, txtadd(xmlFile, get(xmlFile), '?houses=', get(xmlCacheBuster)));
     if(%2 == true OR %3 == true, txtadd(xmlFile, ../../low-res/xml/, get(xmlFile)), txtadd(xmlFile, ../../hi-res/xml/, get(xmlFile)));
     txtadd(loadPanoCall, 'loadpano(', get(xmlFile), ',staticsLoaded=true&amp;panoNumber=%1&amp;climbing=%2&amp;descending=%3, null, BLEND(0.5));');
     trace(loadPanoCall);
@@ -84,20 +88,13 @@
   </action>
 
   <action name="preload">
-    <!-- trace(preload %1 %2); -->
+    trace(preload %1 %2);
     addplugin(pre_%1_r_%2);
     addplugin(pre_%1_d_%2);
     addplugin(pre_%1_b_%2);
     addplugin(pre_%1_u_%2);
     addplugin(pre_%1_f_%2);
     addplugin(pre_%1_l_%2);
-
-    set(plugin[pre_%1_r_%2].onloaded, <!-- trace(preload pre_%1_r_%2 done); -->removeplugin(pre_%1_r_%2) );
-    set(plugin[pre_%1_d_%2].onloaded, <!-- trace(preload pre_%1_d_%2 done); -->removeplugin(pre_%1_d_%2) );
-    set(plugin[pre_%1_b_%2].onloaded, <!-- trace(preload pre_%1_b_%2 done); -->removeplugin(pre_%1_b_%2) );
-    set(plugin[pre_%1_u_%2].onloaded, <!-- trace(preload pre_%1_u_%2 done); -->removeplugin(pre_%1_u_%2) );
-    set(plugin[pre_%1_f_%2].onloaded, <!-- trace(preload pre_%1_f_%2 done); -->removeplugin(pre_%1_f_%2) );
-    set(plugin[pre_%1_l_%2].onloaded, <!-- trace(preload pre_%1_l_%2 done); -->removeplugin(pre_%1_l_%2) );
     set(plugin[pre_%1_r_%2].visible, false);
     set(plugin[pre_%1_d_%2].visible, false);
     set(plugin[pre_%1_b_%2].visible, false);
@@ -119,12 +116,31 @@
     if(%2 == low-res, txtadd(url_f, /low-res));
     if(%2 == low-res, txtadd(url_l, /low-res)); -->
 
-    set(url_r, ../%2/%1-1_Panorama.tiles/mres_r/l1/1/l1_r_1_1.jpg);
-    set(url_d, ../%2/%1-1_Panorama.tiles/mres_d/l1/1/l1_d_1_1.jpg);
-    set(url_b, ../%2/%1-1_Panorama.tiles/mres_b/l1/1/l1_b_1_1.jpg);
-    set(url_u, ../%2/%1-1_Panorama.tiles/mres_u/l1/1/l1_u_1_1.jpg);
-    set(url_f, ../%2/%1-1_Panorama.tiles/mres_f/l1/1/l1_f_1_1.jpg);
-    set(url_l, ../%2/%1-1_Panorama.tiles/mres_l/l1/1/l1_l_1_1.jpg);
+    set(url_r, /%2/%1-1_Panorama.tiles/mres_r/l1/1/l1_r_1_1.jpg);
+    txtadd(url_r, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_r));
+    if(%3, txtadd(url_r, get(url_r), '?mouses=', %3));
+    set(url_d, /%2/%1-1_Panorama.tiles/mres_d/l1/1/l1_d_1_1.jpg);
+    txtadd(url_d, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_d));
+    if(%3, txtadd(url_d, get(url_d), '?mouses=', %3));
+    set(url_b, /%2/%1-1_Panorama.tiles/mres_b/l1/1/l1_b_1_1.jpg);
+    txtadd(url_b, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_b));
+    if(%3, txtadd(url_b, get(url_b), '?mouses=', %3));
+    set(url_u, /%2/%1-1_Panorama.tiles/mres_u/l1/1/l1_u_1_1.jpg);
+    txtadd(url_u, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_u));
+    if(%3, txtadd(url_u, get(url_u), '?mouses=', %3));
+    set(url_f, /%2/%1-1_Panorama.tiles/mres_f/l1/1/l1_f_1_1.jpg);
+    txtadd(url_f, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_f));
+    if(%3, txtadd(url_f, get(url_f), '?mouses=', %3));
+    set(url_l, /%2/%1-1_Panorama.tiles/mres_l/l1/1/l1_l_1_1.jpg);
+    txtadd(url_l, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_l));
+    if(%3, txtadd(url_l, get(url_l), '?mouses=', %3));
+
+    set(plugin[pre_%1_r_%2].onloaded, trace(preload, get(url_r), done);removeplugin(pre_%1_r_%2) );
+    set(plugin[pre_%1_d_%2].onloaded, trace(preload, get(url_d), done);removeplugin(pre_%1_d_%2) );
+    set(plugin[pre_%1_b_%2].onloaded, trace(preload, get(url_b), done);removeplugin(pre_%1_b_%2) );
+    set(plugin[pre_%1_u_%2].onloaded, trace(preload, get(url_u), done);removeplugin(pre_%1_u_%2) );
+    set(plugin[pre_%1_f_%2].onloaded, trace(preload, get(url_f), done);removeplugin(pre_%1_f_%2) );
+    set(plugin[pre_%1_l_%2].onloaded, trace(preload, get(url_l), done);removeplugin(pre_%1_l_%2) );
 
     set(plugin[pre_%1_r_%2].url, get(url_r));
     set(plugin[pre_%1_d_%2].url, get(url_d));
