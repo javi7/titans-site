@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         mangle: {
-          except: ['initClimbMode']
+          except: ['initClimbMode', 'createjs']
         },
         compress: {
           sequences: true,
@@ -18,24 +18,28 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'public/climb-min.js': ['public/js/contextMap.js', 'public/js/easeljs-0.8.0.min.js', 'public/js/mike-utilities.js', 'public/js/trailtitans.js']
+          'public/climb-min-almost.js': ['public/js/trailtitans.js', 'public/js/contextMap.js', 'public/js/mike-utilities.js', ]
         }
       }
     },
     concat: {
-      options: {
-        banner: '<krpano>',
-        footer: '</krpano>',
-        process: function(src, filepath) {
-          src = src.replace(/<krpano>/g, '');
-          src = src.replace(/<\/krpano>/g, '');
-          src = src.replace(/\r\n/g, '');
-          return src;
-        }
-      },
-      dist: {
+      xml: {
+        options: {
+          banner: '<krpano>',
+          footer: '</krpano>',
+          process: function(src, filepath) {
+            src = src.replace(/<krpano>/g, '');
+            src = src.replace(/<\/krpano>/g, '');
+            src = src.replace(/\r\n/g, '');
+            return src;
+          }
+        },
         src: ['public/shared-xml/basefunctions.xml', 'public/shared-xml/controls.xml', 'public/shared-xml/mike-utilites.xml', 'public/shared-xml/showtext.xml'],
         dest: 'public/combined.xml'
+      },
+      js: {
+        src: ['public/js/easeljs-0.8.0.min.js', 'public/climb-min-almost.js'],
+        dest: 'public/min.js'
       }
     },
     xmlmin: {                                       // Task 

@@ -1,7 +1,4 @@
 <krpano>
-  <network caching="false" />
-
-  <include url="controls.xml" />
   <action name="setup">
     indexoftxt(dashIndex, get(preview.url), -1_Panorama);
     sub(startSearch, dashIndex, 4);

@@ -50,16 +50,13 @@
 	Please visit this page on a device with a larger screen to climb {{mountainInfo.displayName}}. You could also try maximizing your window or using your tablet in landscape mode.
 </body>
 {{!-- <script src="/climb-min.js"></script> --}}
-<script src="/js/contextMap.js"></script>
-<script src="/js/easeljs-0.8.0.min.js"></script>
-<script src="/js/mike-utilities.js"></script>
-<script src="/js/trailtitans.js"></script>
+<script src="http://d71k0z0ouu4ph.cloudfront.net/min.js?ola"></script>
 <script>
 	if (x > 768) {
 		initClimbMode('{{mountainInfo.mountainName}}');
 	} else {
 		document.getElementById('nosoupforyou').style.display="block";
-	}
+	}	
 </script>
 </html>
 
