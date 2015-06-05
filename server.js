@@ -71,7 +71,9 @@ app.use(passport.session());
 app.use(express.static('public'));
 app.use('/mountains', express.static('D:/Javi/krPano/output'));
 
-app.get('', routes.index);
+app.get('', function(req, res) {
+  res.sendfile(__dirname + '/public/layout.html')
+});
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/',
