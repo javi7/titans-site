@@ -43,11 +43,16 @@ module.exports = function() {
     },
     sendTitanApplicationReceivedEmail: function(user, cb) {
       var mailOptions = {
-        from: 'Javi <javi@trailtitans.com>',
+        from: 'Michael <michael@trailtitans.com>',
         to: user.email,
-        subject: 'Thanks for applying to be a Titan!',
-        text: 'Thanks for your interest!',
-        html: 'Thanks for your interest!'
+        replyTo: 'michael@trailtitans.com'
+        subject: 'Welcome to Trail Titans ',
+        text: "Hey there,\r\nThanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.
+              \r\nCheers,
+              \r\nMichael, Co-Founder & Resident Mountain Man"
+        html: "Hey there,<br />Thanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.
+              <br />Cheers,
+              <br />Michael, Co-Founder & Resident Mountain Man"
       };
       transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
