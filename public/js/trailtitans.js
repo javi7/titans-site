@@ -67,9 +67,9 @@ setCampVariables = function(panoNumber) {
   };
   krpano.call('set(nextCamp,' + nextCamp + ');');
   krpano.call('set(prevCamp,' + prevCamp + ');');
-  var xmlCacheBuster = '';
   var imgCacheBuster = '';
   var nextImgCacheBuster = '';
+  var prevImgCacheBuster = '';
   if (typeof cacheBusters !== 'undefined') {
     if ('img' in cacheBusters) {
       if (jsPanoNumber in cacheBusters['img']) {
@@ -78,16 +78,14 @@ setCampVariables = function(panoNumber) {
       if ((jsPanoNumber + 1) in cacheBusters['img']) {
         nextImgCacheBuster = cacheBusters['img'][jsPanoNumber + 1];
       }
-    }
-    if ('xml' in cacheBusters) {
-      if (jsPanoNumber in cacheBusters['xml']) {
-        xmlCacheBuster = cacheBusters['xml'][jsPanoNumber];
+      if ((jsPanoNumber - 1) in cacheBusters['img']) {
+        prevImgCacheBuster = cacheBusters['img'][jsPanoNumber - 1];
       }
     }
   }
-  krpano.call('set(xmlCacheBuster,' + xmlCacheBuster + ');');
   krpano.call('set(imgCacheBuster,' + imgCacheBuster + ');');
   krpano.call('set(nextImgCacheBuster,' + nextImgCacheBuster + ');');
+  krpano.call('set(prevImgCacheBuster,' + prevImgCacheBuster + ');');
   krpano.call('preloadWrapper()');
 
   contextMap.updateCurrentPosition(jsPanoNumber);

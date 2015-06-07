@@ -1,6 +1,6 @@
 module.exports = {
   'aconcagua': {
-    "js" : "[{'name':'horcones','elevation':2950,'panoNumber':1},{'name':'confluencia','elevation':3390,'panoNumber':66},{'name':'plaza de mulas','elevation':4300,'panoNumber':231},{'name':'canada','elevation':5050,'panoNumber':286},{'n ame':'nido de condores','elevation':5550,'panoNumber':313},{'name':'berlin','elevation':5930,'panoNumber':341},{'name':'summit','elevation':6962,'panoNumber':376}]", 
+    "js" : "[{'name':'horcones','elevation':2950,'panoNumber':1},{'name':'confluencia','elevation':3390,'panoNumber':66},{'name':'plaza de mulas','elevation':4300,'panoNumber':231},{'name':'canada','elevation':5050,'panoNumber':286},{'name':'nido de condores','elevation':5550,'panoNumber':313},{'name':'berlin','elevation':5930,'panoNumber':341},{'name':'summit','elevation':6962,'panoNumber':376}]", 
     "mountainName" : "aconcagua",
     "displayName" : "Aconcagua"
   },

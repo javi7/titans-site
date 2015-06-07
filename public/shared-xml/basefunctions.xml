@@ -51,7 +51,7 @@
 
   <action name="loadNextPano">
       add(targetPano, get(panoNumber), 1);
-      if(targetPano LE lastPano, loadPanoWrapper(get(targetPano), %1, %2));
+      if(targetPano LE lastPano, loadPanoWrapper(get(targetPano), %1, %2, get(nextImgCacheBuster)));
   </action>
 
   <!-- loadNextPano(imageNumber, isClimbing, isDescending) -->
@@ -59,7 +59,7 @@
     resetView();
     set(xmlFile, '%1-1_Panorama');
     if(%3 == true, txtadd(xmlFile, get(xmlFile), '_desc.xml'), txtadd(xmlFile, get(xmlFile), '.xml'));
-    if(xmlCacheBuster, txtadd(xmlFile, get(xmlFile), '?houses=', get(xmlCacheBuster)));
+    if(%4, txtadd(xmlFile, get(xmlFile), '?houses=', %4));
     if(%2 == true OR %3 == true, txtadd(xmlFile, ../../low-res/xml/, get(xmlFile)), txtadd(xmlFile, ../../hi-res/xml/, get(xmlFile)));
     txtadd(loadPanoCall, 'loadpano(', get(xmlFile), ',staticsLoaded=true&amp;panoNumber=%1&amp;climbing=%2&amp;descending=%3, null, BLEND(0.5));');
     trace(loadPanoCall);
@@ -68,7 +68,7 @@
 
   <action name="loadPrevPano">
     sub(targetPano, get(panoNumber), 1);
-    loadPanoWrapper(get(targetPano), %1, %2, %3);
+    loadPanoWrapper(get(targetPano), %1, %2, get(prevImgCacheBuster));
   </action>
 
   <action name="spacebar">
@@ -80,7 +80,7 @@
       stopdelayedcall(keepClimbing);
       set(climbing, false);
       set(descending, false);
-      loadPanoWrapper(get(panoNumber), false, false);
+      loadPanoWrapper(get(panoNumber), false, false, get(imgCacheBuster));
     );
   </action>
 

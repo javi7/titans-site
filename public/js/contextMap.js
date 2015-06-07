@@ -314,7 +314,11 @@ var ContextMap = function(canvasId, config) {
       campMarker.z = 200;
       campMarker.cursor = 'pointer';
       campMarker.on('click', function(event, skipToPanoNumber) {
-        krpano.call('loadPanoWrapper(' + skipToPanoNumber +', false, false)');
+        var skipCacheBuster = '';
+        if ('img' in cacheBusters && skipToPanoNumber in cacheBusters['img']) {
+          skipCacheBuster = cacheBusters['img'][skipToPanoNumber];
+        }
+        krpano.call('loadPanoWrapper(' + skipToPanoNumber +', false, false,' + skipCacheBuster + ')');
       }, null, false, campMarker.campInfo.panoNumber);
 
       // create info text for camp marker
