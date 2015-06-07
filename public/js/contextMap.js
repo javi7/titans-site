@@ -126,8 +126,12 @@ var ContextMap = function(canvasId, config) {
   });
   currentPositionMarker.cursor = cssPrefix + 'grab';
   currentPositionMarker.on('pressup', function() {
+    var skipCacheBuster = '';
+    if (typeof cacheBusters !== 'undefined' && 'img' in cacheBusters && skipToPanoNumber in cacheBusters['img']) {
+      skipCacheBuster = cacheBusters['img'][skipToPanoNumber];
+    }
     var skipToPanoNumber = Math.round((currentPositionMarker.x - config.sideMargin * canvasWidth) / ((1 - 2 * config.sideMargin) * canvasWidth) * climbLength);
-    krpano.call('loadPanoWrapper(' + skipToPanoNumber + ', false, false);');
+    krpano.call('loadPanoWrapper(' + skipToPanoNumber + ', false, false,' + skipCacheBuster + ')');
     pause();
     document.body.style.cursor = 'default';
   currentPositionMarker.cursor = cssPrefix + 'grab';
@@ -315,10 +319,10 @@ var ContextMap = function(canvasId, config) {
       campMarker.cursor = 'pointer';
       campMarker.on('click', function(event, skipToPanoNumber) {
         var skipCacheBuster = '';
-        if ('img' in cacheBusters && skipToPanoNumber in cacheBusters['img']) {
+        if (typeof cacheBusters !== 'undefined' && 'img' in cacheBusters && skipToPanoNumber in cacheBusters['img']) {
           skipCacheBuster = cacheBusters['img'][skipToPanoNumber];
         }
-        krpano.call('loadPanoWrapper(' + skipToPanoNumber +', false, false,' + skipCacheBuster + ')');
+        krpano.call('loadPanoWrapper(' + skipToPanoNumber + ', false, false,' + skipCacheBuster + ')');
       }, null, false, campMarker.campInfo.panoNumber);
 
       // create info text for camp marker
