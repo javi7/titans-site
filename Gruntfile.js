@@ -34,7 +34,7 @@ module.exports = function(grunt) {
             return src;
           }
         },
-        src: ['public/shared-xml/basefunctions.xml', 'public/shared-xml/controls.xml', 'public/shared-xml/mike-utilites.xml', 'public/shared-xml/showtext.xml'],
+        src: ['public/shared-xml/basefunctions.xml', 'public/shared-xml/controls.xml', 'public/shared-xml/mike-utilities.xml', 'public/shared-xml/showtext.xml'],
         dest: 'public/combined.xml'
       },
       js: {

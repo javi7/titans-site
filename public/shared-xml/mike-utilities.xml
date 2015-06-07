@@ -14,6 +14,10 @@
     js(copyCursorPos(get(x), get(y), get(panoNumber)));
   </action>
 
+  <action name="getOrientation">
+    js(copyToClipboard(get(panoNumber), get(view.hlookat), get(view.vlookat)));
+  </action>
+
   <textstyle  name="coordinates"
               showtime="60"
   />

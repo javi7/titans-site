@@ -1,6 +1,6 @@
-var copyToClipboard = function(imageNumber, hlookat, vlookat, fov) {
-  var text = hlookat.toString() + "\t" + vlookat.toString() + "\t" + fov.toString() + "\t";
-  window.prompt("horiz -- vertical -- fov\nImage # " + imageNumber.toString(), text);
+var copyToClipboard = function(imageNumber, hlookat, vlookat) {
+  var text = hlookat.toString() + "\t" + vlookat.toString() + "\t";
+  window.prompt("horiz -- vertical\nImage # " + imageNumber.toString(), text);
 };
 
 var copyCursorPos = function(x, y, imageNumber) {
@@ -8,9 +8,11 @@ var copyCursorPos = function(x, y, imageNumber) {
   window.prompt("horiz -- vertical\nImage # " + imageNumber.toString(), text);
 };
 
-var getMousePos = function(event) {
+var captureW = function(event) {
   var keycode = event.keyCode;
-  if (keycode == 32) {
-    krpano.call('getMousePosition();');
+  if (keycode == 87) {
+    krpano.call('getOrientation();');
   }
 };
+
+document.addEventListener("keydown", captureW, false);

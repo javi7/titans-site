@@ -36,7 +36,7 @@
 	    g = d.getElementsByTagName('body')[0],
 	    x = w.innerWidth || e.clientWidth || g.clientWidth;
 	  if (x > 768) {
-			embedpano({xml:"http://d71k0z0ouu4ph.cloudfront.net/mountains/{{mountainInfo.mountainName}}/hi-res/xml/1-1_Panorama.xml?shoop", target:"pano", html5:"only", passQueryParameters:true});
+			embedpano({xml:"http://d71k0z0ouu4ph.cloudfront.net/mountains/{{mountainInfo.mountainName}}/hi-res/xml/1-1_Panorama.xml?doop", target:"pano", html5:"only", passQueryParameters:true});
 		}
 	</script>
 	<div id="clickToPause" style="display:none;position:absolute;color:#373737;margin:auto;left:0;right:0;bottom:0;top:0;height:100px;font-size:3em;text-align:center;z-index:1000;">
@@ -49,8 +49,14 @@
 <div id="nosoupforyou" style="display:none;position:absolute;top:0;margin:5px">
 	Please visit this page on a device with a larger screen to climb {{mountainInfo.displayName}}. You could also try maximizing your window or using your tablet in landscape mode.
 </body>
-{{!-- <script src="/climb-min.js"></script> --}}
-<script src="http://d71k0z0ouu4ph.cloudfront.net/min.js?ola"></script>
+{{#if dev}}
+	<script src="/js/mike-utilities.js"></script>
+	<script src="/js/contextMap.js"></script>
+	<script src="/js/trailtitans.js"></script>
+	<script src="/js/easeljs-0.8.0.min.js"></script>
+	{{else}}
+	<script src="http://d71k0z0ouu4ph.cloudfront.net/min.js?usa"></script>
+{{/if}}
 <script>
 	if (x > 768) {
 		initClimbMode('{{mountainInfo.mountainName}}');

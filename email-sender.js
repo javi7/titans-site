@@ -45,14 +45,44 @@ module.exports = function() {
       var mailOptions = {
         from: 'Michael <michael@trailtitans.com>',
         to: user.email,
-        replyTo: 'michael@trailtitans.com'
-        subject: 'Welcome to Trail Titans ',
-        text: "Hey there,\r\nThanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.
-              \r\nCheers,
-              \r\nMichael, Co-Founder & Resident Mountain Man"
-        html: "Hey there,<br />Thanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.
-              <br />Cheers,
-              <br />Michael, Co-Founder & Resident Mountain Man"
+        replyTo: 'michael@trailtitans.com',
+        subject: 'Welcome to Trail Titans',
+        text: "Hey there,\r\nThanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.\r\nCheers,\r\nMichael, Co-Founder & Resident Mountain Man",
+        html: "Hey there,<br />Thanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.<br />Cheers,<br />Michael, Co-Founder & Resident Mountain Man"
+      };
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          cb(error, false);
+        } else {
+          cb(null, true);
+        }
+      });
+    },
+    sendFeedbackReceivedEmail: function(user, cb) {
+      var mailOptions = {
+        from: 'Michael <michael@trailtitans.com>',
+        to: user.email,
+        replyTo: 'michael@trailtitans.com',
+        subject: 'Welcome to Trail Titans',
+        text: "Hola,\r\nThanks for dropping me a line. Although this is an automated response, my follow up email won't be. I’m co-founder of Trail Titans and I read and respond to everything that comes my way. Your feedback is right up there with my morning espresso (and that's really really important) so expect to hear from me very soon.\r\n\r\nMichael",
+        html: "Hola,<br />Thanks for dropping me a line. Although this is an automated response, my follow up email won't be. I’m co-founder of Trail Titans and I read and respond to everything that comes my way. Your feedback is right up there with my morning espresso (and that's really really important) so expect to hear from me very soon.<br /><br />Michael"
+      };
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          cb(error, false);
+        } else {
+          cb(null, true);
+        }
+      });
+    },
+    sendNewSubscriptionEmail: function(user, cb) {
+      var mailOptions = {
+        from: 'Javi <javi@trailtitans.com>',
+        to: user.email,
+        replyTo: 'javi@trailtitans.com',
+        subject: 'Thank you for subscribing to Trail Titans',
+        text: "Hey there,\r\nThanks for subscribing.  Going forward, we’ll update you each time a new mountain becomes available. No spam, pinkie swear. Happy climbing!\r\n\r\nJavi, Co-Founder & Bit Jockey",
+        html: "Hey there,<br />Thanks for subscribing.  Going forward, we’ll update you each time a new mountain becomes available. No spam, pinkie swear. Happy climbing!<br /><br />Javi, Co-Founder & Bit Jockey"
       };
       transporter.sendMail(mailOptions, function(error, info) {
         if (error) {

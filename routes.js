@@ -32,6 +32,11 @@ module.exports = {
         }
       } else {
         res.status(201).send('successfully applied');
+        emailSender.sendTitanApplicationReceivedEmail(req.body, function(err, result) {
+          if (err || !result) {
+            console.log('failed to send titan application received email: ' + req.body);
+          }
+        });
       }
     });
   },
@@ -41,6 +46,11 @@ module.exports = {
       emailSender.sendFeedbackToBrainTrust(req.body, function(err, result) {
         if (err || !result) {
           console.log('failed to send feedback: ' + req.body);
+        }
+      });
+      emailSender.sendFeedbackReceivedEmail(req.body, function(err, result) {
+        if (err || !result) {
+          console.log('failed to send feedback response: ' + req.body);
         }
       });
     } else {
@@ -120,6 +130,11 @@ module.exports = {
         }
       } else {
         res.status(201).send('successfully subscribed');
+        emailSender.sendNewSubscriptionEmail(req.body, function(err, result) {
+          if (err || !result) {
+            console.log('failed to send new subscription email: ' + req.body);
+          }
+        });
       }
     });
   },
@@ -134,7 +149,8 @@ module.exports = {
           layout: false, 
           'mountainInfo': mountainInfo[req.params.mountain], 
           'krpanojs': krpanojs,
-          'cacheBusters': cacheBusters[req.params.mountain]
+          'cacheBusters': cacheBusters[req.params.mountain],
+          'dev': process.env.NODE_ENV == 'dev'
         });
       });
     } else {
