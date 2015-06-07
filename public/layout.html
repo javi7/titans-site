@@ -25,7 +25,7 @@
             <area shape="polygon" href="#contact" alt="Alt text for #4" coords="78,89,9,89,9,76,78,76">
           </map>
         </div>
-        <a class="font-code-pro navbar-right btn btn-default btn-titan navbar-btn disappear-at-md" href="#titans">Become A Titan</a>
+        <a class="font-code-pro navbar-right btn btn-default btn-titan navbar-btn disappear-at-md" href="#titans" id="become-titan-button">Become A Titan</a>
         <div class="navbar-brand">
           <a href="#">
             <img width="150" height="100" src="http://d71k0z0ouu4ph.cloudfront.net/images/white-logo.png"></img>
@@ -48,7 +48,7 @@
         <img src="http://d71k0z0ouu4ph.cloudfront.net/images/preview.jpg" />
         <h2 class="font-code-pro">Available now on <span class="orangeText">desktop</span> and <span class="orangeText">tablet</span></h2>
         <h2 class="font-code-pro">Coming soon to <span class="orangeText">mobile</span></h2>
-        <form id="subscribe-form">
+        <form class="subscribe-form" id="subscribe-form-mobile">
           <div class="form-group">
             <input class="form-control" type="email" name="email" placeholder="enter your email" />
             <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
@@ -57,7 +57,7 @@
             <label class="control-label font-helvetica" style="display:none"></label>
           </div>
           <div class="form-group font-code-pro subscribe-button-container">
-            <button id="subscribe-button" type="submit" class="btn btn-titan btn-default">subscribe for updates</button>
+            <button type="submit" class="btn btn-titan btn-default">subscribe for updates</button>
           </div>
         </form>
       </div>
@@ -69,7 +69,7 @@
         <p class="font-helvetica">
           The orange mountains are ready to climb, and the gray mountains are coming soon. We will climb the tallest and most exciting mountains on every continent. Subscribe here and we will notify you each time a new mountain becomes available.
         </p>
-        <form id="subscribe-form">
+        <form class="subscribe-form" id="subscribe-form-desktop">
           <div class="form-group">
             <input class="form-control" type="email" name="email" placeholder="enter your email" />
             <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
@@ -78,7 +78,7 @@
             <label class="control-label font-helvetica" style="display:none"></label>
           </div>
           <div class="form-group font-code-pro subscribe-button-container">
-            <button id="subscribe-button" type="submit" class="btn btn-titan btn-default">subscribe</button>
+            <button type="submit" class="btn btn-titan btn-default">subscribe</button>
           </div>
         </form>
       </div>

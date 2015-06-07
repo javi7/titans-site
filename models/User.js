@@ -143,10 +143,8 @@ schema.statics = {
     newUser.save(function(err) {
       if (err) {
         cb(err, false);
+        console.log('error creating new titan application -- ' + err);
       } else {
-        emailSender.sendTitanApplicationReceivedEmail(newUser, function(err, result) {
-          console.log('tried to email new titan applicant ' + titanApp.email + ': result - ' + result + ', err - ' + err);
-        });
         cb(null, true);
       }
     });

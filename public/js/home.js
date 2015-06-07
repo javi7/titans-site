@@ -21,10 +21,14 @@ $(document).ready(function(e) {
     var image = $   ('#' + $(this).attr('name') + '-image')
     image.fadeOut('slow');
   });
-  $("#signup-button").click(function() {
+  var openLightbox = function() {
     $(".lightbox").height($('body').height());  
     $(".lightbox-inner").css('top', $(window).scrollTop() + 0.1 * $(window).height());
     $("#signup-lightbox").css('visibility', 'visible');
+  };
+  $("#signup-button").click(openLightbox);
+  $("#become-titan-button").click(function() {
+    setTimeout(openLightbox, 10);
   });
   $("#close-lightbox").click(function() {
     $("#signup-lightbox").css('visibility', 'hidden');
@@ -51,11 +55,11 @@ $(document).ready(function(e) {
       image.attr('src', newImageSrc);
     }
   });
-  $("#subscribe-form").submit(function(event) {
+  var submitSubscribeForm = function(event) {
     event.preventDefault();
     var subscribeForm = $(this);
     var subscribeFormData = {};
-    subscribeForm.serializeArray().map(function(x){subscribeFormData[x.name] = x.value;});
+    subscribeForm.serializeArray().map(function(x){ subscribeFormData[x.name] = x.value; });
     if (!subscribeFormData['email']) { 
       subscribeForm.find('.form-group').removeClass('has-warning has-success').addClass('has-feedback has-error');
       subscribeForm.find('.glyphicon-remove').show();
@@ -84,12 +88,16 @@ $(document).ready(function(e) {
       }
     });
     return false;
-  });
-  $("#subscribe-form").change(function(event) {
+  };
+  $("#subscribe-form-mobile").submit(submitSubscribeForm);
+  $("#subscribe-form-desktop").submit(submitSubscribeForm);
+  var clearSubscribeForm = function(event) {
     $(this).find('label').hide();
     $(this).find('.glyphicon').hide();
     $(this).children('.form-group').removeClass('has-success has-error has-warning has-feedback');
-  });
+  };
+  $("#subscribe-form-mobile").change(clearSubscribeForm);
+  $("#subscribe-form-desktop").change(clearSubscribeForm);
   var clearFormFeedback = function() {
     var formGroup = $(this).parent();
   };

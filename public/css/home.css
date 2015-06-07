@@ -55,7 +55,7 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
   border-width: 5px;
 }
 
-#subscribe-form .btn-titan, #subscribe-form .btn-titan.active, #subscribe-form .btn-titan:active, #subscribe-form .btn-titan:focus, #subscribe-form .btn-titan:hover {
+.subscribe-form .btn-titan, .subscribe-form .btn-titan.active, .subscribe-form .btn-titan:active, .subscribe-form .btn-titan:focus, .subscribe-form .btn-titan:hover {
   background-color: white;
   color: #373737;
   padding: 5px 20px;
@@ -143,7 +143,7 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
     background-image: url(http://d71k0z0ouu4ph.cloudfront.net/images/mobile-bg.png);
   }
 
-#mobile-home #subscribe-form {
+#mobile-home .subscribe-form {
     margin-top: 30px;
 }
   #mobile-home img {

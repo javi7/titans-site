@@ -42,6 +42,7 @@ module.exports = function() {
       });
     },
     sendTitanApplicationReceivedEmail: function(user, cb) {
+      console.log('email function called');
       var mailOptions = {
         from: 'Michael <michael@trailtitans.com>',
         to: user.email,
@@ -51,6 +52,7 @@ module.exports = function() {
         html: "Hey there,<br />Thanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.<br />Cheers,<br />Michael, Co-Founder & Resident Mountain Man"
       };
       transporter.sendMail(mailOptions, function(error, info) {
+        console.log('sending applicant email');
         if (error) {
           cb(error, false);
         } else {
@@ -63,7 +65,7 @@ module.exports = function() {
         from: 'Michael <michael@trailtitans.com>',
         to: user.email,
         replyTo: 'michael@trailtitans.com',
-        subject: 'Welcome to Trail Titans',
+        subject: 'Thanks from Trail Titans',
         text: "Hola,\r\nThanks for dropping me a line. Although this is an automated response, my follow up email won't be. I’m co-founder of Trail Titans and I read and respond to everything that comes my way. Your feedback is right up there with my morning espresso (and that's really really important) so expect to hear from me very soon.\r\n\r\nMichael",
         html: "Hola,<br />Thanks for dropping me a line. Although this is an automated response, my follow up email won't be. I’m co-founder of Trail Titans and I read and respond to everything that comes my way. Your feedback is right up there with my morning espresso (and that's really really important) so expect to hear from me very soon.<br /><br />Michael"
       };
