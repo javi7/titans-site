@@ -11,7 +11,7 @@
     set(layer[back].scale, 0.6);
     set(layer[back].onhover, layer[back].loadstyle(opaque));
     set(layer[back].onout, layer[back].loadstyle(transparent));
-    set(layer[back].onclick, openurl(http://trailtitans.com,_self));
+    set(layer[back].onclick, openurl(/#climb,_self));
     layer[back].loadstyle(transparent);
 
     addlayer(zoom);
