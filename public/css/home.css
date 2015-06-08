@@ -140,7 +140,7 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
   #mobile-home {
     display: inherit;
     color: #373737;
-    background-image: url(http://d71k0z0ouu4ph.cloudfront.net/images/mobile-bg.png);
+    background-image: url(http://d39rd677qckrt3.cloudfront.net/images/mobile-bg.png);
   }
 
 #mobile-home .subscribe-form {
@@ -159,11 +159,11 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
 @media (min-width: 769px) {
   #home { 
     display: inherit;
-    background-image: url(http://d71k0z0ouu4ph.cloudfront.net/images/5.jpg);
+    background-image: url(http://d39rd677qckrt3.cloudfront.net/images/5.jpg);
     background-color: #373737;
   }
   #about {
-    background-image: url(http://d71k0z0ouu4ph.cloudfront.net/images/about.JPG);
+    background-image: url(http://d39rd677qckrt3.cloudfront.net/images/about.JPG);
     text-align: left;
     display:inherit;
   }
@@ -221,7 +221,7 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
   color: #dc6026;
 }
 #titans { 
-  background-image: url(http://d71k0z0ouu4ph.cloudfront.net/images/10.jpg);
+  background-image: url(http://d39rd677qckrt3.cloudfront.net/images/10.jpg);
   display: block;
   position: relative;
 }
@@ -397,7 +397,7 @@ area {
   .disappear-at-md { display: none; }
   #titans h1, #climb h1 { white-space: inherit; }
   #titans .section-content, #climb .section-content { width: inherit; padding: 0 10px; }
-  #titans { background-image: url(http://d71k0z0ouu4ph.cloudfront.net/images/10-mobile.jpg); padding: 30px 0; }
+  #titans { background-image: url(http://d39rd677qckrt3.cloudfront.net/images/10-mobile.jpg); padding: 30px 0; }
 }
 @media (max-width: 860px) {
   #climb .section-content {

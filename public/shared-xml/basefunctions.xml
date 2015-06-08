@@ -114,22 +114,22 @@
     if(%2 == low-res, txtadd(url_l, /low-res)); -->
 
     set(url_r, /%2/%1-1_Panorama.tiles/mres_r/l1/1/l1_r_1_1.jpg);
-    txtadd(url_r, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_r));
+    txtadd(url_r, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain), get(url_r));
     if(%3, txtadd(url_r, get(url_r), '?mouses=', %3));
     set(url_d, /%2/%1-1_Panorama.tiles/mres_d/l1/1/l1_d_1_1.jpg);
-    txtadd(url_d, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_d));
+    txtadd(url_d, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain), get(url_d));
     if(%3, txtadd(url_d, get(url_d), '?mouses=', %3));
     set(url_b, /%2/%1-1_Panorama.tiles/mres_b/l1/1/l1_b_1_1.jpg);
-    txtadd(url_b, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_b));
+    txtadd(url_b, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain), get(url_b));
     if(%3, txtadd(url_b, get(url_b), '?mouses=', %3));
     set(url_u, /%2/%1-1_Panorama.tiles/mres_u/l1/1/l1_u_1_1.jpg);
-    txtadd(url_u, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_u));
+    txtadd(url_u, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain), get(url_u));
     if(%3, txtadd(url_u, get(url_u), '?mouses=', %3));
     set(url_f, /%2/%1-1_Panorama.tiles/mres_f/l1/1/l1_f_1_1.jpg);
-    txtadd(url_f, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_f));
+    txtadd(url_f, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain), get(url_f));
     if(%3, txtadd(url_f, get(url_f), '?mouses=', %3));
     set(url_l, /%2/%1-1_Panorama.tiles/mres_l/l1/1/l1_l_1_1.jpg);
-    txtadd(url_l, 'http://d71k0z0ouu4ph.cloudfront.net/mountains/', get(mountain), get(url_l));
+    txtadd(url_l, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain), get(url_l));
     if(%3, txtadd(url_l, get(url_l), '?mouses=', %3));
 
     set(plugin[pre_%1_r_%2].onloaded, trace(preload, get(url_r), done);removeplugin(pre_%1_r_%2) );

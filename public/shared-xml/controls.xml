@@ -5,7 +5,7 @@
 
   <action name="showControls">
     addlayer(back);
-    set(layer[back].url, /images/back-button.png);
+    set(layer[back].url, http://d39rd677qckrt3.cloudfront.net/images/back-button.png);
     set(layer[back].x, 30);
     set(layer[back].y, 30);
     set(layer[back].scale, 0.6);
@@ -22,7 +22,7 @@
     set(layer[zoom].x, 30);
     set(layer[zoom].y, 30);
     addlayer(zoomin);
-    set(layer[zoomin].url, /images/round-buttons.png);
+    set(layer[zoomin].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[zoomin].align, top);
     set(layer[zoomin].scale, 0.65);
     set(layer[zoomin].onclick, zoomIn());
@@ -39,7 +39,7 @@
     );
     layer[zoomin].loadstyle(transparent);
     addlayer(zoomout);
-    set(layer[zoomout].url, /images/round-buttons.png);
+    set(layer[zoomout].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[zoomout].align, bottom);
     set(layer[zoomout].scale, 0.65);
     set(layer[zoomout].onclick, zoomOut());
@@ -63,7 +63,7 @@
     set(layer[nextPrevControls].x, 100);
     set(layer[nextPrevControls].y, 30);
     addlayer(nextPic);
-    set(layer[nextPic].url, /images/round-buttons.png);
+    set(layer[nextPic].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[nextPic].align, top);
     set(layer[nextPic].scale, 0.65);
     set(layer[nextPic].onclick, loadNextPano(false, false));
@@ -81,7 +81,7 @@
     layer[nextPic].loadstyle(transparent);
     if(panoNumber==lastPano, set(layer[nextPic].visible, false), set(layer[nextPic].visible, true));
     addlayer(prevPic);
-    set(layer[prevPic].url, /images/round-buttons.png);
+    set(layer[prevPic].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[prevPic].align, bottom);
     set(layer[prevPic].scale, 0.65);
     set(layer[prevPic].onclick, loadPrevPano(false, false));
