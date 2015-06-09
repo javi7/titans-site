@@ -158,7 +158,7 @@ var ContextMap = function(canvasId, config) {
 
   // create play button
   var playButton = new createjs.Shape();
-  playButton.graphics.f("rgba(37, 37, 37, 1)").p("EB8YBncYAAJOngHqpYAAYpYAAngnqAApOYAApYHgnqJYAAYJYAAHgHqAAJY").cp().ef().f("rgba(255,255,255,1").p("EBzoBnIIsqnCYAAAAgKAAgKAAYAAAAAAAAAAAKIAAOEIAAAKYAKAAAAAAAAAAYAKAAAAAAAAAAIMqnCYAKAAAAgKAAAAYAAAAAAgKgKAA").cp().ef();
+  playButton.graphics.f("rgba(37, 37, 37, 1)").p("EB8YBncYAAJOngHqpYAAYpYAAngnqAApOYAApYHgnqJYAAYJYAAHgHqAAJY").cp().ef().f("rgba(255,255,255,1)").p("EBzoBnIIsqnCYAAAAgKAAgKAAYAAAAAAAAAAAKIAAOEIAAAKYAKAAAAAAAAAAYAKAAAAAAAAAAIMqnCYAKAAAAgKAAAAYAAAAAAgKgKAA").cp().ef();
   playButton.alpha = 0.5;
   playButton.regX = 580;
   playButton.regY = 662;
