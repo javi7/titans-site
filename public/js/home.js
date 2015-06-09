@@ -38,10 +38,12 @@ $(document).ready(function(e) {
   var pageSections = $(".home-section");
   $(window).scroll({previousTop: 0}, function() {
     var fromTop = $(this).scrollTop();
-    if (fromTop < this.previousTop) {
-      $("nav").show();
-    } else {
-      $("nav").hide();
+    if (window.innerWidth < 768) {
+      if (fromTop < this.previousTop) {
+        $("nav").show();
+      } else {
+        $("nav").hide();
+      }
     }
     this.previousTop = fromTop;
     var currentSectionId = $.map(pageSections, function(section) {

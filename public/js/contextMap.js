@@ -295,13 +295,13 @@ var ContextMap = function(canvasId, config) {
   };
 
   var switchToMobile = function() {
-    addElement(mobilePlayButton);
-    removeElement(playButton);
+    stage.addChild(mobilePlayButton);
+    stage.removeChild(playButton);
   };
 
   var switchToFull = function() {
-    removeElement(mobilePlayButton);
-    addElement(playButton);
+    stage.removeChild(mobilePlayButton);
+    stage.addChild(playButton);
   };
 
   var resize = function() {
