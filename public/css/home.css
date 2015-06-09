@@ -164,6 +164,7 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
     display: inline;
     margin: 20px 0;
     font-size: 1.5em;
+    text-decoration: underline
   }
   .mobile-climb-button {
     margin-top: 30px;
@@ -415,9 +416,10 @@ area {
   .home-section { min-height: 0; padding: 0;}
   .disappear-at-md { display: none; }
   #titans h1, #climb h1 { white-space: inherit; }
-  #titans .section-content, .section-content { width: inherit; padding: 0 10px; }
-  #titans { background-image: url(http://d39rd677qckrt3.cloudfront.net/images/10-mobile.jpg); padding: 30px 0; }
+  #titans .section-content, .section-content { width: inherit; padding: 0 10px; margin: 0 0 20px 0;}
+  #titans { background-image: url(http://d39rd677qckrt3.cloudfront.net/images/10-mobile.jpg);}
   #titans h1, #mobile-home h1, #mobile-about h1 { font-size: 4em;}
+  .navbar-fixed-top { position: absolute; }
 }
 @media (min-width: 769px) {
   .section-content {
