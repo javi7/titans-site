@@ -37,6 +37,14 @@ var ContextMap = function(canvasId, config) {
     stage.addChild(newElement);
   };
 
+  var removeElement = function(deadElement) {
+    var indexOf = elements.indexOf(deadElement);
+    if (indexOf > -1) {
+      elements.splice(indexOf, 1);
+    }
+    stage.removeChild(deadElement);
+  };
+
   // create stage
   var stage = new createjs.Stage(document.getElementById(canvasId));
   stage.enableMouseOver(10);
@@ -69,7 +77,7 @@ var ContextMap = function(canvasId, config) {
   // create toggle button
   var button = new createjs.Container();
   button.on('click', function(event) {
-    toggleMap();
+    toggleMap(false);
     lastClick = new Date().getTime();
   });
   var box = new createjs.Shape();
@@ -157,16 +165,37 @@ var ContextMap = function(canvasId, config) {
   addElement(logo);
 
   // create play button
-  var playButton = new createjs.Shape();
-  playButton.graphics.f("rgba(37, 37, 37, 1)").p("EB8YBncYAAJOngHqpYAAYpYAAngnqAApOYAApYHgnqJYAAYJYAAHgHqAAJY").cp().ef().f("rgba(255,255,255,1)").p("EBzoBnIIsqnCYAAAAgKAAgKAAYAAAAAAAAAAAKIAAOEIAAAKYAKAAAAAAAAAAYAKAAAAAAAAAAIMqnCYAKAAAAgKAAAAYAAAAAAgKgKAA").cp().ef();
-  playButton.alpha = 0.5;
-  playButton.regX = 580;
-  playButton.regY = 662;
-  playButton.scaleX = playButton.scaleY = 0.1 * canvasWidth / 125;
-  playButton.on('click', function() {
-    lastClick = new Date().getTime();
-    unpause();
-  });
+  var createPlayButton = function() {
+    var newPlayButton = new createjs.Shape();
+    newPlayButton.graphics.f("rgba(37, 37, 37, 1)").p("EB8YBncYAAJOngHqpYAAYpYAAngnqAApOYAApYHgnqJYAAYJYAAHgHqAAJY").cp().ef().f("rgba(255,255,255,1)").p("EBzoBnIIsqnCYAAAAgKAAgKAAYAAAAAAAAAAAKIAAOEIAAAKYAKAAAAAAAAAAYAKAAAAAAAAAAIMqnCYAKAAAAgKAAAAYAAAAAAgKgKAA").cp().ef();
+    newPlayButton.alpha = 0.5;
+    newPlayButton.regX = 580;
+    newPlayButton.regY = 662;
+    newPlayButton.scaleX = newPlayButton.scaleY = 0.1 * canvasWidth / 125;
+    newPlayButton.on('click', function() {
+      lastClick = new Date().getTime();
+      unpause();
+    });
+
+    newPlayButton.on('mouseover', function() {
+      newPlayButton.alpha = 1;
+      playText.x = playTextOutline.x = newPlayButton.x + newPlayButton.scaleX * 221 + 5;
+      playText.y = playTextOutline.y = newPlayButton.y - playText.getMetrics().height / 2;
+      playText.visible = playTextOutline.visible = true;
+      stage.update();
+    });
+    newPlayButton.on('mouseout', function() {
+      newPlayButton.alpha = 0.5;
+      playText.visible = playTextOutline.visible = false;
+      stage.update();
+    });
+    newPlayButton.cursor = 'pointer';
+    return newPlayButton;
+  };
+  var playButton = createPlayButton();
+  
+  var mobilePlayButton = createPlayButton();
+
   var playText = new createjs.Text('Climb', '22px Arial', 'white');
   playText.z = 1001;
   playText.visible = false;
@@ -177,24 +206,17 @@ var ContextMap = function(canvasId, config) {
   stage.addChild(playText);
   stage.addChild(playTextOutline);
 
-  playButton.on('mouseover', function() {
-    playButton.alpha = 1;
-    playText.x = playTextOutline.x = playButton.x + playButton.scaleX * 221 + 5;
-    playText.y = playTextOutline.y = playButton.y - playText.getMetrics().height / 2;
-    playText.visible = playTextOutline.visible = true;
-    stage.update();
-  });
-  playButton.on('mouseout', function() {
-    playButton.alpha = 0.5;
-    playText.visible = playTextOutline.visible = false;
-    stage.update();
-  });
+  mobilePlayButton.resize = function(scaleFactor) {
+    mobilePlayButton.x = 0;
+    mobilePlayButton.y = 0.5 * canvasHeight;
+    mobilePlayButton.scaleX = mobilePlayButton.scaleY = 0.6;
+  };
   playButton.resize = function(scaleFactor) {
     playButton.x = config.sideMargin * canvasWidth;
     playButton.y = 0.35 * canvasHeight;
     playButton.scaleX = playButton.scaleY *= scaleFactor.x;
   };
-  playButton.cursor = 'pointer';
+  addElement(mobilePlayButton);
   addElement(playButton);
 
   var mapUp = true;
@@ -205,7 +227,7 @@ var ContextMap = function(canvasId, config) {
   var unpause = function() {
     if (jsPanoNumber < lastPano) {
       paused = false;
-      playButton.visible = false;
+      playButton.visible = mobilePlayButton.visible = false;
       stage.update();
       document.getElementById('clickToPause').style.display = 'block';
       setTimeout(function() {
@@ -217,7 +239,7 @@ var ContextMap = function(canvasId, config) {
 
   this.pause = function() {
     krpano.call('pause(false);');
-    playButton.visible = true;
+    playButton.visible = mobilePlayButton.visible = true;
     stage.update();
     paused = true;
   };
@@ -267,14 +289,33 @@ var ContextMap = function(canvasId, config) {
 
   this.update = function() {
     if (jsPanoNumber == lastPano) {
-      playButton.visible = false;
+      playButton.visible = mobilePlayButton.visible = false;
     }
     stage.update();
+  };
+
+  var switchToMobile = function() {
+    addElement(mobilePlayButton);
+    removeElement(playButton);
+  };
+
+  var switchToFull = function() {
+    removeElement(mobilePlayButton);
+    addElement(playButton);
   };
 
   var resize = function() {
     var newHeight = 0.33 * krpano.clientHeight * ratio;
     var newWidth = 0.33 * krpano.clientWidth * ratio;
+    switchToFull();
+    var isMobile = false;
+    if (krpano.clientWidth < 768) {
+      switchToMobile();
+      isMobile = true;
+      var newHeight = 0.5 * krpano.clientHeight * ratio;
+      var newWidth = 0.5 * krpano.clientWidth * ratio;
+    }
+
     var scaleFactor = {'y': newHeight / stage.canvas.height, 'x': newWidth / stage.canvas.width};
 
     stage.canvas.width = canvasWidth = newWidth;
@@ -291,13 +332,18 @@ var ContextMap = function(canvasId, config) {
     for (var elementIdx in elements) {
       elements[elementIdx].resize(scaleFactor);
     }
+
     for (var markerIdx in campMarkers) {
-      repositionCampMarker(campMarkers[markerIdx], markerIdx == campMarkers.length - 1);
+      repositionCampMarker(campMarkers[markerIdx], markerIdx == campMarkers.length - 1, isMobile);
     }
     drawLines();
-    updateCurrentPosition();
+    updateCurrentPosition(isMobile);
 
-    stage.update();
+    if (krpano.clientWidth < 768 && mapUp) {
+      toggleMap(true);
+    } else {
+      stage.update();
+    }
   };
 
   var initCampMarkers = function() {
@@ -376,7 +422,7 @@ var ContextMap = function(canvasId, config) {
     }
   };
 
-  var repositionCampMarker = function(campMarker, summit) {
+  var repositionCampMarker = function(campMarker, summit, isMobile) {
     campMarker.elevation = (1 - config.bottomMargin) * canvasHeight -  (campMarker.campInfo.elevation - config.campInfo[0].elevation) / climbHeight * (0.85 * canvasHeight);
     if (mapUp) {
       campMarker.y = campMarker.elevation;
@@ -385,9 +431,25 @@ var ContextMap = function(canvasId, config) {
     }
     campMarker.x = campMarker.campInfo.panoNumber / climbLength * ((1 - 2 * config.sideMargin) * canvasWidth) + config.sideMargin * canvasWidth;
     if (summit && !mapUp) {
-      campMarker.scaleX = campMarker.scaleY = 0.25 * canvasWidth / 500;
+      if (!isMobile) {
+        campMarker.scaleX = campMarker.scaleY = 0.25 * canvasWidth / 500;
+      } else {
+        if (canvasHeight > canvasWidth) {
+          campMarker.scaleX = campMarker.scaleY = 0.25 * canvasWidth / 250;
+        } else {
+          campMarker.scaleX = campMarker.scaleY = 0.25 * canvasHeight / 250;
+        }
+      }
     } else {
-      campMarker.scaleX = campMarker.scaleY = 0.02 * canvasWidth / 10;
+      if (!isMobile) {
+        campMarker.scaleX = campMarker.scaleY = 0.02 * canvasWidth / 10;
+      } else {
+        if (canvasHeight > canvasWidth) {
+          campMarker.scaleX = campMarker.scaleY = 0.02 * canvasWidth / 5;
+        } else {
+          campMarker.scaleX = campMarker.scaleY = 0.02 * canvasHeight / 5;
+        }
+      }
     }
   };
 
@@ -423,13 +485,21 @@ var ContextMap = function(canvasId, config) {
   };
 
   var updateCurrentPosition = function() {
-    currentPositionMarker.x = jsPanoNumber / climbLength * (0.9 * canvasWidth) + 0.05 * canvasWidth;
+    currentPositionMarker.x = jsPanoNumber / climbLength * ((1 - 2 * config.sideMargin) * canvasWidth) + config.sideMargin * canvasWidth;
     if (mapUp || mapToggling) {
       placePositionMarkerOnSlope();
     } else {
       currentPositionMarker.y = (1 - config.bottomMargin) * canvasHeight;
     }
-    currentPositionMarker.scaleX = currentPositionMarker.scaleY = 0.04 * canvasWidth / 24;
+    if (krpano.clientWidth > 768) {
+      currentPositionMarker.scaleX = currentPositionMarker.scaleY = 0.04 * canvasWidth / 24;
+    } else {
+      if (canvasHeight > canvasWidth) {
+        currentPositionMarker.scaleX = currentPositionMarker.scaleY = 0.04 * canvasWidth / 12;
+      } else {
+        currentPositionMarker.scaleX = currentPositionMarker.scaleY = 0.04 * canvasHeight / 12;
+      }
+    }
   };
 
   this.updateCurrentPosition = function(currentPanoNumber) {
@@ -450,7 +520,7 @@ var ContextMap = function(canvasId, config) {
     currentPositionMarker.y = (currentPositionMarker.x - markerBefore.x) / (markerAfter.x - markerBefore.x) * (markerAfter.y - markerBefore.y) + markerBefore.y;
   };
 
-  var toggleMap = function() {
+  var toggleMap = function(isMobile) {
     mapUp = !mapUp;
 
     mapToggling = true;
@@ -472,12 +542,25 @@ var ContextMap = function(canvasId, config) {
           logo.visible = true;
         } else {
           summitMarker.graphics = summitMarker.mapDownGraphic;
-          summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasWidth / 500;
+          if (!isMobile) { 
+            summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasWidth / 500;
+          } else {
+            if (canvasHeight > canvasWidth) {
+              summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasWidth / 250;
+            } else {
+              summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasHeight / 250;
+            }
+          }
           summitMarker.regX = 414;
           summitMarker.regY = 578;
           logo.visible = false;
         }
-        button.visible = true;
+        updateCurrentPosition();
+        if (isMobile) {
+          button.visible = false;
+        } else {
+          button.visible = true;
+        }
         stage.update();
       } else {
         toggleStep++;
@@ -500,6 +583,9 @@ var ContextMap = function(canvasId, config) {
         backdrop.scaleY = boxHeight / backdrop.originalDimensions.height;
         drawLines();
         updateCurrentPosition();
+        if (isMobile) {
+          button.visible = false;
+        }
         stage.update();
       }
     }, 30);

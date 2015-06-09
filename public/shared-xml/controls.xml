@@ -8,13 +8,14 @@
     set(layer[back].url, http://d39rd677qckrt3.cloudfront.net/images/back-button.png);
     set(layer[back].x, 30);
     set(layer[back].y, 30);
-    set(layer[back].scale, 0.6);
+    if(mobileView, set(layer[back].scale, 1), set(layer[back].scale, 0.6));
     set(layer[back].onhover, layer[back].loadstyle(opaque));
     set(layer[back].onout, layer[back].loadstyle(transparent));
     set(layer[back].onclick, openurl(/#climb,_self));
     layer[back].loadstyle(transparent);
 
     addlayer(zoom);
+    if(mobileView, set(layer[zoom].visible, false));
     set(layer[zoom].type, container);
     set(layer[zoom].height, 120);
     set(layer[zoom].width, 52);
@@ -24,7 +25,7 @@
     addlayer(zoomin);
     set(layer[zoomin].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[zoomin].align, top);
-    set(layer[zoomin].scale, 0.65);
+    if(mobileView, set(layer[zoomin].scale, 1.2), set(layer[zoomin].scale, 0.65));
     set(layer[zoomin].onclick, zoomIn());
     set(layer[zoomin].keep, false);
     set(layer[zoomin].parent, layer[zoom]);
@@ -41,7 +42,7 @@
     addlayer(zoomout);
     set(layer[zoomout].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[zoomout].align, bottom);
-    set(layer[zoomout].scale, 0.65);
+    if(mobileView, set(layer[zoomout].scale, 1.2), set(layer[zoomout].scale, 0.65));
     set(layer[zoomout].onclick, zoomOut());
     set(layer[zoomout].keep, false);
     set(layer[zoomout].parent, layer[zoom]);
@@ -57,15 +58,15 @@
     layer[zoomout].loadstyle(transparent);
     addlayer(nextPrevControls);
     set(layer[nextPrevControls].type, container);
-    set(layer[nextPrevControls].height, 120);
+    if(mobileView, set(layer[nextPrevControls].height, 205),set(layer[nextPrevControls].height, 120));
     set(layer[nextPrevControls].width, 52);
     set(layer[nextPrevControls].align, bottomright);
-    set(layer[nextPrevControls].x, 100);
+    if(mobileView, set(layer[nextPrevControls].x, 50), set(layer[nextPrevControls].x, 100));
     set(layer[nextPrevControls].y, 30);
     addlayer(nextPic);
     set(layer[nextPic].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[nextPic].align, top);
-    set(layer[nextPic].scale, 0.65);
+    if(mobileView, set(layer[nextPic].scale, 1.2), set(layer[nextPic].scale, 0.65));
     set(layer[nextPic].onclick, loadNextPano(false, false));
     set(layer[nextPic].keep, false);
     set(layer[nextPic].parent, layer[nextPrevControls]);
@@ -83,7 +84,7 @@
     addlayer(prevPic);
     set(layer[prevPic].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
     set(layer[prevPic].align, bottom);
-    set(layer[prevPic].scale, 0.65);
+    if(mobileView, set(layer[prevPic].scale, 1.2), set(layer[prevPic].scale, 0.65));
     set(layer[prevPic].onclick, loadPrevPano(false, false));
     set(layer[prevPic].keep, false);
     set(layer[prevPic].parent, layer[nextPrevControls]);

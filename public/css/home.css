@@ -270,6 +270,9 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
     right: 0;
     z-index: 2;
 }
+#home .section-content {
+  margin-top: 50px;
+}
 #climb {
   text-align: left;
   height: 800px;
