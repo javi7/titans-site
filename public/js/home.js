@@ -11,16 +11,14 @@ $(document).ready(function(e) {
       var lightboxOffset = userOffset > 0 ? userOffset : $(window).scrollTop() + 0.1 * $(window).height();
       $(".lightbox").height($('body').height());  
       $(".lightbox-inner").css('top', lightboxOffset);
-      $("#" + name + "-lightbox").css('visibility', 'visible');
-      $("#" + name + "-lightbox").css('display', 'absolute');
+      $("#" + name + "-lightbox").show();
     }
   };
   $("#signup-button").click(openLightbox('signup'));
   $("#subscribe-link").click(openLightbox('subscribe'));
   $("#become-titan-button").click(openLightbox('signup', '#titans'));
   $("#close-signup-lightbox").click(function() {
-    $("#signup-lightbox").css('visibility', 'hidden');
-    $("#signup-lightbox").css('display', 'none');
+    $("#signup-lightbox").hide();
     var titanForm = $('#titan-form');
     titanForm.find('.form-group').removeClass('has-success has-error has-warning has-feedback');
     titanForm.find('label').hide();
@@ -29,8 +27,7 @@ $(document).ready(function(e) {
     titanForm.find('select').val('foamcorner');
   });
   $("#close-subscribe-lightbox").click(function() {
-    $("#subscribe-lightbox").css('visibility', 'hidden');
-    $("#subscribe-lightbox").css('display', 'none');
+    $("#subscribe-lightbox").hide();
     var subscribeForm = $('#subscribe-form-desktop');
     subscribeForm.find('.form-group').removeClass('has-success has-error has-warning has-feedback');
     subscribeForm.find('label').hide();

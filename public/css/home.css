@@ -329,12 +329,6 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
   letter-spacing: 3px;
   width: 100%;
 }
-a.anchor {
-  display: block;
-  position: relative;
-  top: -110px;
-  visibility: hidden;
-}
 .background-fit {
   vertical-align: top;
   line-height: 0;
@@ -378,7 +372,6 @@ a.anchor {
 }
 .lightbox {
   display: none;
-  visibility: hidden;
   z-index: 1500;
   position: absolute;
   top: 0;
