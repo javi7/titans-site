@@ -5,33 +5,22 @@ $(document).ready(function(e) {
      mouseX = e.pageX; 
      mouseY = e.pageY;
   });  
-  $(".no-touch #climb area").mouseover(function(){
-    var area = $(this);
-    var mountain = area.attr('name');
-    var imageJquery = $('#' + mountain + '-image');
-    if (!imageJquery.length) {
-      var imageId = mountain + '-image';
-      $('#climb').append($('<img src="/images/arrow-' + mountain + '.png" style="position:absolute; display:none" id="' + imageId + '" />'));
-      imageJquery = $('#' + imageId);
+  var openLightbox = function(name, offsetId) {
+    return function () {
+      var userOffset = offsetId && $(offsetId) ? $(offsetId).offset().top : 0;
+      var lightboxOffset = userOffset > 0 ? userOffset : $(window).scrollTop() + 0.1 * $(window).height();
+      $(".lightbox").height($('body').height());  
+      $(".lightbox-inner").css('top', lightboxOffset);
+      $("#" + name + "-lightbox").css('visibility', 'visible');
+      $("#" + name + "-lightbox").css('display', 'absolute');
     }
-    var coords = area.attr('coords').split(',');
-    imageJquery.css({'top': (parseInt(coords[1]) + parseInt(coords[5])) / 2 - 35,'left': parseInt(coords[2]) + 5, 'z-index': 1000}).fadeIn();
-  });
-  $("#climb area").mouseout(function(){
-    var image = $   ('#' + $(this).attr('name') + '-image')
-    image.fadeOut('slow');
-  });
-  var openLightbox = function() {
-    $(".lightbox").height($('body').height());  
-    $(".lightbox-inner").css('top', $(window).scrollTop() + 0.1 * $(window).height());
-    $("#signup-lightbox").css('visibility', 'visible');
   };
-  $("#signup-button").click(openLightbox);
-  $("#become-titan-button").click(function() {
-    setTimeout(openLightbox, 10);
-  });
-  $("#close-lightbox").click(function() {
+  $("#signup-button").click(openLightbox('signup'));
+  $("#subscribe-link").click(openLightbox('subscribe'));
+  $("#become-titan-button").click(openLightbox('signup', '#titans'));
+  $("#close-signup-lightbox").click(function() {
     $("#signup-lightbox").css('visibility', 'hidden');
+    $("#signup-lightbox").css('display', 'none');
     var titanForm = $('#titan-form');
     titanForm.find('.form-group').removeClass('has-success has-error has-warning has-feedback');
     titanForm.find('label').hide();
@@ -39,9 +28,25 @@ $(document).ready(function(e) {
     titanForm.find('input').val('');
     titanForm.find('select').val('foamcorner');
   });
+  $("#close-subscribe-lightbox").click(function() {
+    $("#subscribe-lightbox").css('visibility', 'hidden');
+    $("#subscribe-lightbox").css('display', 'none');
+    var subscribeForm = $('#subscribe-form-desktop');
+    subscribeForm.find('.form-group').removeClass('has-success has-error has-warning has-feedback');
+    subscribeForm.find('label').hide();
+    subscribeForm.find('.glyphicon').hide();
+    subscribeForm.find('input').val('');
+    subscribeForm.find('select').val('foamcorner');
+  });
   var pageSections = $(".home-section");
-  $(window).scroll(function() {
+  $(window).scroll({previousTop: 0}, function() {
     var fromTop = $(this).scrollTop();
+    if (fromTop < this.previousTop) {
+      $("nav").show();
+    } else {
+      $("nav").hide();
+    }
+    this.previousTop = fromTop;
     var currentSectionId = $.map(pageSections, function(section) {
       if ($(section).offset().top - 110  < fromTop && !$(section).hasClass('no-scroll'))
         return $(section).attr('id');

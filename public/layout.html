@@ -42,34 +42,39 @@
       </div>
     </div>
 
-    <div class="home-section container-fluid no-scroll" id="mobile-home">
-      <div class="image-container">
-        <h1 class="font-code-pro">The first complete climbing <span class="orangeText">experience</span></h1>
-        <img src="http://d39rd677qckrt3.cloudfront.net/images/preview.jpg" />
-        <h2 class="font-code-pro">Available now on <span class="orangeText">desktop</span> and <span class="orangeText">tablet</span></h2>
-        <h2 class="font-code-pro">Coming soon to <span class="orangeText">mobile</span></h2>
-        <form class="subscribe-form" id="subscribe-form-mobile">
-          <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="enter your email" />
-            <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
-            <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
-            <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
-            <label class="control-label font-helvetica" style="display:none"></label>
-          </div>
-          <div class="form-group font-code-pro subscribe-button-container">
-            <button type="submit" class="btn btn-titan btn-default">subscribe for updates</button>
-          </div>
-        </form>
+    <div class="home-section container-fluid no-scroll font-code-pro" id="mobile-home">
+      <div class="section-content">
+        <h1>Click to <span class="orangeText">climb</span></h1>
+        <a href="/climb/halfdome"><div class="mobile-climb-button">
+          <img width="96" height="48" src="http://d39rd677qckrt3.cloudfront.net/images/orange-mark.png" />
+          <p>Climb <span class="orangeText">Half Dome</span></p>
+        </div></a>
+        <a href="/climb/huaynapotosi"><div class="mobile-climb-button">
+          <img width="96" height="48" src="http://d39rd677qckrt3.cloudfront.net/images/orange-mark.png" />
+          <p>Climb <span class="orangeText">Huayna Potosi</span></p>
+        </div></a>
+        <a href="/climb/aconcagua"><div class="mobile-climb-button">
+          <img width="96" height="48" src="http://d39rd677qckrt3.cloudfront.net/images/orange-mark.png" />
+          <p>Climb <span class="orangeText">Aconcagua</span></p>
+        </div></a>
+        <a href="/climb/shasta"><div class="mobile-climb-button">
+          <img width="96" height="48" src="http://d39rd677qckrt3.cloudfront.net/images/orange-mark.png" />
+          <p>Climb <span class="orangeText">Shasta</span></p>
+        </div></a>
+        <a href="/climb/acotango"><div class="mobile-climb-button">
+          <img width="96" height="48" src="http://d39rd677qckrt3.cloudfront.net/images/orange-mark.png" />
+          <p>Climb <span class="orangeText">Acotango</span></p>
+        </div></a>
       </div>
     </div>
 
-    <div class="home-section container-fluid" id="climb">
+    <div class="home-section container-fluid no-scroll font-code-pro" id="mobile-about">
       <div class="section-content">
-        <h1 class="font-code-pro text-right">Click to <span class="orangeText">climb</span></h1>
+        <h1 class="font-code-pro">The First Climbing <span class="orangeText">Experience</span></h1>
         <p class="font-helvetica">
-          The orange mountains are ready to climb, and the gray mountains are coming soon. We will climb the tallest and most exciting mountains on every continent. Subscribe here and we will notify you each time a new mountain becomes available.
+          Whether you’re an avid climber or devoted couch potato, you can now experience mountains through our 360 degree climbing experience. We will climb the tallest and most exciting mountains on every continent, so subscribe here and we’ll notify you each time a mountain becomes available.
         </p>
-        <form class="subscribe-form" id="subscribe-form-desktop">
+        <form class="subscribe-form" id="subscribe-form-mobile">
           <div class="form-group">
             <input class="form-control" type="email" name="email" placeholder="enter your email" />
             <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
@@ -82,12 +87,18 @@
           </div>
         </form>
       </div>
-      <img src="http://d39rd677qckrt3.cloudfront.net/images/6-5.png" alt="Image description" usemap="#climbmap" width="1867.36" height="801.629999999999" />
-      <p class="mountain-label font-code-pro" style="top:615px;left:512px">Aconcagua</p>
-      <p class="mountain-label font-code-pro" style="top:517px;left:534px">Acotango</p>
-      <p class="mountain-label font-code-pro" style="top:503px;left:325px">Huayna Potosi</p>
-      <p class="mountain-label font-code-pro" style="top:197px;left:242px">Half Dome</p>
-      <p class="mountain-label font-code-pro" style="top:167px;left:234px">Shasta</p>
+    </div>
+
+    <div class="home-section container-fluid" id="climb">
+      <div class="section-content">
+        <h1 class="font-code-pro text-right"><span class="nowrap orangeText">Click</span> <span class="nowrap">to climb</span></h1>
+      </div>
+      <img id="climb-img" src="http://d39rd677qckrt3.cloudfront.net/images/6-5.png" alt="Image description" usemap="#climbmap" width="1867.36" height="801.629999999999" />
+      <a href="/climb/aconcagua"><p class="mountain-label font-code-pro" style="top:615px;left:512px">Aconcagua</p></a>
+      <a href="/climb/acotango"><p class="mountain-label font-code-pro" style="top:517px;left:534px">Acotango</p></a>
+      <a href="/climb/huaynapotosi"><p class="mountain-label font-code-pro" style="top:503px;left:300px">Huayna Potosi</p></a>
+      <a href="/climb/halfdome"><p class="mountain-label font-code-pro" style="top:197px;left:242px">Half Dome</p></a>
+      <a href="/climb/shasta"><p class="mountain-label font-code-pro" style="top:167px;left:234px">Shasta</p></a>
       <map name="climbmap">
         <area shape="polygon" name="aconcagua" href="/climb/aconcagua" alt="Aconcagua" coords="448,648,512,645,493,617">
         <area shape="polygon" name="acotango" href="/climb/acotango" alt="Acotango" coords="470,551,534,547,516,520">
@@ -129,7 +140,7 @@
         <div>
           <h1 class="font-code-pro">Contact <span class="orangeText">us</span></h1>
           <p class="font-helvetica">
-            Which mountain do you want to see next? What do you think of our climbing experience? <a href="https://www.youtube.com/watch?v=571BuZeeQjE">Why is James crying?</a> Whatever is on your mind, drop us a line.
+            Which mountain do you want to see next? What do you think of our climbing experience? <a href="https://www.youtube.com/watch?v=571BuZeeQjE">Why is James crying?</a> Whatever is on your mind, drop us a line or <a id="subscribe-link" href="#subscribe">subscribe</a> for updates.
           </p>
         </div>
       </div>
@@ -146,7 +157,7 @@
             <label class="control-label font-helvetica" style="margin-top: 10px;display: block;"></label>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-default font-code-pro">Send<img src="http://d39rd677qckrt3.cloudfront.net/images/brown-mark.png" height="33" width="60"/></button>
+            <button type="submit" class="btn btn-titan btn-default font-code-pro">Send<img src="http://d39rd677qckrt3.cloudfront.net/images/brown-mark.png" height="33" width="60"/></button>
             <label class="control-label font-helvetica" style="margin-top: 10px;display: block;"></label>
           </div>
         </form>
@@ -236,8 +247,25 @@
             <label class="control-label font-helvetica" style="margin-top: 10px;display: block;"></label>
           </div>
         </form>
-        <button id="close-lightbox" class="btn btn-default font-code-pro">X</button>
+        <button id="close-signup-lightbox" class="close-lightbox" class="btn btn-default font-code-pro">X</button>
       </div>
+    </div>
+
+    <div class="lightbox" id="subscribe-lightbox">
+      <div class="lightbox-inner">
+      <form class="subscribe-form" id="subscribe-form-desktop">
+        <div class="form-group">
+          <input class="form-control" type="email" name="email" placeholder="enter your email" />
+          <span class="glyphicon glyphicon-ok form-control-feedback" style="top:0;display:none"></span>
+          <span class="glyphicon glyphicon-warning-sign form-control-feedback" style="top:0;display:none"></span>
+          <span class="glyphicon glyphicon-remove form-control-feedback" style="top:0;display:none"></span>
+          <label class="control-label font-helvetica" style="display:none"></label>
+        </div>
+        <div class="form-group font-code-pro subscribe-button-container">
+          <button type="submit" class="btn btn-titan btn-default">subscribe</button>
+        </div>
+      </form>
+      <button id="close-subscribe-lightbox" class="close-lightbox" class="btn btn-default font-code-pro">X</button>
     </div>
   </body>
 
