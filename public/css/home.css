@@ -290,6 +290,7 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
     position: relative;
     margin-right: 50px;
     right: 0;
+    top: 100px;
     z-index: 2;
 }
 #home .section-content {
@@ -418,8 +419,11 @@ area {
   #titans { background-image: url(http://d39rd677qckrt3.cloudfront.net/images/10-mobile.jpg); padding: 30px 0; }
   #titans h1, #mobile-home h1, #mobile-about h1 { font-size: 4em;}
 }
-@media (max-width: 860px) {
-  #climb .section-content {
-    margin-top: 125px;
+@media (min-width: 769px) {
+  .section-content {
+    margin-top: 110px;
   }
+}
+#climb .section-content {
+  margin-top: 125px;
 }
