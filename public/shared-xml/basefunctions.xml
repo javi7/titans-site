@@ -80,7 +80,7 @@
       stopdelayedcall(keepClimbing);
       set(climbing, false);
       set(descending, false);
-      loadPanoWrapper(get(panoNumber), false, false, get(imgCacheBuster));
+      ifnot(%1 == true, loadPanoWrapper(get(panoNumber), false, false, get(imgCacheBuster)));
     );
   </action>
 

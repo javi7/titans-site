@@ -31,9 +31,7 @@ initClimbMode = function(mountainName) {
   krpano.call('set(lastPano, ' + campInfo[campInfo.length - 1].panoNumber + ');');
   var mobileView = krpano.clientWidth < 768;
   krpano.call('set(mobileView, ' + mobileView + ');');
-  setTimeout(function() {
-    krpano.call('showControls();');
-  }, 500);
+  krpano.call('pause(true)');
 
   paused = true;
 
