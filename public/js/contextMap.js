@@ -226,6 +226,7 @@ var ContextMap = function(canvasId, config) {
 
   var unpause = function() {
     if (jsPanoNumber < lastPano) {
+      krpano.call('breakall');
       paused = false;
       playButton.visible = mobilePlayButton.visible = false;
       stage.update();

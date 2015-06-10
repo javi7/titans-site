@@ -16,6 +16,7 @@ function getQueryVariable() {
   return null;
 }
 var pause = function(event) { 
+  krpano.call('breakall()');
   if (!contextMap.getLastClick() || new Date().getTime() - contextMap.getLastClick() > 10) {
     krpano.call('pause(false);');
     contextMap.pause();
@@ -46,8 +47,8 @@ initClimbMode = function(mountainName) {
       }
     }
   };
-  panoDiv.ontouchstart = pause;
-  panoDiv.onclick = pause;
+  document.ontouchstart = pause;
+  document.onclick = pause;
   document.addEventListener("keydown", pauseOnSpace, false);
   
   contextMap = new ContextMap('contextMap', {'topMargin': 0.025, 'bottomMargin': 0.05, 'sideMargin': 0.1, 'buttonWidth': 0.1, 'campInfo': campInfo});

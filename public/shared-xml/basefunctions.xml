@@ -13,8 +13,7 @@
   <action name="initializeVars">
     set(initialHlookat, get(view.hlookat));
     set(initialVlookat, get(view.vlookat));
-    if(panoNumber == nextCamp AND climbing == true, 
-      js(pause));
+    if(panoNumber == nextCamp AND climbing == true, js(pause));
     setupDemoMode();
     if(climbing == false AND descending == false, showControls(), hideControls());
     delayedcall(keepClimbing, 1, 
@@ -28,6 +27,9 @@
       );
     );
     wait(LOAD);
+    trace(loaded);
+    delayedcall(1,if(panoNumber == prevCamp AND climbing == false, startSpinning()));
+    trace(should have called);
     add(nextPano, panoNumber, 1);
     <!-- js(finishTransition();); -->
   </action>
@@ -50,8 +52,8 @@
   </action>
 
   <action name="loadNextPano">
-      add(targetPano, get(panoNumber), 1);
-      if(targetPano LE lastPano, loadPanoWrapper(get(targetPano), %1, %2, get(nextImgCacheBuster)));
+    add(targetPano, get(panoNumber), 1);
+    if(targetPano LE lastPano, loadPanoWrapper(get(targetPano), %1, %2, get(nextImgCacheBuster)));
   </action>
 
   <!-- loadNextPano(imageNumber, isClimbing, isDescending) -->
@@ -80,8 +82,15 @@
       stopdelayedcall(keepClimbing);
       set(climbing, false);
       set(descending, false);
-      ifnot(%1 == true, loadPanoWrapper(get(panoNumber), false, false, get(imgCacheBuster)));
+      if(%1 == true, delayedcall(1,startSpinning()), loadPanoWrapper(get(panoNumber), false, false, get(imgCacheBuster)));
     );
+  </action>
+
+  <action name="startSpinning">
+    trace(start spinning);
+    sub(newhlookat, get(view.hlookat), 360);
+    trace(newhlookat);
+    lookto(get(newhlookat),get(view.vlookat),get(view.fov),linear(5), false, true);
   </action>
 
   <action name="preload">
