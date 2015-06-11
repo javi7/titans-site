@@ -37,6 +37,7 @@ initClimbMode = function(mountainName) {
   paused = true;
 
   var pauseOnSpace = function(event) {
+    krpano.call('breakall()');
     var keycode = event.keyCode;
     if (keycode == 32) {
       paused = !paused;

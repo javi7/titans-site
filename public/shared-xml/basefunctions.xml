@@ -28,7 +28,7 @@
     );
     wait(LOAD);
     trace(loaded);
-    delayedcall(1,if(panoNumber == prevCamp AND climbing == false, startSpinning()));
+    delayedcall(1,if((panoNumber == prevCamp OR panoNumber == lastPano) AND climbing == false, startSpinning()));
     trace(should have called);
     add(nextPano, panoNumber, 1);
     <!-- js(finishTransition();); -->
@@ -87,9 +87,7 @@
   </action>
 
   <action name="startSpinning">
-    trace(start spinning);
     sub(newhlookat, get(view.hlookat), 360);
-    trace(newhlookat);
     lookto(get(newhlookat),get(view.vlookat),get(view.fov),linear(5), false, true);
   </action>
 
