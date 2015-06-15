@@ -32,37 +32,49 @@ body {
   margin-top: 40px;
   margin-right: 50px;
 }
-.btn-titan, .btn-titan.active, .btn-titan:active, .btn-titan:focus, .btn-titan:hover
-{
+.btn-titan {
   word-spacing: 1px;
   letter-spacing: 1px;
-  color: white;
-  background-color: #dc6026;
-  border-color: white;
   border-radius: 2px;
-  font-size: 0.75em;
   padding: 5px 30px;
-}
-nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:focus, nav .btn-titan:hover {
   font-size: 1.25em;
-}
-.btn-titan, .btn-titan.active, .btn-titan:active, .btn-titan:focus, .btn-titan:hover {
-  padding: 10px 30px;
-  font-size: 1.5em;
   border-width: 5px;
 }
 
-#titans .btn-titan, #titans .btn-titan.active, #titans .btn-titan:active, #titans .btn-titan:focus, #titans .btn-titan:hover {
-  background-color: white;
-  color: #dc6026;
+.btn-white-orange, .btn-white-orange.active, .btn-white-orange:active, .btn-white-orange:focus, .btn-white-orange:hover {
+  color: white;
+  background-color: #dc6026;
+  border-color: white;
+}
+
+.btn-white-orange.active, .btn-white-orange:active, .btn-white-orange:focus, .btn-white-orange:hover {
   border-color: #dc6026;
 }
 
-#contact .btn-titan, #contact .btn-titan.active, #contact .btn-titan:active, #contact .btn-titan:focus, #contact .btn-titan:hover, #mobile-about .btn-titan, #mobile-about .btn-titan.active, #mobile-about .btn-titan:active, #mobile-about .btn-titan:focus, #mobile-about .btn-titan:hover {
+.btn-orange-white, .btn-orange-white.active, .btn-orange-white:active, .btn-orange-white:focus, .btn-orange-white:hover {
+  color: #dc6026;
   background-color: white;
+  border-color: #dc6026;
+}
+
+.btn-gray-white, .btn-gray-white.active, .btn-gray-white:active, .btn-gray-white:focus, .btn-gray-white:hover {
   color: #373737;
+  background-color: white;
   border-color: #373737;
-}  
+}
+
+.btn-orange-white.active, .btn-orange-white:active, .btn-orange-white:focus, .btn-orange-white:hover {
+  border-color: white;
+}
+
+.lightbox button, .lightbox button.active, .lightbox button:active, .lightbox button:focus, .lightbox button:hover {
+  font-size: 1.5em;
+  border-radius: 0;
+  border-color: white;
+  border-width: 2px;
+  background-color: transparent;
+  color: white;
+}
 
 #collapse-menu
 {
@@ -360,14 +372,6 @@ nav .btn-titan, nav .btn-titan.active, nav .btn-titan:active, nav .btn-titan:foc
 #contact :-ms-input-placeholder {  
    color: white;
    font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; font-weight:600; font-stretch:condensed;
-}
-.lightbox button, .lightbox button.active, .lightbox button:active, .lightbox button:focus, .lightbox button:hover {
-  font-size: 1.5em;
-  border-radius: 0;
-  border-color: white;
-  border-width: 2px;
-  background-color: transparent;
-  color: white;
 }
 .navbar-left img {
     margin-top: 10px;

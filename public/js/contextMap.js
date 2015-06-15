@@ -240,7 +240,9 @@ var ContextMap = function(canvasId, config) {
 
   this.pause = function() {
     krpano.call('pause(false);');
-    playButton.visible = mobilePlayButton.visible = true;
+    if (jsPanoNumber != lastPano) {
+      playButton.visible = mobilePlayButton.visible = true;
+    }
     stage.update();
     paused = true;
   };
