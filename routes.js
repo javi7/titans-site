@@ -37,6 +37,11 @@ module.exports = {
             console.log('failed to send titan application received email: ' + req.body);
           }
         });
+        emailSender.sendTitanApplicationToMike(req.body, function(err, result) {
+          if (err || !result) {
+            console.log('failed to forward titan application: ' + req.body);
+          }
+        });
       }
     });
   },
@@ -133,6 +138,11 @@ module.exports = {
         emailSender.sendNewSubscriptionEmail(req.body, function(err, result) {
           if (err || !result) {
             console.log('failed to send new subscription email: ' + req.body);
+          }
+        });
+        emailSender.forwardNewSubscriptionAlert(req.body, function(err, result) {
+          if (err || !result) {
+            console.log('failed to forward new subscription alert: ' + req.body);
           }
         });
       }
