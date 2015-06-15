@@ -27,21 +27,18 @@
       );
     );
     wait(LOAD);
-    trace(loaded);
     delayedcall(1,if((panoNumber == prevCamp OR panoNumber == lastPano) AND climbing == false, startSpinning()));
-    trace(should have called);
     add(nextPano, panoNumber, 1);
     <!-- js(finishTransition();); -->
   </action>
 
   <action name="preloadWrapper">
-    if(climbing == true AND panoNumber LT lastPano, 
-      trace(climbing and preloading);
-      preload(get(nextPano), low-res, get(nextImgCacheBuster));
-      preload(get(panoNumber), hi-res, get(imgCacheBuster)),
+    if(climbing == true AND panoNumber AND panoNumber LT lastPano, 
+      if(nextPano AND nextPano != "null", preload(get(nextPano), low-res, get(nextImgCacheBuster)));
+      if(panoNumber AND panoNumber != "null", preload(get(panoNumber), hi-res, get(imgCacheBuster))),
       if(panoNumber LT lastPano,
-        preload(get(nextPano), low-res, get(nextImgCacheBuster));
-        preload(get(nextPano), hi-res, get(nextImgCacheBuster))
+        if(nextPano AND nextPano != "null", preload(get(nextPano), low-res, get(nextImgCacheBuster)));
+        if(nextPano AND nextPano != "null", preload(get(nextPano), hi-res, get(nextImgCacheBuster)));
       )
     );
   </action>
@@ -139,12 +136,12 @@
     txtadd(url_l, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain), get(url_l));
     if(%3, txtadd(url_l, get(url_l), '?mouses=', %3));
 
-    set(plugin[pre_%1_r_%2].onloaded, trace(preload, get(url_r), done);removeplugin(pre_%1_r_%2) );
-    set(plugin[pre_%1_d_%2].onloaded, trace(preload, get(url_d), done);removeplugin(pre_%1_d_%2) );
-    set(plugin[pre_%1_b_%2].onloaded, trace(preload, get(url_b), done);removeplugin(pre_%1_b_%2) );
-    set(plugin[pre_%1_u_%2].onloaded, trace(preload, get(url_u), done);removeplugin(pre_%1_u_%2) );
-    set(plugin[pre_%1_f_%2].onloaded, trace(preload, get(url_f), done);removeplugin(pre_%1_f_%2) );
-    set(plugin[pre_%1_l_%2].onloaded, trace(preload, get(url_l), done);removeplugin(pre_%1_l_%2) );
+    set(plugin[pre_%1_r_%2].onloaded, trace('preloaded ', get(url_r));removeplugin(pre_%1_r_%2) );
+    set(plugin[pre_%1_d_%2].onloaded, trace('preloaded ', get(url_d));removeplugin(pre_%1_d_%2) );
+    set(plugin[pre_%1_b_%2].onloaded, trace('preloaded ', get(url_b));removeplugin(pre_%1_b_%2) );
+    set(plugin[pre_%1_u_%2].onloaded, trace('preloaded ', get(url_u));removeplugin(pre_%1_u_%2) );
+    set(plugin[pre_%1_f_%2].onloaded, trace('preloaded ', get(url_f));removeplugin(pre_%1_f_%2) );
+    set(plugin[pre_%1_l_%2].onloaded, trace('preloaded ', get(url_l));removeplugin(pre_%1_l_%2) );
 
     set(plugin[pre_%1_r_%2].url, get(url_r));
     set(plugin[pre_%1_d_%2].url, get(url_d));
