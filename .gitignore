@@ -3,3 +3,5 @@
 *.sublime-project
 *.sublime-workspace
 aws.txt
+/public/hi-res
+/public/firsts

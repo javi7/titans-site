@@ -38,6 +38,13 @@ $(document).ready(function(e) {
   var pageSections = $(".home-section");
   $(window).scroll({previousTop: 0}, function() {
     var fromTop = $(this).scrollTop();
+    if (fromTop === 0) {
+      $('#fullNav').hide();
+      $('#fakeNav').show();
+    } else {
+      $('#fullNav').show();
+      $('#fakeNav').hide();
+    }
     this.previousTop = fromTop;
     var currentSectionId = $.map(pageSections, function(section) {
       if ($(section).offset().top - 110  < fromTop && !$(section).hasClass('no-scroll'))

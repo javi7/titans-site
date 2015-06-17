@@ -139,6 +139,7 @@ schema.statics = {
     });
   },
   createTitanApplication: function(titanApp, cb) {
+    titanApp.climbingGuide = titanApp.climbingGuide == 'yes';
     var newUser = new User(titanApp);
     newUser.save(function(err) {
       if (err) {
