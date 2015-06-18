@@ -486,5 +486,5 @@ area {
   #bg-video-container video { width: 200%; } 
 }
 @media (max-width: 900px) {
-  #bg-video-container video { width: 250%; } 
+  #bg-video-container video { width: 225%; } 
 }
