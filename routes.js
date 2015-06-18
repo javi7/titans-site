@@ -149,7 +149,7 @@ module.exports = {
     });
   },
   climb: function(req, res) {
-    if (mountainInfo[req.params.mountain]) {
+    if (mountainInfo[req.params.mountain] && (mountainInfo[req.params.mountain] != 'buriedtreasure' || process.env.NODE_ENV != 'prod')) {
       fs.readFile('./public/js/krpano.js', 'utf8', function (err, data) {
         var krpanojs = null;
         if (!err) {

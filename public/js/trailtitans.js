@@ -52,7 +52,7 @@ initClimbMode = function(mountainName) {
   document.onclick = pause;
   document.addEventListener("keydown", pauseOnSpace, false);
   
-  contextMap = new ContextMap('contextMap', {'topMargin': 0.025, 'bottomMargin': 0.05, 'sideMargin': 0.1, 'buttonWidth': 0.1, 'campInfo': campInfo});
+  contextMap = new ContextMap('contextMap', {'topMargin': 0.025, 'bottomMargin': 0.05, 'sideMargin': 0.1, 'buttonWidth': 0.1, 'campInfo': campInfo}, mountainName);
   contextMap.initialize();
 };
 

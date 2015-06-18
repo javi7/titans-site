@@ -8,7 +8,7 @@
   campInfo - map of camp information
 **/
 
-var ContextMap = function(canvasId, config) {
+var ContextMap = function(canvasId, config, mountainName) {
   function testCSS(prop) {
     return prop in document.documentElement.style;
   }
@@ -23,7 +23,7 @@ var ContextMap = function(canvasId, config) {
 
   var ratio = devicePixelRatio / backingStoreRatio;
 
-  var climbHeight = config.campInfo[config.campInfo.length - 1].elevation - config.campInfo[0].elevation;
+  var climbHeight = Math.max.apply(null,campInfo.map(function(camp){return camp.elevation})) - Math.min.apply(null,campInfo.map(function(camp){return camp.elevation}));
   var climbLength = config.campInfo[config.campInfo.length - 1].panoNumber;
   var lastClick = null;
   var elements = [];
@@ -156,6 +156,10 @@ var ContextMap = function(canvasId, config) {
   logo.resize = function() {
     logo.x = (1 - 2 * config.sideMargin) * canvasWidth;
     logo.y = (1 - 2 * config.bottomMargin) * canvasHeight;
+    if (mountainName == 'buriedtreasure') {
+      logo.x = (1 - 0.5 * config.sideMargin) * canvasWidth;
+      logo.y = (4 * config.bottomMargin) * canvasHeight;
+    }
     if (canvasWidth > logo.originalDimensions.x / logo.originalDimensions.y * canvasHeight) {
       logo.scaleY = logo.scaleX = (0.15 * canvasHeight) / logo.originalDimensions.y;
     } else {
@@ -214,8 +218,21 @@ var ContextMap = function(canvasId, config) {
   playButton.resize = function(scaleFactor) {
     playButton.x = config.sideMargin * canvasWidth;
     playButton.y = 0.35 * canvasHeight;
+    if (mountainName == 'buriedtreasure') {
+      playButton.x = (1 - 2 * config.sideMargin) * canvasWidth;
+      playButton.y = 0.4 * canvasHeight;
+    }
     playButton.scaleX = playButton.scaleY *= scaleFactor.x;
   };
+  if (mountainName == 'buriedtreasure') {
+    playButton.on('mouseover', function() {
+      playButton.alpha = 1;
+      playText.x = playTextOutline.x = playButton.x - playText.getMetrics().width - 5;
+      playText.y = playTextOutline.y = playButton.y - playText.getMetrics().height / 2;
+      playText.visible = playTextOutline.visible = true;
+      stage.update();
+    });
+  }
   addElement(mobilePlayButton);
   addElement(playButton);
 
@@ -305,6 +322,7 @@ var ContextMap = function(canvasId, config) {
   var switchToFull = function() {
     stage.removeChild(mobilePlayButton);
     stage.addChild(playButton);
+    button.visible = true;
   };
 
   var resize = function() {

@@ -23,5 +23,11 @@ module.exports = {
     "displayName" : "Shasta",
     "mountainName" : "shasta",
     "js" : "[{'name':'bunny flats','elevation':2091,'panoNumber':1},{'name':'lake helen','elevation':3183,'panoNumber':32},{'name':'summit','elevation':4322,'panoNumber':60}]"
+  },
+  'buriedtreasure': {
+    "displayName": "Buried Treasure",
+    "mountainName": "buriedtreasure",
+    "js" : "[{'name':'Street','elevation':248,'panoNumber':1},{'name':'North Peak','elevation':281,'panoNumber':6},{'name':'Twin Peaks Crevasse', 'elevation':250,'panoNumber':13},{'name':'South Peak','elevation':285,'panoNumber':17},{'name':'Bonus Mini Peak','elevation':268,'panoNumber':26},{'name':'Buried Treasure','elevation':250,'panoNumber':38}]"
   }
 };
+
