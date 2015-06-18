@@ -59,7 +59,8 @@
     set(xmlFile, '%1-1_Panorama');
     if(%3 == true, txtadd(xmlFile, get(xmlFile), '_desc.xml'), txtadd(xmlFile, get(xmlFile), '.xml'));
     if(%4, txtadd(xmlFile, get(xmlFile), '?houses=', %4));
-    if(%2 == true OR %3 == true, txtadd(xmlFile, ../../low-res/xml/, get(xmlFile)), txtadd(xmlFile, ../../hi-res/xml/, get(xmlFile)));
+    txtadd(prefix, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain));
+    if(%2 == true OR %3 == true, txtadd(xmlFile, get(prefix), /low-res/xml/, get(xmlFile)), txtadd(xmlFile, get(prefix), /hi-res/xml/, get(xmlFile)));
     txtadd(loadPanoCall, 'loadpano(', get(xmlFile), ',staticsLoaded=true&amp;panoNumber=%1&amp;climbing=%2&amp;descending=%3, null, BLEND(0.5));');
     trace(loadPanoCall);
     call(loadPanoCall);
