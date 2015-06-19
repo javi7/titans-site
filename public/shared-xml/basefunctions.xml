@@ -13,8 +13,11 @@
   <action name="initializeVars">
     set(initialHlookat, get(view.hlookat));
     set(initialVlookat, get(view.vlookat));
+    js(setCampVariables(get(panoNumber)););
+  </action>
+
+  <action name="finishInitializingVars">
     if(panoNumber == nextCamp AND climbing == true, js(pause));
-    setupDemoMode();
     if(climbing == false AND descending == false, showControls(), hideControls());
     delayedcall(keepClimbing, 1, 
       if(climbing == true,

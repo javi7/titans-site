@@ -1,8 +1,4 @@
 <krpano>
-  <action name="setupDemoMode">
-    js(setCampVariables(get(panoNumber)););
-  </action>
-
   <action name="showControls">
     addlayer(back);
     set(layer[back].url, http://d39rd677qckrt3.cloudfront.net/images/back-button.png);

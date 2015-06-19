@@ -2,6 +2,8 @@ var krpano = null;
 var panoDiv = null;
 
 var contextMap = null;
+var initialized = false;
+var mountainName = null;
 
 function getQueryVariable() {
   var variable = 'startAt';
@@ -23,18 +25,11 @@ var pause = function(event) {
   }
 };
 
-var initClimbMode = function(mountainName) {
+var initClimbMode = function(mtnName) {
+  mountainName = mtnName;
   krpano = document.getElementById("krpanoSWFObject");
   panoDiv = document.getElementById("pano");
-  var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
-  krpano.call('set(panoNumber,' + initialPanoNumber + ');');
-  krpano.call('setupDemoMode();');
-  krpano.call('set(mountain, ' + mountainName + ');');
-  krpano.call('set(lastPano, ' + campInfo[campInfo.length - 1].panoNumber + ');');
-  var mobileView = krpano.clientWidth < 768;
-  krpano.call('set(mobileView, ' + mobileView + ');');
-  krpano.call('pause(true)');
-
+  
   paused = true;
 
   var pauseOnSpace = function(event) {
@@ -57,7 +52,29 @@ var initClimbMode = function(mountainName) {
   contextMap.initialize();
 };
 
+var initializeXmlVars = function() {
+  var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
+  krpano.call('set(climbing, false);');
+  krpano.call('set(ascending, false);');
+  krpano.call('set(descending, false);');
+  krpano.call('set(mountain, ' + mountainName + ');');
+  krpano.call('set(lastPano, ' + campInfo[campInfo.length - 1].panoNumber + ');');
+  if (initialPanoNumber != 1) {
+    krpano.call('loadPanoWrapper(' + initialPanoNumber + ',false,false);');
+    return false;
+  }
+  return true;
+};
+
 var setCampVariables = function(panoNumber) {
+  if (!initialized) {
+    initialized = true;
+    if (!initializeXmlVars()) {
+      return false;
+    }
+  }
+  var mobileView = krpano.clientWidth < 768;
+  krpano.call('set(mobileView, ' + mobileView + ');');
   var prevCamp = 0;
   var nextCamp = 0;
   var jsPanoNumber = parseInt(panoNumber);
@@ -90,6 +107,8 @@ var setCampVariables = function(panoNumber) {
   krpano.call('set(nextImgCacheBuster,' + nextImgCacheBuster + ');');
   krpano.call('set(prevImgCacheBuster,' + prevImgCacheBuster + ');');
   krpano.call('preloadWrapper()');
+
+  krpano.call('finishInitializingVars();');
 
   contextMap.updateCurrentPosition(jsPanoNumber);
   contextMap.update();

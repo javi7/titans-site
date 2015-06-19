@@ -139,6 +139,22 @@ h1 {
   /* min-height: 95vh; */
 }
 
+#himalaya-outreach-container {
+  position: absolute;
+  left: 30px;
+}
+#himalaya-outreach-container img {
+  border: 1px solid white;
+}
+
+@media (max-width: 800px) {
+  #himalaya-outreach-container {
+    position: inherit;
+    left: 0;
+    margin-bottom: 20px;
+  }
+}
+
 #fake-controls-container img {
     opacity: 0.5;
     filter: alpha(opacity=50);
