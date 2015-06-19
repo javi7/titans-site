@@ -1,0 +1,40 @@
+.lightbox {
+  z-index: 1500;
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  width: 100%;
+}
+.lightbox-inner {
+  color: white;
+  background-color: #373737;
+  background-color: rgba(55,55,55,0.5);
+  text-align: center;
+  position: relative;
+  max-width: 75vw;
+  margin: 0 auto;
+  padding: 20px 5vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 80vh;
+}
+.close-lightbox {
+  position: absolute;
+  right: 5vw;
+  top: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  padding:5px;
+}
+p {
+    text-align: justify;
+    /* margin: 8px 50px; */
+}
+h1 {
+  font-size: 2.5em;
+  border-bottom: 5px solid #dc6026;
+}
+#start-climbing-button {
+  margin-top: 20px;
+  cursor: pointer;
+}

@@ -22,7 +22,8 @@ var pause = function(event) {
     contextMap.pause();
   }
 };
-initClimbMode = function(mountainName) {
+
+var initClimbMode = function(mountainName) {
   krpano = document.getElementById("krpanoSWFObject");
   panoDiv = document.getElementById("pano");
   var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
@@ -56,7 +57,7 @@ initClimbMode = function(mountainName) {
   contextMap.initialize();
 };
 
-setCampVariables = function(panoNumber) {
+var setCampVariables = function(panoNumber) {
   var prevCamp = 0;
   var nextCamp = 0;
   var jsPanoNumber = parseInt(panoNumber);
@@ -94,3 +95,9 @@ setCampVariables = function(panoNumber) {
   contextMap.update();
 };
 
+var closeInfoBox = function(event) {
+  document.getElementById('infoBox').style.display = 'none';
+  var evt = event ? event:window.event;
+  if (evt.stopPropagation)    evt.stopPropagation();
+  if (evt.cancelBubble!=null) evt.cancelBubble = true;
+}

@@ -55,40 +55,7 @@ h1 {
   margin-top: 40px;
   margin-right: 50px;
 }
-.btn-titan {
-  word-spacing: 1px;
-  letter-spacing: 1px;
-  border-radius: 2px;
-  padding: 5px 30px;
-  font-size: 1.25em;
-  border-width: 5px;
-}
 
-.btn-white-orange, .btn-white-orange.active, .btn-white-orange:active, .btn-white-orange:focus, .btn-white-orange:hover {
-  color: white;
-  background-color: #dc6026;
-  border-color: white;
-}
-
-.btn-white-orange.active, .btn-white-orange:active, .btn-white-orange:focus, .btn-white-orange:hover {
-  border-color: #dc6026;
-}
-
-.btn-orange-white, .btn-orange-white.active, .btn-orange-white:active, .btn-orange-white:focus, .btn-orange-white:hover {
-  color: #dc6026;
-  background-color: white;
-  border-color: #dc6026;
-}
-
-.btn-gray-white, .btn-gray-white.active, .btn-gray-white:active, .btn-gray-white:focus, .btn-gray-white:hover {
-  color: #373737;
-  background-color: white;
-  border-color: #373737;
-}
-
-.btn-orange-white.active, .btn-orange-white:active, .btn-orange-white:focus, .btn-orange-white:hover {
-  border-color: white;
-}
 
 .lightbox button, .lightbox button.active, .lightbox button:active, .lightbox button:focus, .lightbox button:hover {
   font-size: 1.5em;
@@ -358,7 +325,7 @@ h1 {
     left: 0;
 }
 #climb h2 {
-  border-bottom: 5px solid #dc6206;
+  border-bottom: 5px solid #dc6026;
   color: #373737;
   font-size: 5em;
   /* margin-right: 30px; */
