@@ -200,4 +200,7 @@ $(document).ready(function(e) {
     inputFormGroup.removeClass('has-success has-warning has-feedback has-error');
     inputFormGroup.find('label').hide();
   });
+  $("#himalaya-outreach-link").click(function(event) {
+    ga('send', 'event', 'externalLink', 'click', 'himalaya-outreach');
+  });
 });
