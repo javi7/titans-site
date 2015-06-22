@@ -38,7 +38,7 @@ $(document).ready(function(e) {
   var pageSections = $(".home-section");
   $(window).scroll({previousTop: 0}, function() {
     var fromTop = $(this).scrollTop();
-    if (fromTop === 0) {
+    if (fromTop === 0 && $(window).width() > 768) {
       $('#fullNav').hide();
       $('#fakeNav').show();
     } else {

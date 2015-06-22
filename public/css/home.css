@@ -187,9 +187,23 @@ h1 {
     display: inherit;
     background-color: #373737;
     background-color: rgba(55,55,55,.75);
+    background-image: url(http://d39rd677qckrt3.cloudfront.net/images/mobile-condor.png);
     color: white;
   }
-
+  #mobile-about::after {
+    content: "";
+    background: rgba(55, 55, 55, 0.75);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: block;
+  }
+  #mobile-about > * {
+    z-index: 10;
+  }
   #mobile-home .subscribe-form {
     margin-top: 30px;
   }
@@ -202,6 +216,12 @@ h1 {
   .mobile-climb-button {
     margin-top: 30px;
     text-align: left;
+  }
+  #fullNav {
+    display: inherit;
+  }
+  #fakeNav {
+    display: none;
   }
 }
 @media (min-width: 769px) {
