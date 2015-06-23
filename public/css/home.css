@@ -418,7 +418,7 @@ h1 {
   padding: 80px 10% 20px 10%;
   position: relative;
   max-width: 90vw;
-  margin: 0 auto;
+  margin: 10vh auto 0 auto;
 }
 .close-lightbox {
   position: absolute;
