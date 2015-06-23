@@ -1,6 +1,7 @@
 body {
   font-size: 16px;
 }
+
 @media (max-width: 1000px) {
   body { font-size: 12px; }
 }
@@ -415,10 +416,14 @@ h1 {
   color: white;
   background-color: #393d49;
   text-align: center;
-  padding: 80px 10% 20px 10%;
+  padding: 10px 50px;
   position: relative;
   max-width: 90vw;
-  margin: 10vh auto 0 auto;
+  margin: 20px auto 0 auto;
+}
+
+.subscribe-form {
+    margin: 80px 10px;
 }
 .close-lightbox {
   position: absolute;
