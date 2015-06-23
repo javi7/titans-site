@@ -203,4 +203,10 @@ $(document).ready(function(e) {
   $("#himalaya-outreach-link").click(function(event) {
     ga('send', 'event', 'externalLink', 'click', 'himalaya-outreach');
   });
+  $("nav area").click(function(event) {
+    $('body, home').animate(
+      { scrollTop: $($(event.target).attr('href')).offset().top },
+      500);
+    return false;
+  })
 });
