@@ -17,7 +17,6 @@
   </action>
 
   <action name="finishInitializingVars">
-    if(panoNumber == nextCamp AND climbing == true, js(pause));
     if(climbing == false AND descending == false, showControls(), hideControls());
     delayedcall(keepClimbing, 1, 
       if(climbing == true,
@@ -30,7 +29,7 @@
       );
     );
     wait(LOAD);
-    delayedcall(1,if((panoNumber == prevCamp OR panoNumber == lastPano) AND climbing == false, startSpinning()));
+    delayedcall(1,if((panoNumber == prevCamp OR panoNumber == lastPano) AND climbing == false, js(contextMap.pause(););startSpinning();));
     add(nextPano, panoNumber, 1);
     <!-- js(finishTransition();); -->
   </action>
@@ -56,15 +55,18 @@
     if(targetPano LE lastPano, loadPanoWrapper(get(targetPano), %1, %2, get(nextImgCacheBuster)));
   </action>
 
-  <!-- loadNextPano(imageNumber, isClimbing, isDescending) -->
+  <!-- loadNextPano(imageNumber, isClimbing, isDescending, cacheBuster) -->
   <action name="loadPanoWrapper">
     resetView();
+    set(loadClimbing, %2);
+    set(loadDescending, %3);
+    if(%1 == nextCamp, set(loadClimbing, false));
     set(xmlFile, '%1-1_Panorama');
     if(%3 == true, txtadd(xmlFile, get(xmlFile), '_desc.xml'), txtadd(xmlFile, get(xmlFile), '.xml'));
     if(%4, txtadd(xmlFile, get(xmlFile), '?houses=', %4));
     txtadd(prefix, 'http://d39rd677qckrt3.cloudfront.net/mountains/', get(mountain));
-    if(%2 == true OR %3 == true, txtadd(xmlFile, get(prefix), /low-res/xml/, get(xmlFile)), txtadd(xmlFile, get(prefix), /hi-res/xml/, get(xmlFile)));
-    txtadd(loadPanoCall, 'loadpano(', get(xmlFile), ',staticsLoaded=true&amp;panoNumber=%1&amp;climbing=%2&amp;descending=%3, null, BLEND(0.5));');
+    if(loadClimbing == true OR %3 == true, txtadd(xmlFile, get(prefix), /low-res/xml/, get(xmlFile)), txtadd(xmlFile, get(prefix), /hi-res/xml/, get(xmlFile)));
+    txtadd(loadPanoCall, 'loadpano(', get(xmlFile), ',staticsLoaded=true&amp;panoNumber=%1&amp;climbing=', get(loadClimbing),'&amp;descending=%3, null, BLEND(0.5));');
     trace(loadPanoCall);
     call(loadPanoCall);
   </action>
