@@ -55,6 +55,15 @@ module.exports = {
     "js" : "[{'name':'Street','elevation':248,'panoNumber':1},{'name':'North Peak','elevation':281,'panoNumber':6},{'name':'Twin Peaks Crevasse', 'elevation':250,'panoNumber':13},{'name':'South Peak','elevation':285,'panoNumber':17},{'name':'Bonus Mini Peak','elevation':268,'panoNumber':26},{'name':'Buried Treasure','elevation':250,'panoNumber':38}]",
     'location': 'Parts unknown',
     'description': "Huh? Looks like a treasure map of some sort."
+  },
+  'cabezadecondor': {
+    'displayName': 'Cabeza de Condor',
+    'mountainName': 'cabezadecondor',
+    'elevation': '5,370 m / 17,618 ft',
+    'location': 'Cordillera Real, Bolivia',
+    'route': 'Normal Route on southwest ridge',
+    'description': "Cabeza de Condor (condor's head) is the Matterhorn of Bolivia. With peaks on both sides that look like wings, this is the most prized summit of the Condoriri Group. It's rated AD+ and is very exposed near the top so \"Be Prepared.\" Eagle Scouts only.",
+    'js': "[{'name':'Estancia Tuni','elevation':4400,'panoNumber':1}, {'name':'Chair Khota Lagoon ','elevation':4630,'panoNumber':71}, {'name':'Ice Canyon ','elevation':4950,'panoNumber':197}, {'name':'Glacier','elevation':5100,'panoNumber':210}, {'name':'Southwest Ridge','elevation':5300,'panoNumber':237}, {'name':'Summit ','elevation':5370,'panoNumber':246}]"
   }
 };
 

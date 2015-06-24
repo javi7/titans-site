@@ -149,7 +149,7 @@ module.exports = {
     });
   },
   climb: function(req, res) {
-    if (mountainInfo[req.params.mountain] && (req.params.mountain != 'buriedtreasure' || process.env.NODE_ENV != 'production')) {
+    if (mountainInfo[req.params.mountain] && (req.params.mountain in ['buriedtreasure', 'cabezadecondor'] || process.env.NODE_ENV != 'production')) {
       fs.readFile('./public/js/krpano.js', 'utf8', function (err, data) {
         var krpanojs = null;
         if (!err) {
