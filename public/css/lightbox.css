@@ -47,7 +47,14 @@ h1 {
   height: 30px;
   cursor: pointer;
   display: inline-block;
-  margin-right: 10px;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  #social-media-buttons-container {
+    top: 20px;
+    right: 10px;
+  }
 }
 
 #facebook-button {
