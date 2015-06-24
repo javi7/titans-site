@@ -38,3 +38,32 @@ h1 {
   margin-top: 20px;
   cursor: pointer;
 }
+#social-media-buttons-container {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.social-media-button {
+  height: 30px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#facebook-button {
+  width: 30px;
+  background-image: url('http://d39rd677qckrt3.cloudfront.net/images/fb-inactive.png');
+}
+
+#facebook-button:hover {
+  background-image: url('http://d39rd677qckrt3.cloudfront.net/images/fb-active.png');
+}
+
+#twitter-button {
+  width: 37px;
+  background-image: url('http://d39rd677qckrt3.cloudfront.net/images/twitter-inactive.png');
+}
+
+#twitter-button:hover {
+  background-image: url('http://d39rd677qckrt3.cloudfront.net/images/twitter-active.png');
+}
