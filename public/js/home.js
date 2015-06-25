@@ -204,7 +204,7 @@ $(document).ready(function(e) {
     ga('send', 'event', 'externalLink', 'click', 'himalaya-outreach');
   });
   $("nav area, #home a").click(function(event) {
-    $('body, home').animate(
+    $('html,body').animate(
       { scrollTop: $($(event.target).attr('href')).offset().top },
       500);
     return false;
