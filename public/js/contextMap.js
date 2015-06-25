@@ -94,12 +94,12 @@ var ContextMap = function(canvasId, config, mountainName) {
     var arrow = new createjs.Shape();
     arrow.graphics.beginStroke('black').setStrokeStyle(2);
     if (mapUp) {
-      arrow.graphics.moveTo(0.25 * box.originalDimensions.width, 0.25 * box.originalDimensions.height)
-      arrow.graphics.lineTo(0.5 * box.originalDimensions.width, 0.75 * box.originalDimensions.height)
+      arrow.graphics.moveTo(0.25 * box.originalDimensions.width, 0.25 * box.originalDimensions.height);
+      arrow.graphics.lineTo(0.5 * box.originalDimensions.width, 0.75 * box.originalDimensions.height);
       arrow.graphics.lineTo(0.75 * box.originalDimensions.width, 0.25 * box.originalDimensions.height);
     } else {
-      arrow.graphics.moveTo(0.25 * box.originalDimensions.width, 0.75 * box.originalDimensions.height)
-      arrow.graphics.lineTo(0.5 * box.originalDimensions.width, 0.25 * box.originalDimensions.height)
+      arrow.graphics.moveTo(0.25 * box.originalDimensions.width, 0.75 * box.originalDimensions.height);
+      arrow.graphics.lineTo(0.5 * box.originalDimensions.width, 0.25 * box.originalDimensions.height);
       arrow.graphics.lineTo(0.75 * box.originalDimensions.width, 0.75 * box.originalDimensions.height);
     }
     button.addChild(arrow);
@@ -120,7 +120,7 @@ var ContextMap = function(canvasId, config, mountainName) {
 
   // create current position marker
   var currentPositionMarker = new createjs.Shape();
-  currentPositionMarker.graphics.setStrokeStyle(2).beginStroke('black').beginFill('rgba(229,61,0,1)').drawCircle(0, 0, 9);  
+  currentPositionMarker.graphics.setStrokeStyle(3).beginStroke('black').beginFill('rgba(229,61,0,1)').drawCircle(0, 0, 9);  
   currentPositionMarker.z = 201;
   currentPositionMarker.on('pressmove', function(event) {
     currentPositionMarker.x = Math.min(event.stageX, campMarkers[campMarkers.length - 1].x);
@@ -373,12 +373,12 @@ var ContextMap = function(canvasId, config, mountainName) {
       campMarker.campInfo = config.campInfo[campIdx];
       if (campIdx == config.campInfo.length - 1) {
         campMarker.mapUpGraphic = new createjs.Graphics();
-        campMarker.mapUpGraphic.beginStroke('black').beginFill('darkgray').drawCircle(0, 0, 10);
+        campMarker.mapUpGraphic.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 10);
         campMarker.mapDownGraphic = new createjs.Graphics();
         campMarker.mapDownGraphic.f("rgba(229,61,0,254)").ss(3).s("rgba(0,0,0,254)").p("EAwcBguIHMgKIMgn+ImQH0IPogUIn+sqI1GNS").cp().ef().es(); 
-        campMarker.graphics.beginStroke('black').beginFill('darkgray').drawCircle(0, 0, 10);
+        campMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 10);
       } else {
-        campMarker.graphics.beginStroke('black').beginFill('darkgray').drawCircle(0, 0, 10);
+        campMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 10);
       }
       repositionCampMarker(campMarker);
       campMarkers.push(campMarker);
