@@ -62,8 +62,8 @@ module.exports = {
     'elevation': '5,370 m / 17,618 ft',
     'location': 'Cordillera Real, Bolivia',
     'route': 'Normal Route on southwest ridge',
-    'description': "Cabeza de Condor (condor's head) is the Matterhorn of Bolivia. With peaks on both sides that look like wings, this is the most prized summit of the Condoriri Group. It's rated AD+ and is very exposed near the top so \"Be Prepared.\" Eagle Scouts only.",
-    'js': "[{'name':'Estancia Tuni','elevation':4400,'panoNumber':1}, {'name':'Chair Khota Lagoon ','elevation':4630,'panoNumber':71}, {'name':'Ice Canyon ','elevation':4950,'panoNumber':191}, {'name':'Glacier','elevation':5100,'panoNumber':204}, {'name':'Southwest Ridge','elevation':5300,'panoNumber':231}, {'name':'Summit ','elevation':5370,'panoNumber':240}]"
+    'description': "Cabeza de Condor (condor’s head) is the Matterhorn of Bolivia. With peaks on both sides that look like wings, the head is the most prized summit in the Condoriri Group. Day one ends at a beautiful lake where you can relax in style. From there, only the serious climbers continue as it gets steep very quickly. The summit ridge is an exposed knife-edge. So if you’re wearing a sombrero, it may just blow into Chile. Cabeza de Condor is rated AD+, so \"Be Prepared.\" No Cub Scouts allowed on this one.",
+    'js': "[{'name':'Estancia Tuni','elevation':4400,'panoNumber':1}, {'name':'Chair Khota Lagoon ','elevation':4630,'panoNumber':71}, {'name':'Ice Canyon ','elevation':4950,'panoNumber':191}, {'name':'Glacier','elevation':5100,'panoNumber':204}, {'name':'Southwest Ridge','elevation':5400,'panoNumber':231}, {'name':'Summit ','elevation':5648,'panoNumber':240}]"
   }
 };
 
