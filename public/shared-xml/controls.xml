@@ -94,6 +94,18 @@
       <!-- showtext(old pat, invisible); -->
     );
     layer[prevPic].loadstyle(transparent);
+
+    addlayer(play);
+    set(layer[play].align, bottom);
+    set(layer[play].url, /images/climb-button.png);
+    if(mobileView, set(layer[play].visible, true), set(layer[play].visible, false));
+    if(panoNumber==lastPano, set(layer[play].visible, false), set(layer[play].visible, true));
+    set(layer[play].scale, 0.5);
+    set(layer[play].y, 30);
+    layer[play].loadstyle(transparent);
+    set(layer[play].onhover, layer[play].loadstyle(opaque));
+    set(layer[play].onout, layer[play].loadstyle(transparent));
+    set(layer[play].onclick, js(contextMap.unpause()));
   </action>
 
   <action name="hideControls">

@@ -7,8 +7,8 @@ var MobileContextMap = function(canvasId, mtnInfo) {
   }
 
   var stage = createStage(canvasId);
-  initialize();
   var currentPositionMarker = null;
+  initialize();
 
   this.updateCurrentPosition = function(panoNumber) {
     var lastPanoNumber = mtnInfo[mtnInfo.length - 1].panoNumber;
