@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'public/climb-min-almost.js': ['public/js/trailtitans.js', 'public/js/contextMap.js', 'public/js/mike-utilities.js', '/public/js/mobileContextMap.js']
+          'public/climb-min-almost.js': ['public/js/trailtitans.js', 'public/js/contextMap.js', 'public/js/mike-utilities.js', 'public/js/mobileContextMap.js']
         }
       }
     },

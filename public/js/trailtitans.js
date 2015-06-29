@@ -54,10 +54,6 @@ var initClimbMode = function(mtnName) {
   mobileContextMap = new MobileContextMap('mobile-context-map', campInfo);
 };
 
-var resize = function() {
-  mobileContextMap = new MobileContextMap
-}
-
 var initializeXmlVars = function() {
   var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
   krpano.call('set(climbing, false);');
