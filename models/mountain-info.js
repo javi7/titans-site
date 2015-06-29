@@ -1,6 +1,6 @@
 module.exports = {
   'aconcagua': {
-    "js" : "[{'name':'Horcones','elevation':2950,'panoNumber':1},{'name':'Confluencia','elevation':3390,'panoNumber':66},{'name':'Plaza de Mulas','elevation':4300,'panoNumber':231},{'name':'Canada','elevation':5050,'panoNumber':286},{'name':'Nido de Condores','elevation':5550,'panoNumber':313},{'name':'Berlin','elevation':5930,'panoNumber':341},{'name':'Summit','elevation':6962,'panoNumber':376}]", 
+    "js" : "[{'name':'Horcones','elevation':2950,'panoNumber':1},{'name':'Confluencia','elevation':3390,'panoNumber':66},{'name':'Plaza de Mulas','elevation':4300,'panoNumber':231, 'midCamp':true},{'name':'Canada','elevation':5050,'panoNumber':286},{'name':'Nido de Condores','elevation':5550,'panoNumber':313},{'name':'Berlin','elevation':5930,'panoNumber':341},{'name':'Summit','elevation':6962,'panoNumber':376}]", 
     "mountainName" : "aconcagua",
     "displayName" : "Aconcagua",
     'elevation': '6,962 m / 22,841 ft',
@@ -22,7 +22,7 @@ module.exports = {
   'halfdome': {
     "mountainName" : "halfdome",
     "displayName" : "Half Dome",
-    "js" : "[{'name':'Happy Isles','elevation':1219,'panoNumber':1},{'name':'Vernal Falls Footbridge','elevation':1341,'panoNumber':10},{'name':'Top of Nevada Falls','elevation':1829,'panoNumber':28},{'name':'Little Yosemite Valley','elevation':1860,'panoNumber':36},{'name':'Permit Check Point','elevation':2408,'panoNumber':50},{'name':'Summit','elevation':2695,'panoNumber':69}]",
+    "js" : "[{'name':'Happy Isles','elevation':1219,'panoNumber':1},{'name':'Vernal Falls Footbridge','elevation':1341,'panoNumber':10},{'name':'Top of Nevada Falls','elevation':1829,'panoNumber':28},{'name':'Little Yosemite Valley','elevation':1860,'panoNumber':36,'midCamp':true},{'name':'Permit Check Point','elevation':2408,'panoNumber':50},{'name':'Summit','elevation':2695,'panoNumber':69}]",
     'elevation': '2,695 m / 8,842 ft',
     'location': 'Yosemite National Park, California',
     'route': 'Mist Trail',
@@ -32,7 +32,7 @@ module.exports = {
   'huaynapotosi': {
     "displayName" : "Huayna Potosi",
     "mountainName" : "huaynapotosi",
-    "js" : "[{'name':'Casa Blanca', 'elevation':4750,'panoNumber':1},{'name':'Rock Camp','elevation':5130,'panoNumber':101},{'name':'Summit','elevation':6088,'panoNumber':208}]",
+    "js" : "[{'name':'Casa Blanca', 'elevation':4750,'panoNumber':1},{'name':'Rock Camp','elevation':5130,'panoNumber':101,'midCamp':true},{'name':'Summit','elevation':6088,'panoNumber':208}]",
     'elevation': '6,088 m / 19,974 ft',
     'location': 'La Paz, Bolivia,',
     'route': 'Normal Route',
@@ -42,7 +42,7 @@ module.exports = {
   'shasta': {
     "displayName" : "Shasta",
     "mountainName" : "shasta",
-    "js" : "[{'name':'Bunny Flats','elevation':2091,'panoNumber':1},{'name':'Lake Helen','elevation':3183,'panoNumber':32},{'name':'Summit','elevation':4322,'panoNumber':60}]",
+    "js" : "[{'name':'Bunny Flats','elevation':2091,'panoNumber':1},{'name':'Lake Helen','elevation':3183,'panoNumber':32,'midCamp':true},{'name':'Summit','elevation':4322,'panoNumber':60}]",
     'elevation': '4,322 m / 14,179 ft',
     'location': 'Siskiyou County, California',
     'route': 'Avalanche Gulch',
@@ -63,7 +63,7 @@ module.exports = {
     'location': 'Cordillera Real, Bolivia',
     'route': 'Normal Route on southwest ridge',
     'description': "Cabeza de Condor (condor’s head) is the Matterhorn of Bolivia. With peaks on both sides that look like wings, the head is the most prized summit in the Condoriri Group. Day one ends at a beautiful lake where you can relax in style. From there, only the serious climbers continue as the climb gets steep very quickly. The summit ridge is an exposed knife-edge. So if you’re wearing a sombrero, it may just blow into Chile. Cabeza de Condor is rated AD+, so \"Be Prepared.\" No Cub Scouts allowed on this one.",
-    'js': "[{'name':'Estancia Tuni','elevation':4400,'panoNumber':1}, {'name':'Chair Khota Lagoon ','elevation':4630,'panoNumber':71}, {'name':'Ice Canyon ','elevation':4950,'panoNumber':191}, {'name':'Glacier','elevation':5100,'panoNumber':204}, {'name':'Southwest Ridge','elevation':5400,'panoNumber':231}, {'name':'Summit ','elevation':5648,'panoNumber':240}]"
+    'js': "[{'name':'Estancia Tuni','elevation':4400,'panoNumber':1}, {'name':'Chair Khota Lagoon ','elevation':4630,'panoNumber':71,'midCamp':true}, {'name':'Ice Canyon ','elevation':4950,'panoNumber':191}, {'name':'Glacier','elevation':5100,'panoNumber':204}, {'name':'Southwest Ridge','elevation':5400,'panoNumber':231}, {'name':'Summit ','elevation':5648,'panoNumber':240}]"
   }
 };
 

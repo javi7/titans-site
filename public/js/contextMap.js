@@ -135,14 +135,14 @@ var ContextMap = function(canvasId, config, mountainName) {
   currentPositionMarker.cursor = cssPrefix + 'grab';
   currentPositionMarker.on('pressup', function() {
     var skipCacheBuster = '';
+    var skipToPanoNumber = Math.round((currentPositionMarker.x - config.sideMargin * canvasWidth) / ((1 - 2 * config.sideMargin) * canvasWidth) * climbLength);
     if (typeof cacheBusters !== 'undefined' && 'img' in cacheBusters && skipToPanoNumber in cacheBusters['img']) {
       skipCacheBuster = cacheBusters['img'][skipToPanoNumber];
     }
-    var skipToPanoNumber = Math.round((currentPositionMarker.x - config.sideMargin * canvasWidth) / ((1 - 2 * config.sideMargin) * canvasWidth) * climbLength);
     krpano.call('loadPanoWrapper(' + skipToPanoNumber + ', false, false,' + skipCacheBuster + ')');
     pause();
     document.body.style.cursor = 'default';
-  currentPositionMarker.cursor = cssPrefix + 'grab';
+    currentPositionMarker.cursor = cssPrefix + 'grab';
   });
   stage.addChild(currentPositionMarker);
 
@@ -197,8 +197,6 @@ var ContextMap = function(canvasId, config, mountainName) {
     return newPlayButton;
   };
   var playButton = createPlayButton();
-  
-  var mobilePlayButton = createPlayButton();
 
   var playText = new createjs.Text('Climb', '22px Arial', 'white');
   playText.z = 1001;
@@ -210,11 +208,6 @@ var ContextMap = function(canvasId, config, mountainName) {
   stage.addChild(playText);
   stage.addChild(playTextOutline);
 
-  mobilePlayButton.resize = function(scaleFactor) {
-    mobilePlayButton.x = 0;
-    mobilePlayButton.y = 0.5 * canvasHeight;
-    mobilePlayButton.scaleX = mobilePlayButton.scaleY = 0.6;
-  };
   playButton.resize = function(scaleFactor) {
     playButton.x = config.sideMargin * canvasWidth;
     playButton.y = 0.35 * canvasHeight;
@@ -233,7 +226,6 @@ var ContextMap = function(canvasId, config, mountainName) {
       stage.update();
     });
   }
-  addElement(mobilePlayButton);
   addElement(playButton);
 
   var mapUp = true;
@@ -245,7 +237,7 @@ var ContextMap = function(canvasId, config, mountainName) {
     if (jsPanoNumber < lastPano) {
       krpano.call('breakall');
       paused = false;
-      playButton.visible = mobilePlayButton.visible = false;
+      playButton.visible = false;
       stage.update();
       document.getElementById('clickToPause').style.display = 'block';
       setTimeout(function() {
@@ -258,7 +250,7 @@ var ContextMap = function(canvasId, config, mountainName) {
   this.pause = function() {
     krpano.call('pause(false);');
     if (jsPanoNumber != lastPano) {
-      playButton.visible = mobilePlayButton.visible = true;
+      playButton.visible = true;
     }
     stage.update();
     paused = true;
@@ -309,33 +301,14 @@ var ContextMap = function(canvasId, config, mountainName) {
 
   this.update = function() {
     if (jsPanoNumber == lastPano) {
-      playButton.visible = mobilePlayButton.visible = false;
+      playButton.visible = false;
     }
     stage.update();
-  };
-
-  var switchToMobile = function() {
-    stage.addChild(mobilePlayButton);
-    stage.removeChild(playButton);
-  };
-
-  var switchToFull = function() {
-    stage.removeChild(mobilePlayButton);
-    stage.addChild(playButton);
-    button.visible = true;
   };
 
   var resize = function() {
     var newHeight = 0.33 * krpano.clientHeight * ratio;
     var newWidth = 0.33 * krpano.clientWidth * ratio;
-    switchToFull();
-    var isMobile = false;
-    if (krpano.clientWidth < 768) {
-      switchToMobile();
-      isMobile = true;
-      var newHeight = 0.5 * krpano.clientHeight * ratio;
-      var newWidth = 0.5 * krpano.clientWidth * ratio;
-    }
 
     var scaleFactor = {'y': newHeight / stage.canvas.height, 'x': newWidth / stage.canvas.width};
 
@@ -355,16 +328,12 @@ var ContextMap = function(canvasId, config, mountainName) {
     }
 
     for (var markerIdx in campMarkers) {
-      repositionCampMarker(campMarkers[markerIdx], markerIdx == campMarkers.length - 1, isMobile);
+      repositionCampMarker(campMarkers[markerIdx], markerIdx == campMarkers.length - 1);
     }
     drawLines();
-    updateCurrentPosition(isMobile);
+    updateCurrentPosition();
 
-    if (krpano.clientWidth < 768 && mapUp) {
-      toggleMap(true);
-    } else {
-      stage.update();
-    }
+    stage.update();
   };
 
   var initCampMarkers = function() {
@@ -443,7 +412,7 @@ var ContextMap = function(canvasId, config, mountainName) {
     }
   };
 
-  var repositionCampMarker = function(campMarker, summit, isMobile) {
+  var repositionCampMarker = function(campMarker, summit) {
     campMarker.elevation = (1 - config.bottomMargin) * canvasHeight -  (campMarker.campInfo.elevation - config.campInfo[0].elevation) / climbHeight * (0.85 * canvasHeight);
     if (mapUp) {
       campMarker.y = campMarker.elevation;
@@ -452,25 +421,9 @@ var ContextMap = function(canvasId, config, mountainName) {
     }
     campMarker.x = campMarker.campInfo.panoNumber / climbLength * ((1 - 2 * config.sideMargin) * canvasWidth) + config.sideMargin * canvasWidth;
     if (summit && !mapUp) {
-      if (!isMobile) {
-        campMarker.scaleX = campMarker.scaleY = 0.25 * canvasWidth / 500;
-      } else {
-        if (canvasHeight > canvasWidth) {
-          campMarker.scaleX = campMarker.scaleY = 0.25 * canvasWidth / 250;
-        } else {
-          campMarker.scaleX = campMarker.scaleY = 0.25 * canvasHeight / 250;
-        }
-      }
+      campMarker.scaleX = campMarker.scaleY = 0.25 * canvasWidth / 500;
     } else {
-      if (!isMobile) {
-        campMarker.scaleX = campMarker.scaleY = 0.02 * canvasWidth / 10;
-      } else {
-        if (canvasHeight > canvasWidth) {
-          campMarker.scaleX = campMarker.scaleY = 0.02 * canvasWidth / 5;
-        } else {
-          campMarker.scaleX = campMarker.scaleY = 0.02 * canvasHeight / 5;
-        }
-      }
+     campMarker.scaleX = campMarker.scaleY = 0.02 * canvasWidth / 10; 
     }
   };
 
@@ -541,7 +494,7 @@ var ContextMap = function(canvasId, config, mountainName) {
     currentPositionMarker.y = (currentPositionMarker.x - markerBefore.x) / (markerAfter.x - markerBefore.x) * (markerAfter.y - markerBefore.y) + markerBefore.y;
   };
 
-  var toggleMap = function(isMobile) {
+  var toggleMap = function() {
     mapUp = !mapUp;
 
     mapToggling = true;
@@ -563,25 +516,13 @@ var ContextMap = function(canvasId, config, mountainName) {
           logo.visible = true;
         } else {
           summitMarker.graphics = summitMarker.mapDownGraphic;
-          if (!isMobile) { 
-            summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasWidth / 500;
-          } else {
-            if (canvasHeight > canvasWidth) {
-              summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasWidth / 250;
-            } else {
-              summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasHeight / 250;
-            }
-          }
+          summitMarker.scaleX = summitMarker.scaleY = 0.25 * canvasWidth / 500;
           summitMarker.regX = 414;
           summitMarker.regY = 578;
           logo.visible = false;
         }
         updateCurrentPosition();
-        if (isMobile) {
-          button.visible = false;
-        } else {
-          button.visible = true;
-        }
+        button.visible = true;
         stage.update();
       } else {
         toggleStep++;
@@ -604,9 +545,6 @@ var ContextMap = function(canvasId, config, mountainName) {
         backdrop.scaleY = boxHeight / backdrop.originalDimensions.height;
         drawLines();
         updateCurrentPosition();
-        if (isMobile) {
-          button.visible = false;
-        }
         stage.update();
       }
     }, 30);

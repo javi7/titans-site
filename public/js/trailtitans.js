@@ -2,6 +2,7 @@ var krpano = null;
 var panoDiv = null;
 
 var contextMap = null;
+var mobileContextMap = null;
 var initialized = false;
 var mountainName = null;
 
@@ -29,7 +30,6 @@ var initClimbMode = function(mtnName) {
   mountainName = mtnName;
   krpano = document.getElementById("krpanoSWFObject");
   panoDiv = document.getElementById("pano");
-  
   paused = true;
 
   var pauseOnSpace = function(event) {
@@ -50,7 +50,13 @@ var initClimbMode = function(mtnName) {
   
   contextMap = new ContextMap('contextMap', {'topMargin': 0.025, 'bottomMargin': 0.05, 'sideMargin': 0.1, 'buttonWidth': 0.1, 'campInfo': campInfo}, mountainName);
   contextMap.initialize();
+
+  mobileContextMap = new MobileContextMap('mobile-context-map', campInfo);
 };
+
+var resize = function() {
+  mobileContextMap = new MobileContextMap
+}
 
 var initializeXmlVars = function() {
   var initialPanoNumber = getQueryVariable() ? getQueryVariable() : 1;
@@ -112,6 +118,8 @@ var setCampVariables = function(panoNumber) {
 
   contextMap.updateCurrentPosition(jsPanoNumber);
   contextMap.update();
+
+  mobileContextMap.updateCurrentPosition(jsPanoNumber);
 };
 
 var closeInfoBox = function(event) {

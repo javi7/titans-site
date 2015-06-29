@@ -1,3 +1,13 @@
+.context-map {
+  position:absolute;
+  bottom:25px;
+  left:25px;
+}
+
+#mobile-context-map {
+  display: none;
+}
+
 .lightbox {
   z-index: 1500;
   position: absolute;
@@ -54,6 +64,12 @@ h1 {
   #social-media-buttons-container {
     top: 20px;
     right: 10px;
+  }
+  #contextMap {
+    display: none;
+  }
+  #mobile-context-map {
+    display: inherit;
   }
 }
 
