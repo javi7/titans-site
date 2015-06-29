@@ -97,7 +97,7 @@
 
     addlayer(play);
     set(layer[play].align, bottom);
-    set(layer[play].url, /images/climb-button.png);
+    set(layer[play].url, http://d39rd677qckrt3.cloudfront.net/images/climb-button.png);
     if(mobileView, set(layer[play].visible, true), set(layer[play].visible, false));
     if(panoNumber==lastPano, set(layer[play].visible, false), set(layer[play].visible, true));
     set(layer[play].scale, 0.5);
