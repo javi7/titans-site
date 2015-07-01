@@ -16,12 +16,18 @@
 
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/home.css">
+    {{#if dev}}
+      <link rel="stylesheet" href="/css/common.css">
+      <link rel="stylesheet" href="/css/home.css">
+      <script src="/js/home.js"></script>
+      <script src="/js/modernizr.js"></script>
+    {{else}}
+      <link rel="stylesheet" href="http://d39rd677qckrt3.cloudfront.net/home.min.css">
+      <script src="http://d39rd677qckrt3.cloudfront.net/home.min.js"></script>
+    {{/if}}
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="/js/home.js"></script>
-    <script src="/js/modernizr.js"></script>
+    
   </head>
   
   <body>

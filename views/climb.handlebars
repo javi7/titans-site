@@ -21,8 +21,12 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta http-equiv="x-ua-compatible" content="IE=edge" />
-	<link rel="stylesheet" href="/css/common.css">
-	<link rel="stylesheet" href="/css/lightbox.css">
+	{{#if dev}}
+		<link rel="stylesheet" href="/css/common.css">
+		<link rel="stylesheet" href="/css/climb.css">
+	{{else}}
+		<link rel="stylesheet" href="http://d39rd677qckrt3.cloudfront.net/climb.min.css">
+	{{/if}}
 	<style>
 		@-ms-viewport { width:device-width; }
 		@media only screen and (min-device-width:800px) { html { overflow:hidden; } }
@@ -92,7 +96,7 @@
 	<script src="/js/trailtitans.js"></script>
 	<script src="/js/easeljs-0.8.0.min.js"></script>
 {{else}}
-	<script src="http://d39rd677qckrt3.cloudfront.net/min.js?v=17"></script>
+	<script src="http://d39rd677qckrt3.cloudfront.net/climb.min.js"></script>
 {{/if}}
 <script>
 	initClimbMode('{{mountainInfo.mountainName}}');

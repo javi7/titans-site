@@ -29,7 +29,7 @@ var createStage = function(canvasId) {
   var newStage = new createjs.Stage(document.getElementById(canvasId));
   newStage.enableMouseOver(10);
   newStage.canvas.height = 0.6 * krpano.clientHeight;
-  newStage.canvas.width = 60;
+  newStage.canvas.width = 45;
   return newStage;
 } 
 
@@ -42,7 +42,7 @@ var createBackdrop = function(stage) {
 
 var createMarkers = function(stage, mtnInfo) {
   var baseMarker = new createjs.Shape();
-  baseMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 25);
+  baseMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 18);
   baseMarker.x = stage.canvas.width / 2;
   baseMarker.y = stage.canvas.height - 35;
   baseMarker.on('click', function(event) {
@@ -53,15 +53,15 @@ var createMarkers = function(stage, mtnInfo) {
     krpano.call('loadPanoWrapper(' + 1 + ', false, false,' + skipCacheBuster + ')');
   }, null, false);
 
-  var midCamp = null;
+  var midCampMarker = null;
   for (var campIdx in mtnInfo) {
-    if ('midCamp' in mtnInfo[campIdx] && mtnInfo[campIdx].midCamp === true) {
-      midCamp = new createjs.Shape();
-      midCamp.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 25);
-      midCamp.x = stage.canvas.width / 2;
+    if ('midCampMarker' in mtnInfo[campIdx] && mtnInfo[campIdx].midCampMarker === true) {
+      midCampMarker = new createjs.Shape();
+      midCampMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 18);
+      midCampMarker.x = stage.canvas.width / 2;
       var lastPanoNumber = mtnInfo[mtnInfo.length - 1].panoNumber;
-      midCamp.y = ((lastPanoNumber - 1) - (mtnInfo[campIdx].panoNumber - 1)) / (lastPanoNumber - 1) * (stage.canvas.height - 35 - 35) + 35;
-      midCamp.on('click', function(event, skipToPanoNumber) {
+      midCampMarker.y = ((lastPanoNumber - 1) - (mtnInfo[campIdx].panoNumber - 1)) / (lastPanoNumber - 1) * (stage.canvas.height - 35 - 35) + 35;
+      midCampMarker.on('click', function(event, skipToPanoNumber) {
         var skipCacheBuster = '';
         if (typeof cacheBusters !== 'undefined' && 'img' in cacheBusters && skipToPanoNumber in cacheBusters['img']) {
           skipCacheBuster = cacheBusters['img'][skipToPanoNumber];
@@ -73,7 +73,7 @@ var createMarkers = function(stage, mtnInfo) {
   
 
   var summitMarker = new createjs.Shape();
-  summitMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 25);
+  summitMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 18);
   summitMarker.x = stage.canvas.width / 2;
   summitMarker.y = 35;
   summitMarker.on('click', function(event, skipToPanoNumber) {
@@ -89,15 +89,15 @@ var createMarkers = function(stage, mtnInfo) {
 
   stage.addChild(line);
   stage.addChild(baseMarker);
-  if (midCamp !== null) {
-    stage.addChild(midCamp);
+  if (midCampMarker !== null) {
+    stage.addChild(midCampMarker);
   }
   stage.addChild(summitMarker);
 }
 
 var createCurrentPositionMarker = function(stage, mtnInfo) {
   currentPositionMarker = new createjs.Shape();
-  currentPositionMarker.graphics.f('#dc6026').s('black').ss(3).drawCircle(0, 0, 20);
+  currentPositionMarker.graphics.f('#dc6026').s('black').ss(3).drawCircle(0, 0, 12);
   currentPositionMarker.x = stage.canvas.width / 2;
   currentPositionMarker.y = stage.canvas.height - 35;
   stage.addChild(currentPositionMarker);
