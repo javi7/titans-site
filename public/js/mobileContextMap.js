@@ -55,7 +55,7 @@ var createMarkers = function(stage, mtnInfo) {
 
   var midCampMarker = null;
   for (var campIdx in mtnInfo) {
-    if ('midCampMarker' in mtnInfo[campIdx] && mtnInfo[campIdx].midCampMarker === true) {
+    if ('midCamp' in mtnInfo[campIdx] && mtnInfo[campIdx].midCamp === true) {
       midCampMarker = new createjs.Shape();
       midCampMarker.graphics.beginStroke('black').ss(3).beginFill('darkgray').drawCircle(0, 0, 18);
       midCampMarker.x = stage.canvas.width / 2;
