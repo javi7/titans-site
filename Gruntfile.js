@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     cssmin: {
       target: {
         files: {
-          'deploy/home.min.css' : ['public/css/common.css', 'public/common/home.css'],
+          'deploy/home.min.css' : ['public/css/common.css', 'public/css/home.css'],
           'deploy/climb.min.css' : ['public/css/common.css', 'public/css/climb.css']
         }
       }
