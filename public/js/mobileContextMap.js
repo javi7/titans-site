@@ -1,6 +1,6 @@
 var MobileContextMap = function(canvasId, mtnInfo) {
   var initialize = function() { 
-    createBackdrop(stage);
+    createBackdrop(stage, mtnInfo);
     createMarkers(stage, mtnInfo);
     currentPositionMarker = createCurrentPositionMarker(stage, mtnInfo);
     stage.update(); 
@@ -33,10 +33,11 @@ var createStage = function(canvasId) {
   return newStage;
 } 
 
-var createBackdrop = function(stage) {
+var createBackdrop = function(stage, mtnInfo) {
   var newBackdrop = new createjs.Shape();
   newBackdrop.graphics.beginFill('rgba(37,37,37,1)').drawRect(0, 0, stage.canvas.width, stage.canvas.height);
   newBackdrop.alpha = 0.5;
+  newBackdrop.on('click', skipToClick, null, false, {'stage': stage, 'mtnInfo': mtnInfo});
   stage.addChild(newBackdrop);
 }
 
@@ -86,6 +87,7 @@ var createMarkers = function(stage, mtnInfo) {
 
   var line = new createjs.Shape();
   line.graphics.beginStroke('black').ss(3).moveTo(baseMarker.x, baseMarker.y).lineTo(summitMarker.x, summitMarker.y);
+  line.on('click', skipToClick, null, false, {'stage': stage, 'mtnInfo': mtnInfo});
 
   stage.addChild(line);
   stage.addChild(baseMarker);
@@ -102,4 +104,16 @@ var createCurrentPositionMarker = function(stage, mtnInfo) {
   currentPositionMarker.y = stage.canvas.height - 35;
   stage.addChild(currentPositionMarker);
   return currentPositionMarker;
+}
+
+var skipToClick = function(event, blob) {
+  if (event.stageY > 35 && event.stageY < (blob.stage.canvas.height - 35)) {
+    var lastPanoNumber = blob.mtnInfo[blob.mtnInfo.length - 1].panoNumber;
+    var skipToPanoNumber = Math.round(((blob.stage.canvas.height - 70) - (event.stageY - 35)) / (blob.stage.canvas.height - 70) * (lastPanoNumber - 1) + 1);
+    var skipCacheBuster = '';
+    if (typeof cacheBusters !== 'undefined' && 'img' in cacheBusters && skipToPanoNumber in cacheBusters['img']) {
+      skipCacheBuster = cacheBusters['img'][skipToPanoNumber];
+    }
+    krpano.call('loadPanoWrapper(' + skipToPanoNumber + ', false, false,' + skipCacheBuster + ')');
+  }
 }
