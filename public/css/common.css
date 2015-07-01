@@ -24,7 +24,7 @@
 @import url("//hello.myfonts.net/count/2e4e5b");
 
   
-@font-face {font-family: 'Code-Pro-Demo';src: url('code-pro/webfonts/2E4E5B_0_0.eot');src: url('code-pro/webfonts/2E4E5B_0_0.eot?#iefix') format('embedded-opentype'),url('code-pro/webfonts/2E4E5B_0_0.woff2') format('woff2'),url('code-pro/webfonts/2E4E5B_0_0.woff') format('woff'),url('code-pro/webfonts/2E4E5B_0_0.ttf') format('truetype'),url('code-pro/webfonts/2E4E5B_0_0.svg#wf') format('svg');}
+@font-face {font-family: 'Code-Pro-Demo';src: url('webfonts/2E4E5B_0_0.eot');src: url('webfonts/2E4E5B_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2E4E5B_0_0.woff2') format('woff2'),url('webfonts/2E4E5B_0_0.woff') format('woff'),url('webfonts/2E4E5B_0_0.ttf') format('truetype'),url('webfonts/2E4E5B_0_0.svg#wf') format('svg');}
 
 /* fonts */ 
 .font-code-pro { 
