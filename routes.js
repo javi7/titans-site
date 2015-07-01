@@ -9,7 +9,7 @@ var User = require('./models/User'),
 module.exports = {
   index: function(req, res) {
     console.log(req.user);
-    res.render('home', {'user': req.user});
+    res.render('home', {'dev': process.env.NODE_ENV == 'dev'});
   },
   register: function(req, res) {
     User.createNewUser(req.body, function(err, result) {
