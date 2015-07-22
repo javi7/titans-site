@@ -9,7 +9,7 @@ var User = require('./models/User'),
 module.exports = {
   index: function(req, res) {
     console.log(req.user);
-    res.render('home', {'dev': process.env.NODE_ENV == 'dev'});
+    res.render('home', {'dev': process.env.NODE_ENV === 'dev'});
   },
   register: function(req, res) {
     User.createNewUser(req.body, function(err, result) {
@@ -160,7 +160,7 @@ module.exports = {
           'mountainInfo': mountainInfo[req.params.mountain], 
           'krpanojs': krpanojs,
           'cacheBusters': cacheBusters[req.params.mountain],
-          'dev': process.env.NODE_ENV == 'dev'
+          'dev': process.env.NODE_ENV === 'dev'
         });
       });
     } else {

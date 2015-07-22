@@ -19,12 +19,10 @@ var passport = require('passport'),
   validator = require('express-validator'),
   knox = require('knox'),
   mime = require('mime'),
-  favicon = require('serve-favicon'),
   compression = require('compression');
 
 var app = express();
 app.use(compression());
-app.use(favicon('./public/images/favicon.ico'));
 var port = process.env.PORT || 3000;
 var aws = knox.createClient({
   key: process.env.aws_key,
@@ -69,57 +67,42 @@ app.use(validator());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public'));
-app.use('/mountains', express.static('D:/Javi/krPano/output'));
 
 app.get('', routes.index);
-app.get('/auth/facebook', passport.authenticate('facebook'));
-app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/' }));
-app.get('/auth/google/callback', 
-  passport.authenticate('google-openidconnect', { successRedirect: '/',
-                                    failureRedirect: '/' }));
-
-app.get('/auth/google', passport.authenticate('google-openidconnect'));
-app.get('/logout', routes.logout);
-app.post('/register', routes.register);
-app.post('/login',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/' })
-);
+app.get('/favicon.ico', function(req, res) {
+  res.redirect('http://d39rd677qckrt3.cloudfront.net/favicon.ico');
+});
 app.post('/apply', routes.apply);
 app.post('/feedback', routes.feedback);
 
-app.get('/verifyEmail', routes.verifyEmail);
-app.get('/resetPasswordRequest', routes.resetPasswordRequest);
-app.post('/resetPasswordRequest', routes.resetPasswordRequestPost);
-app.get('/resetPassword', routes.resetPasswordPage);
-app.post('/resetPassword', routes.resetPasswordPost);
-app.get('/account', loggedIn, routes.accountPage);
-app.post('/updatePassword', routes.updatePassword);
-app.post('/updateEmail', routes.updateEmail);
+
+// account management endpoints
+
+// app.post('/register', routes.register);
+// app.post('/login',
+//   passport.authenticate('local', { successRedirect: '/',
+//                                    failureRedirect: '/' })
+// );
+// app.get('/logout', routes.logout);
+// app.get('/verifyEmail', routes.verifyEmail);
+// app.get('/resetPasswordRequest', routes.resetPasswordRequest);
+// app.post('/resetPasswordRequest', routes.resetPasswordRequestPost);
+// app.get('/resetPassword', routes.resetPasswordPage);
+// app.post('/resetPassword', routes.resetPasswordPost);
+// app.get('/account', loggedIn, routes.accountPage);
+// app.post('/updatePassword', routes.updatePassword);
+// app.post('/updateEmail', routes.updateEmail);
+// app.get('/auth/facebook', passport.authenticate('facebook'));
+// app.get('/auth/facebook/callback', 
+//   passport.authenticate('facebook', { successRedirect: '/',
+//                                       failureRedirect: '/' }));
+// app.get('/auth/google/callback', 
+//   passport.authenticate('google-openidconnect', { successRedirect: '/',
+//                                     failureRedirect: '/' }));
+
+// app.get('/auth/google', passport.authenticate('google-openidconnect'));
+
 app.post('/subscribe', routes.subscribe);
-app.get('/testMap', function(req, res) { res.render('map') });
-// app.get('/mountain-data/:mountain/:resolution/:folder/:filename', function(req, res, next) {
-//   aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.filename].join('/')).on('response', function(resp){
-//     res.removeHeader('set-cookie');
-//     res.setHeader('Content-Length', resp.headers['content-length']);
-//     res.setHeader('Content-Type', resp.headers['content-type']);
-//     resp.pipe(res);
-//   }).end();
-// });
-// app.get('/mountain-data/:mountain/:resolution/:folder/:side/:res/:level/:filename', function(req, res, next) {
-//   aws.get('/mountains/' + [req.params.mountain, req.params.resolution, req.params.folder, req.params.side, req.params.res, req.params.level, req.params.filename].join('/')).on('response', function(resp){
-//     res.removeHeader('set-cookie');
-//     res.setHeader('Content-Length', resp.headers['content-length']);
-//     res.setHeader('Content-Type', resp.headers['content-type']);
-//     resp.pipe(res);
-//   }).end();
-// });
-// app.get('/low-res|hi-res/:folder/:side/:res/:level/:filename', function(req, res, next) {
-//   var mountain = req.headers.referer.split('/')[req.headers.referer.split('/').length - 1];
-//   res.redirect('/mountain-data/' + mountain + req.url);
-// });
 app.get('/climb/:mountain', routes.climb);
 
 passport.serializeUser(function(user, done) {
