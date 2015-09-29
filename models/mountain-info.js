@@ -22,7 +22,7 @@ module.exports = {
   'halfdome': {
     "mountainName" : "halfdome",
     "displayName" : "Half Dome",
-    "js" : "[{'name':'Happy Isles','elevation':1219,'panoNumber':1},{'name':'Vernal Falls Footbridge','elevation':1341,'panoNumber':10},{'name':'Top of Nevada Falls','elevation':1829,'panoNumber':28},{'name':'Little Yosemite Valley','elevation':1860,'panoNumber':36,'midCamp':true},{'name':'Permit Check Point','elevation':2408,'panoNumber':50},{'name':'Summit','elevation':2695,'panoNumber':69}]",
+    "js" : "[{'name':'Happy Isles','elevation':1219,'panoNumber':1},{'name':'Vernal Falls Footbridge','elevation':1341,'panoNumber':10},{'name':'Top of Nevada Falls','elevation':1829,'panoNumber':28},{'name':'Little Yosemite Valley','elevation':1860,'panoNumber':36,'midCamp':true},{'name': 'Secret Spring', 'elevation':2200, 'panoNumber':46},{'name':'Permit Check Point','elevation':2408,'panoNumber':54},{'name':'Summit','elevation':2695,'panoNumber':73}]",
     'elevation': '2,695 m / 8,842 ft',
     'location': 'Yosemite National Park, California',
     'route': 'Mist Trail',
