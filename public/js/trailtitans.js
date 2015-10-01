@@ -63,6 +63,7 @@ var initializeXmlVars = function() {
   krpano.call('set(lastPano, ' + campInfo[campInfo.length - 1].panoNumber + ');');
   if (initialPanoNumber != 1) {
     krpano.call('loadPanoWrapper(' + initialPanoNumber + ',false,false);');
+    document.getElementById('infoBox').style.display='none';
     return false;
   }
   return true;
