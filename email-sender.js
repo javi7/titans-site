@@ -11,7 +11,7 @@ module.exports = function() {
   return {
     sendVerificationEmail: function(user, cb) {
       var mailOptions = {
-        from: 'Javi <javi@trailtitans.com>',
+        from: 'Javi <javi.muhrer@gmail.com>',
         to: user.email,
         subject: 'Trail Titans welcomes you!',
         text: 'Verify your account by visiting http://localhost:3000/verifyEmail?thepudding=' + user.emailVerifyToken,
@@ -27,7 +27,7 @@ module.exports = function() {
     },
     sendResetPasswordEmail: function(user, cb) {
       var mailOptions = {
-        from: 'Javi <javi@trailtitans.com>',
+        from: 'Javi <javi.muhrer@gmail.com>',
         to: user.email,
         subject: 'Trail Titans account information',
         text: 'To reset your password, visit http://localhost:3000/resetPassword?thepudding=' + user.resetPasswordToken,
@@ -43,9 +43,9 @@ module.exports = function() {
     },
     sendTitanApplicationReceivedEmail: function(user, cb) {
       var mailOptions = {
-        from: 'Michael <michael@trailtitans.com>',
+        from: 'Michael <michaelgrantware@gmail.com>',
         to: user.email,
-        replyTo: 'michael@trailtitans.com',
+        replyTo: 'michaelgrantware@gmail.com',
         subject: 'Welcome to Trail Titans',
         text: "Hey there,\r\nThanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.\r\nCheers,\r\nMichael, Co-Founder & Resident Mountain Man",
         html: "Hey there,<br />Thanks for your interest in becoming a Titan. We got your info and will respond shortly. If you're a good fit, then we look forward to lots of climbing. If not, hopefully we can grab a beer or a movie in the park. Either way, we’ll circle back soon.<br />Cheers,<br />Michael, Co-Founder & Resident Mountain Man"
@@ -62,7 +62,7 @@ module.exports = function() {
       var mtnGuideString = application.climbingGuide == 'yes' ? 'IS a climbing guide' : 'IS NOT a climbing guide';
       var mailOptions = {
         from: 'Our Computer Overlords',
-        to: ['michael@trailtitans.com', 'javi@trailtitans.com'],
+        to: ['michaelgrantware@gmail.com', 'javi.muhrer@gmail.com'],
         subject: 'Trail Titans NEW TITAN APPLICATION RECEIVED - ' + application.firstName + ' ' + application.lastName,
         text: application.firstName +  ' ' + application.lastName + '\r\n' + application.email + '\r\n' + application.city + '\r\n' + application.country + '\r\nfavorite mountain: ' + application.favoriteMountain + '\r\n' + mtnGuideString + '\r\nextra info: ' + application.extraComments 
       };
@@ -76,9 +76,9 @@ module.exports = function() {
     },
     sendFeedbackReceivedEmail: function(user, cb) {
       var mailOptions = {
-        from: 'Michael <michael@trailtitans.com>',
+        from: 'Michael <michaelgrantware@gmail.com>',
         to: user.email,
-        replyTo: 'michael@trailtitans.com',
+        replyTo: 'michaelgrantware@gmail.com',
         subject: 'Thanks from Trail Titans',
         text: "Hola,\r\nThanks for dropping me a line. Although this is an automated response, my follow up email won't be. I’m co-founder of Trail Titans and I read and respond to everything that comes my way. Your feedback is right up there with my morning espresso (and that's really really important) so expect to hear from me very soon.\r\n\r\nMichael",
         html: "Hola,<br />Thanks for dropping me a line. Although this is an automated response, my follow up email won't be. I’m co-founder of Trail Titans and I read and respond to everything that comes my way. Your feedback is right up there with my morning espresso (and that's really really important) so expect to hear from me very soon.<br /><br />Michael"
@@ -93,9 +93,9 @@ module.exports = function() {
     },
     sendNewSubscriptionEmail: function(user, cb) {
       var mailOptions = {
-        from: 'Javi <javi@trailtitans.com>',
+        from: 'Javi <javi.muhrer@gmail.com>',
         to: user.email,
-        replyTo: 'javi@trailtitans.com',
+        replyTo: 'javi.muhrer@gmail.com',
         subject: 'Thank you for subscribing to Trail Titans',
         text: "Hey there,\r\nThanks for subscribing.  Going forward, we’ll update you each time a new mountain becomes available. No spam, pinkie swear. Happy climbing!\r\n\r\nJavi, Co-Founder & Bit Jockey",
         html: "Hey there,<br />Thanks for subscribing.  Going forward, we’ll update you each time a new mountain becomes available. No spam, pinkie swear. Happy climbing!<br /><br />Javi, Co-Founder & Bit Jockey"
@@ -111,7 +111,7 @@ module.exports = function() {
     forwardNewSubscriptionAlert: function(user, cb) {
       var mailOptions = {
         from: 'Our Computer Overlords',
-        to: ['michael@trailtitans.com', 'javi@trailtitans.com'],
+        to: ['michaelgrantware@gmail.com', 'javi.muhrer@gmail.com'],
         subject: 'Trail Titans NEW SUBSCRIBER - ' + user.email,
         text: user.email + ' has subscribed!'
       };
@@ -126,7 +126,7 @@ module.exports = function() {
     sendFeedbackToBrainTrust: function(feedback, cb) {
       var mailOptions = {
         from: 'our idiot users',
-        to: ['javi@trailtitans.com', 'michael@trailtitans.com'],
+        to: ['javi.muhrer@gmail.com', 'michaelgrantware@gmail.com'],
         subject: 'Trail Titans Feedback from our loyal fans',
         text: 'name: ' + feedback.name + '\r\nemail: ' + feedback.email + '\r\nmessage: ' + feedback.message,
         html: 'name: ' + feedback.name + '<br />email: ' + feedback.email + '<br />message: ' + feedback.message
