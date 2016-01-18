@@ -50,12 +50,12 @@ module.exports = {
       res.status(201).send('feedback submitted');
       emailSender.sendFeedbackToBrainTrust(req.body, function(err, result) {
         if (err || !result) {
-          console.log('failed to send feedback: ' + req.body);
+          console.log('failed to send feedback: ' + err);
         }
       });
       emailSender.sendFeedbackReceivedEmail(req.body, function(err, result) {
         if (err || !result) {
-          console.log('failed to send feedback response: ' + req.body);
+          console.log('failed to send feedback response: ' + err);
         }
       });
     } else {
@@ -137,12 +137,12 @@ module.exports = {
         res.status(201).send('successfully subscribed');
         emailSender.sendNewSubscriptionEmail(req.body, function(err, result) {
           if (err || !result) {
-            console.log('failed to send new subscription email: ' + req.body);
+            console.log('failed to send new subscription email: ' + err);
           }
         });
         emailSender.forwardNewSubscriptionAlert(req.body, function(err, result) {
           if (err || !result) {
-            console.log('failed to forward new subscription alert: ' + req.body);
+            console.log('failed to forward new subscription alert: ' + err);
           }
         });
       }
