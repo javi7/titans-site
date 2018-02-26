@@ -38,17 +38,17 @@ var loggedIn = function(req, res, next) {
   }
 }
 
-mongoose.connect(process.env.mongo);
+// mongoose.connect(process.env.mongo);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 var sessionMiddleware = session({
   secret: 'javijavijavi',
-  store: new MongoStore({ 
-    mongooseConnection: mongoose.connection,
-    clear_interval: 3600 
-  }), 
+  // store: new MongoStore({ 
+  //   mongooseConnection: mongoose.connection,
+  //   clear_interval: 3600 
+  // }), 
   resave: false, 
   saveUninitialized: false,
   cookie: {httpOnly: true, secure: false, maxAge: 24 * 60 * 60 * 1000}
