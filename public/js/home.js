@@ -53,7 +53,7 @@ $(document).ready(function(e) {
     if(fromTop + $(window).height() == $(document).height()) {
       currentSectionId.push('contact');
     }
-    var newImageSrc = currentSectionId[currentSectionId.length - 1] ? 'http://d39rd677qckrt3.cloudfront.net/images/nav-' + currentSectionId[currentSectionId.length - 1] +'.png' : '/images/nav-home.png'; 
+    var newImageSrc = currentSectionId[currentSectionId.length - 1] ? 'http://d71k0z0ouu4ph.cloudfront.net/images/nav-' + currentSectionId[currentSectionId.length - 1] +'.png' : '/images/nav-home.png'; 
     var image = $("#nav-image");
     if (image.attr('src') != newImageSrc) {
       image.attr('src', newImageSrc);

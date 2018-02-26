@@ -85,7 +85,7 @@ var setCampVariables = function(panoNumber) {
   
   // add special case spring video to halfdome pic 46
   if (mountainName === 'halfdome' && jsPanoNumber === 46) {
-    krpano.call("addhotspot(spring_video_play_button);set(hotspot[spring_video_play_button].url, 'http://d39rd677qckrt3.cloudfront.net/images/play7.png');set(hotspot[spring_video_play_button].ath, -182);set(hotspot[spring_video_play_button].atv, 15);set(hotspot[spring_video_play_button].onclick, js(playVideo();));");
+    krpano.call("addhotspot(spring_video_play_button);set(hotspot[spring_video_play_button].url, 'http://d71k0z0ouu4ph.cloudfront.net/images/play7.png');set(hotspot[spring_video_play_button].ath, -182);set(hotspot[spring_video_play_button].atv, 15);set(hotspot[spring_video_play_button].onclick, js(playVideo();));");
   }
 
   for (var i = 0; i < campInfo.length; i++) {
@@ -147,7 +147,7 @@ var playVideo = function() {
     height = clientHeight;
   }
 
-  krpano.call("addlayer(video_stage);set(layer[video_stage].type, container);set(layer[video_stage].align, center);set(layer[video_stage].width, " + width + ");set(layer[video_stage].height, " + height + ");addlayer(spring_video);set(layer[spring_video].parent, video_stage);set(layer[spring_video].align, center);set(layer[spring_video].videourl, 'http://d39rd677qckrt3.cloudfront.net/videos/spring.mp4');set(layer[spring_video].url, 'http://d39rd677qckrt3.cloudfront.net/videoplayer.js');set(layer[spring_video].handcursor, false);set(layer[spring_video].pausedonstart, false);set(layer[spring_video].width, " + width + ");set(layer[spring_video].height, " + height + ");set(layer[spring_video].loop, true);set(layer[spring_video].ath, -182);set(layer[spring_video].atv, 30);set(layer[spring_video].onclick, togglepause());set(layer[spring_video].onvideoready, addlayer(close_video_button);set(layer[close_video_button].parent, video_stage);set(layer[close_video_button].align, righttop);set(layer[close_video_button].url, 'http://d39rd677qckrt3.cloudfront.net/images/close2.png');set(layer[close_video_button].y, 30);set(layer[close_video_button].x, 30);set(layer[close_video_button].onclick, js('closeVideo();'));)");
+  krpano.call("addlayer(video_stage);set(layer[video_stage].type, container);set(layer[video_stage].align, center);set(layer[video_stage].width, " + width + ");set(layer[video_stage].height, " + height + ");addlayer(spring_video);set(layer[spring_video].parent, video_stage);set(layer[spring_video].align, center);set(layer[spring_video].videourl, 'http://d71k0z0ouu4ph.cloudfront.net/videos/spring.mp4');set(layer[spring_video].url, 'http://d71k0z0ouu4ph.cloudfront.net/videoplayer.js');set(layer[spring_video].handcursor, false);set(layer[spring_video].pausedonstart, false);set(layer[spring_video].width, " + width + ");set(layer[spring_video].height, " + height + ");set(layer[spring_video].loop, true);set(layer[spring_video].ath, -182);set(layer[spring_video].atv, 30);set(layer[spring_video].onclick, togglepause());set(layer[spring_video].onvideoready, addlayer(close_video_button);set(layer[close_video_button].parent, video_stage);set(layer[close_video_button].align, righttop);set(layer[close_video_button].url, 'http://d71k0z0ouu4ph.cloudfront.net/images/close2.png');set(layer[close_video_button].y, 30);set(layer[close_video_button].x, 30);set(layer[close_video_button].onclick, js('closeVideo();'));)");
 
   document.getElementById('contextMap').style.display = 'none';
 }

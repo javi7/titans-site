@@ -70,7 +70,7 @@ app.use(express.static('public'));
 
 app.get('', routes.index);
 app.get('/favicon.ico', function(req, res) {
-  res.redirect('http://d39rd677qckrt3.cloudfront.net/favicon.ico');
+  res.redirect('http://d71k0z0ouu4ph.cloudfront.net/favicon.ico');
 });
 app.post('/apply', routes.apply);
 app.post('/feedback', routes.feedback);

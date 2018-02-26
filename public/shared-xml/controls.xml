@@ -1,7 +1,7 @@
 <krpano>
   <action name="showControls">
     addlayer(back);
-    set(layer[back].url, http://d39rd677qckrt3.cloudfront.net/images/back-button.png);
+    set(layer[back].url, http://d71k0z0ouu4ph.cloudfront.net/images/back-button.png);
     set(layer[back].x, 30);
     set(layer[back].y, 30);
     if(mobileView, set(layer[back].scale, 1), set(layer[back].scale, 0.6));
@@ -19,7 +19,7 @@
     set(layer[zoom].x, 30);
     set(layer[zoom].y, 30);
     addlayer(zoomin);
-    set(layer[zoomin].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
+    set(layer[zoomin].url, http://d71k0z0ouu4ph.cloudfront.net/images/round-buttons.png);
     set(layer[zoomin].align, top);
     if(mobileView, set(layer[zoomin].scale, 1.2), set(layer[zoomin].scale, 0.65));
     set(layer[zoomin].onclick, zoomIn());
@@ -36,7 +36,7 @@
     );
     layer[zoomin].loadstyle(transparent);
     addlayer(zoomout);
-    set(layer[zoomout].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
+    set(layer[zoomout].url, http://d71k0z0ouu4ph.cloudfront.net/images/round-buttons.png);
     set(layer[zoomout].align, bottom);
     if(mobileView, set(layer[zoomout].scale, 1.2), set(layer[zoomout].scale, 0.65));
     set(layer[zoomout].onclick, zoomOut());
@@ -60,7 +60,7 @@
     if(mobileView, set(layer[nextPrevControls].x, 50), set(layer[nextPrevControls].x, 100));
     set(layer[nextPrevControls].y, 30);
     addlayer(nextPic);
-    set(layer[nextPic].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
+    set(layer[nextPic].url, http://d71k0z0ouu4ph.cloudfront.net/images/round-buttons.png);
     set(layer[nextPic].align, top);
     if(mobileView, set(layer[nextPic].scale, 1.2), set(layer[nextPic].scale, 0.65));
     set(layer[nextPic].onclick, loadNextPano(false, false));
@@ -78,7 +78,7 @@
     layer[nextPic].loadstyle(transparent);
     if(panoNumber==lastPano, set(layer[nextPic].visible, false), set(layer[nextPic].visible, true));
     addlayer(prevPic);
-    set(layer[prevPic].url, http://d39rd677qckrt3.cloudfront.net/images/round-buttons.png);
+    set(layer[prevPic].url, http://d71k0z0ouu4ph.cloudfront.net/images/round-buttons.png);
     set(layer[prevPic].align, bottom);
     if(mobileView, set(layer[prevPic].scale, 1.2), set(layer[prevPic].scale, 0.65));
     set(layer[prevPic].onclick, loadPrevPano(false, false));
@@ -97,7 +97,7 @@
 
     addlayer(play);
     set(layer[play].align, bottom);
-    set(layer[play].url, http://d39rd677qckrt3.cloudfront.net/images/climb-button.png);
+    set(layer[play].url, http://d71k0z0ouu4ph.cloudfront.net/images/climb-button.png);
     if(mobileView, set(layer[play].visible, true), set(layer[play].visible, false));
     if(panoNumber==lastPano, set(layer[play].visible, false));
     set(layer[play].scale, 0.5);
